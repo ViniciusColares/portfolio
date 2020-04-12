@@ -1,36 +1,52 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document'
+import Document from "next/document";
+import { ServerStyleSheet, createGlobalStyle } from "styled-components";
 
-class MyDocument extends Document {
-  static async getInitialProps(ctx) {
-    const initialProps = await Document.getInitialProps(ctx)
-    return { ...initialProps }
+const GlobalStyles = createGlobalStyle`
+  body {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    outline: none none;
+    background: rgb(124, 49, 210);
+    background: linear-gradient(
+      215deg,
+      rgba(124, 49, 210, 1) 0%,
+      rgba(103, 33, 219, 1) 30%,
+      rgba(86, 20, 226, 1) 100%
+    );
   }
+`;
 
-  render() {
-    return (
-      <Html>
-        <Head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
-          <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-          <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
-          <link rel="icon" type="image/png" sizes="194x194" href="/favicon-194x194.png" />
-          <link rel="icon" type="image/png" sizes="192x192" href="/android-chrome-192x192.png" />
-          <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
-          <link rel="manifest" href="/site.webmanifest" />
-          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#290759" />
-          <meta name="msapplication-TileColor" content="#290759" />
-          <meta name="msapplication-TileImage" content="/mstile-144x144.png" />
-          <meta name="theme-color" content="#290759" />
-        </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
-      </Html>
-    )
+export default class MyDocument extends Document {
+  static async getInitialProps(ctx) {
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
+    try {
+      ctx.renderPage = () =>
+        originalRenderPage({
+          enhanceApp: (App) => (props) =>
+            sheet.collectStyles(
+              <>
+                <GlobalStyles />
+                <App {...props} />
+              </>
+            ),
+        });
+
+      const initialProps = await Document.getInitialProps(ctx);
+      return {
+        ...initialProps,
+        styles: (
+          <>
+            {initialProps.styles}
+            {sheet.getStyleElement()}
+          </>
+        ),
+      };
+    } finally {
+      sheet.seal();
+    }
   }
 }
-
-export default MyDocument

@@ -1,13 +1,13 @@
-const withPWA = require('next-pwa')
+const withPWA = require("next-pwa");
 
-module.exports = withPWA({
-  pwa: {
-    dest: 'public'
-  },
+const settings = {
+  env: {},
   devIndicators: {
     autoPrerender: false,
   },
-  env: {
-    user: 'my-value',
+  pwa: {
+    dest: "public",
   },
-})
+};
+
+module.exports = withPWA(settings);
