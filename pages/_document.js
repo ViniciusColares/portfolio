@@ -1,23 +1,8 @@
 import Document from "next/document";
-import { ServerStyleSheet, createGlobalStyle } from "styled-components";
+import { ServerStyleSheet, ThemeProvider } from "styled-components";
+import GlobalStyles from "../styles/global";
 
-const GlobalStyles = createGlobalStyle`
-  body {
-    position: relative;
-    width: 100vw;
-    height: 100vh;
-    margin: 0;
-    padding: 0;
-    outline: none none;
-    background: rgb(124, 49, 210);
-    background: linear-gradient(
-      215deg,
-      rgba(124, 49, 210, 1) 0%,
-      rgba(103, 33, 219, 1) 30%,
-      rgba(86, 20, 226, 1) 100%
-    );
-  }
-`;
+import theme from "../styles/theme";
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -28,16 +13,25 @@ export default class MyDocument extends Document {
         originalRenderPage({
           enhanceApp: (App) => (props) =>
             sheet.collectStyles(
-              <>
+              <ThemeProvider theme={theme}>
                 <GlobalStyles />
                 <App {...props} />
-              </>
+              </ThemeProvider>
             ),
         });
 
       const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
+        head: (
+          <>
+            {initialProps.head}
+            <link
+              href="https://fonts.googleapis.com/css2?family=Bungee&family=Ubuntu:wght@300;400&display=swap"
+              rel="stylesheet"
+            />
+          </>
+        ),
         styles: (
           <>
             {initialProps.styles}

@@ -1,0 +1,33 @@
+{
+  "presets": [
+    [
+      "next/babel",
+      {
+        "preset-env": {
+          "useBuiltIns": "usage"
+        }
+      }
+    ]
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@modules": "./node_modules",
+          "@components": "./components",
+          "@templates": "./templates",
+          "@styles": "./styles",
+          "@public": "./public",
+          "@pages": "./pages"
+        }
+      }
+    ],
+    ["inline-react-svg"]
+  ],
+  "env": {
+    "test": {
+      "presets": [["@babel/preset-env", { "modules": false }], "next/babel"]
+    }
+  }
+}
