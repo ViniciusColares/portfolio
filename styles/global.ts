@@ -1,10 +1,13 @@
 import { createGlobalStyle } from "styled-components";
-import { linearGradient, normalize } from "polished";
+import { normalize } from "polished";
 
 const GlobalStyles = createGlobalStyle`
   ${normalize()}
   *{
     box-sizing: border-box;
+  }
+  html{
+    overflow: hidden;
   }
   body {
     position: relative;
@@ -19,16 +22,6 @@ const GlobalStyles = createGlobalStyle`
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     color: ${({ theme }) => theme.colors.contrast};
-    background-attachment: fixed;
-    background: ${({ theme }) =>
-      linearGradient({
-        colorStops: [
-          `${theme.colors.primary1} 20%`,
-          `${theme.colors.primary2} 90%`,
-        ],
-        toDirection: "to bottom left",
-        fallback: theme.colors.primary1,
-      })};
   }
 `;
 

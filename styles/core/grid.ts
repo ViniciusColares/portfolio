@@ -1,33 +1,9 @@
 import styled from "styled-components";
 import css from "@styled-system/css";
-import { flexbox, space, layout, border, color } from "styled-system";
-
-export const Page = styled("section")(
-  flexbox,
-  css({
-    background: "url('/assets/bg.png') 0 0 no-repeat fixed",
-    backgroundSize: "contain",
-    display: "flex",
-    flexDirection: "column",
-    height: "100vh",
-  })
-);
-
-export const ContentPage = styled("section")(
-  css({
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    zIndex: 1,
-  })
-);
+import { compose, flexbox, space, layout, border, color } from "styled-system";
 
 export const Flex = styled("div")(
-  layout,
-  flexbox,
-  space,
-  border,
-  color,
+  compose(layout, flexbox, space, border, color),
   css({
     display: "flex",
     position: "relative",

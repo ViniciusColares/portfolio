@@ -1,11 +1,10 @@
 import styled from "styled-components";
 import css from "@styled-system/css";
 
-import { Heading, Text } from "../typo";
+import { Heading } from "@components/Typo";
 
-export const Title = styled("h1")(
+export const Title = styled(Heading)(
   css({
-    ...Heading,
     marginTop: "3vh",
     fontSize: 4,
     textAlign: "center",
@@ -19,13 +18,12 @@ export const Title = styled("h1")(
   })
 );
 
-export const CallToAction = styled("hgroup")(
+export const CallToAction = styled("div")(
   css({
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
     "> p": {
-      ...Text,
       marginBottom: 2,
       fontSize: 2,
     },

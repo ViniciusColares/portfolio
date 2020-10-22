@@ -2,7 +2,7 @@ import React from "react";
 
 import homeIllustrations from "@public/assets/home_illustrations.svg";
 import Button from "@components/Button";
-import { Container } from "@styles/grid";
+import { Container } from "@styles/core/grid";
 import { Heading, Text } from "@styles/typo";
 
 const Blog = () => {

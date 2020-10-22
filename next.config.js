@@ -2,7 +2,9 @@ const withPWA = require("next-pwa");
 const withImages = require("next-images");
 
 const settings = {
-  env: {},
+  env: {
+    underConstruction: true,
+  },
   devIndicators: {
     autoPrerender: false,
   },

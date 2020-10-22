@@ -33,7 +33,7 @@ const BgEffect = styled(LogoIcon)(
     top: "0px",
     left: "0px",
     height: "100%",
-    width: "178%",
+    width: "198%",
     zIndex: 0,
     opacity: "0.3",
     path: {
@@ -98,7 +98,7 @@ const NavItem = styled("div")(
     })
 );
 
-const Menu = () => {
+const Menu = ({ handleCloseMenu }) => {
   const router = useRouter();
   const { route } = router;
   const { home, profile, apps, contact } = {
@@ -111,7 +111,7 @@ const Menu = () => {
   return (
     <Container>
       <BgEffect />
-      <CloseMenu>
+      <CloseMenu onClick={handleCloseMenu}>
         <CloseIcon height="19px" />
       </CloseMenu>
       <Nav>
