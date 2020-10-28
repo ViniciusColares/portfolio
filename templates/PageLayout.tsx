@@ -1,11 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, ReactNode, CSSProperties } from "react";
 import styled from "styled-components";
 import css from "@styled-system/css";
 import { theme } from "@styles/theme";
 import { linearGradient } from "polished";
-import { useSpring, animated } from "react-spring";
+import { useSpring, animated, SpringConfig } from "react-spring";
 
-import Menu from "@components/menu";
+import Menu from "@components/Menu";
 import MenuIcon from "@public/assets/icons/menu.svg";
 
 export const Header = styled("header")(
@@ -74,9 +74,31 @@ export const Page = styled(animated.section)(
   })
 );
 
-const PageLayout = ({ noHeader, pageTitle, children }) => {
+interface InterfacePageAnimation {
+  from: {
+    borderRadius: string;
+    transform: string;
+  };
+  to: unknown;
+  config: {
+    tension: number;
+    friction: number;
+    velocity: number;
+    easing: string;
+  };
+}
+
+const PageLayout = ({
+  noHeader,
+  pageTitle,
+  children,
+}: {
+  noHeader?: boolean;
+  pageTitle?: string;
+  children: ReactNode[];
+}) => {
   const [openMenu, setOpenMenu] = useState(null);
-  const animation = useSpring({
+  const animation = useSpring<{ from?: any; to: unknown; config: any }>({
     from: {
       borderRadius: "0px",
       transform: "scale(1) translateX(0%)",

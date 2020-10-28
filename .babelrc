@@ -13,6 +13,7 @@
     [
       "module-resolver",
       {
+        "root": ["./"],
         "alias": {
           "@modules": "./node_modules",
           "@components": "./components",
@@ -23,7 +24,21 @@
         }
       }
     ],
-    ["inline-react-svg"]
+    ["inline-react-svg"],
+    "@babel/syntax-dynamic-import",
+    [
+      "lodash",
+      {
+        "id": ["lodash"]
+      }
+    ],
+    [
+      "import",
+      {
+        "libraryName": "antd",
+        "style": true
+      }
+    ]
   ],
   "env": {
     "test": {

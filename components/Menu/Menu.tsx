@@ -69,7 +69,7 @@ const Nav = styled("nav")(
   })
 );
 
-const NavItem = styled("div")(
+const NavItem = styled.div<{ active: boolean }>(
   css({
     display: "flex",
     alignItems: "center",
@@ -98,7 +98,7 @@ const NavItem = styled("div")(
     })
 );
 
-const Menu = ({ handleCloseMenu }) => {
+const Menu = ({ handleCloseMenu }: { handleCloseMenu: any }) => {
   const router = useRouter();
   const { route } = router;
   const { home, profile, apps, contact } = {

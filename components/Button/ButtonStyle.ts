@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import css from "@styled-system/css";
-import { variant, space } from "styled-system";
+import { compose, variant, space } from "styled-system";
 
-interface ButtonProps {
-  onClick: React.MouseEvent<HTMLButtonElement, MouseEvent>;
-}
+import { ButtonProps } from "./Button";
 
 export const ButtonStyle = styled.button<ButtonProps>(
   css({
@@ -32,7 +30,6 @@ export const ButtonStyle = styled.button<ButtonProps>(
       marginRight: 2,
     },
   }),
-  space,
   variant({
     variants: {
       small: {
@@ -67,5 +64,6 @@ export const ButtonStyle = styled.button<ButtonProps>(
         },
       },
     },
-  })
+  }),
+  compose(space)
 );

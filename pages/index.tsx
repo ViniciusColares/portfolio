@@ -71,7 +71,7 @@ const Home = () => {
       <CallToAction>
         <Text>Como fazer isso?</Text>
         <Button
-          action={() => router.push("/contato")}
+          onClick={() => router.push("/contato")}
           name="Vamos conversar"
           variant={["big"]}
         />

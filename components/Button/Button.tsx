@@ -1,25 +1,16 @@
-import React from "react";
+import React, { ReactElement } from "react";
 
 import { ButtonStyle } from "./ButtonStyle";
 
-interface IButton {
-  name: string;
-  variant: Array<string>;
-  action: React.MouseEvent<HTMLElement>;
-  type: "button" | "submit" | "reset";
-  icon: React.FC;
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+  variant: string[];
   isLoading: boolean;
+  icon?: string;
 }
 
-const Button = ({
-  name,
-  variant,
-  action,
-  type,
-  icon,
-  ...restProps
-}: IButton) => (
-  <ButtonStyle variant={variant} onClick={action} type={type} {...restProps}>
+const Button = ({ name, variant, type, icon, ...restProps }: ButtonProps) => (
+  <ButtonStyle variant={variant} type={type} {...restProps}>
     {icon && <img alt={name} src={icon} />}
     {name}
   </ButtonStyle>
@@ -27,8 +18,6 @@ const Button = ({
 
 Button.defaultProps = {
   type: "button",
-  name: "Custom Button",
-  variant: [],
   isLoading: false,
 };
 

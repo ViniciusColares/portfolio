@@ -1,16 +1,27 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { ElementType, ReactNode } from "react";
 import styled from "styled-components";
 import css from "@styled-system/css";
-import { compose, flexbox, space, color, typography } from "styled-system";
+import {
+  compose,
+  flexbox,
+  space,
+  color,
+  typography,
+  FlexboxProps,
+  SpaceProps,
+  ColorProps,
+  TypographyProps,
+} from "styled-system";
 
-interface IHeading {
-  tag: string;
-  children: object;
+interface IHeading
+  extends FlexboxProps,
+    SpaceProps,
+    ColorProps,
+    TypographyProps {
+  tag?: ElementType<any>;
+  children: ReactNode | ReactNode[];
 }
-
 const CustomHeading = styled.div(
-  compose(flexbox, space, color, typography),
   css({
     fontFamily: "heading",
     fontWeight: "100",
@@ -18,9 +29,9 @@ const CustomHeading = styled.div(
       fontFamily: "heading",
       color: "accent",
     },
-  })
+  }),
+  compose(flexbox, space, color, typography)
 );
-
 export const Heading = ({ tag, children, ...rest }: IHeading) => {
   return (
     <CustomHeading as={tag} {...rest}>
@@ -29,12 +40,15 @@ export const Heading = ({ tag, children, ...rest }: IHeading) => {
   );
 };
 
-interface IText {
-  tag: string;
-  children: object;
+Heading.defaulProps = {
+  tag: "h1",
+};
+
+interface IText extends FlexboxProps, SpaceProps, ColorProps, TypographyProps {
+  tag?: ElementType<any>;
+  children: ReactNode | ReactNode[];
 }
 const CustomText = styled.div(
-  compose(flexbox, space, color, typography),
   css({
     fontFamily: "text",
     fontWeight: "700",
@@ -46,7 +60,8 @@ const CustomText = styled.div(
       fontWeight: "700",
       color: "accent",
     },
-  })
+  }),
+  compose(flexbox, space, color, typography)
 );
 
 export const Text = ({ tag, children, ...rest }: IText) => {

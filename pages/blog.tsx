@@ -2,8 +2,8 @@ import React from "react";
 
 import homeIllustrations from "@public/assets/home_illustrations.svg";
 import Button from "@components/Button";
-import { Container } from "@styles/core/grid";
-import { Heading, Text } from "@styles/typo";
+import { Heading, Text } from "@components/Typo";
+import { Flex } from "@styles/core/grid";
 
 const Blog = () => {
   return (
@@ -18,12 +18,12 @@ const Blog = () => {
         alt="Illustration of people working on a tech project"
         src={homeIllustrations}
       />
-      <Container flexDirection="column" alignItems="center">
+      <Flex flexDirection="column" alignItems="center">
         <Text mb={2} fontSize={2}>
           Como fazer isso?
         </Text>
         <Button name="Vamos conversar" variant={["big"]} />
-      </Container>
+      </Flex>
     </>
   );
 };

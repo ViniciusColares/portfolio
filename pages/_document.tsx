@@ -1,8 +1,10 @@
-import Document, { DocumentContext } from "next/document";
+import Document, { DocumentContext, DocumentInitialProps } from "next/document";
 import { ServerStyleSheet } from "styled-components";
 
 class MyDocument extends Document {
-  static async getInitialProps(ctx: DocumentContext) {
+  static async getInitialProps(
+    ctx: DocumentContext
+  ): Promise<DocumentInitialProps> {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
     try {
@@ -16,21 +18,21 @@ class MyDocument extends Document {
 
       return {
         ...initialProps,
-        head: (
+        head: [
           <>
             {initialProps.head}
             <link
               href="https://fonts.googleapis.com/css2?family=Bungee&family=Cambay:wght@400;700&display=swap"
               rel="stylesheet"
             />
-          </>
-        ),
-        styles: (
+          </>,
+        ],
+        styles: [
           <>
             {initialProps.styles}
             {sheet.getStyleElement()}
-          </>
-        ),
+          </>,
+        ],
       };
     } finally {
       sheet.seal();

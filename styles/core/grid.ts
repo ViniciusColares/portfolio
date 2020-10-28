@@ -2,13 +2,18 @@ import styled from "styled-components";
 import css from "@styled-system/css";
 import { compose, flexbox, space, layout, border, color } from "styled-system";
 
+interface IFlex {
+  spaceChildren: number;
+  flexDirection: string;
+}
+
 export const Flex = styled("div")(
   compose(layout, flexbox, space, border, color),
   css({
     display: "flex",
     position: "relative",
   }),
-  ({ spaceChildren, flexDirection }) => {
+  ({ spaceChildren, flexDirection }: IFlex) => {
     switch (flexDirection) {
       case "column":
         return css({

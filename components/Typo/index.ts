@@ -1,2 +1,1 @@
-import { Heading, Text } from "./Typo";
-export { Heading, Text };
+export { Heading, Text } from "./Typo";
