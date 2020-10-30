@@ -1,45 +1,52 @@
-import React, { useState, ReactNode, CSSProperties } from "react";
+import React, { useState, ReactNode } from "react";
 import styled from "styled-components";
 import css from "@styled-system/css";
-import { theme } from "@styles/theme";
+import { theme, medias } from "@styles/theme";
 import { linearGradient } from "polished";
-import { useSpring, animated, SpringConfig } from "react-spring";
+import { useSpring, animated } from "react-spring";
 
 import Menu from "@components/Menu";
 import MenuIcon from "@public/assets/icons/menu.svg";
 
-export const Header = styled("header")(
-  css({
-    position: "relative",
-    display: "flex",
-    alignSelf: "stretch",
-    alignItems: "center",
-    justifyContent: "center",
-    padding: 4,
-    ".menu-trigger": {
-      content: "''",
-      position: "absolute",
-      left: 4,
-    },
-  })
-);
-
-export const PageTitle = styled("h1")(
-  css({
-    fontFamily: "heading",
-    justifySelf: "center",
-    margin: 0,
-    fontSize: 1,
-    lineHeight: "18px",
-    fontWeight: 100,
-  })
-);
-
 export const Template = styled("section")(
   css({
     display: "flex",
+    bg: "gray",
     flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
     height: "100vh",
+    ...linearGradient({
+      colorStops: [
+        `${theme.colors.primary1} 20%`,
+        `${theme.colors.primary2} 80%`,
+      ],
+      toDirection: "to bottom left",
+      fallback: theme.colors.primary1,
+    }),
+    [medias("sm")]: {
+      "&::before, &::after": {
+        content: "''",
+        position: "absolute",
+        display: "block",
+      },
+      "&::before": {
+        top: 0,
+        left: 0,
+        width: "600px",
+        height: "455px",
+        background:
+          "url('/assets/bg-top-left-bandage.png') left top no-repeat fixed",
+      },
+      "&::after": {
+        right: 0,
+        bottom: 0,
+        width: "563px",
+        height: "458px",
+        background:
+          "url('/assets/bg-bottom-right-bandage.png') right bottom no-repeat fixed",
+      },
+    },
   })
 );
 
@@ -71,22 +78,44 @@ export const Page = styled(animated.section)(
       left: 0,
       zIndex: -1,
     },
+    [medias("sm")]: {
+      width: "470px",
+      height: "80vh",
+      borderWidth: "4px",
+      borderStyle: "solid",
+      borderColor: "white",
+      borderRadius: "16px !important",
+      boxShadow: "20px 20px 0 rgba(0,0,0,0.4)",
+    },
   })
 );
 
-interface InterfacePageAnimation {
-  from: {
-    borderRadius: string;
-    transform: string;
-  };
-  to: unknown;
-  config: {
-    tension: number;
-    friction: number;
-    velocity: number;
-    easing: string;
-  };
-}
+export const Header = styled("header")(
+  css({
+    position: "relative",
+    display: "flex",
+    alignSelf: "stretch",
+    alignItems: "center",
+    justifyContent: "center",
+    padding: 4,
+    ".menu-trigger": {
+      content: "''",
+      position: "absolute",
+      left: 4,
+    },
+  })
+);
+
+export const PageTitle = styled("h1")(
+  css({
+    fontFamily: "heading",
+    justifySelf: "center",
+    margin: 0,
+    fontSize: 1,
+    lineHeight: "18px",
+    fontWeight: 100,
+  })
+);
 
 const PageLayout = ({
   noHeader,
@@ -98,7 +127,14 @@ const PageLayout = ({
   children: ReactNode[];
 }) => {
   const [openMenu, setOpenMenu] = useState(null);
-  const animation = useSpring<{ from?: any; to: unknown; config: any }>({
+  const animation = useSpring<{
+    from: {
+      borderRadius: string;
+      transform: string;
+    };
+    to: unknown;
+    config: any;
+  }>({
     from: {
       borderRadius: "0px",
       transform: "scale(1) translateX(0%)",

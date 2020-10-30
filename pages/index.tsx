@@ -4,13 +4,14 @@ import { useRouter } from "next/router";
 
 import PageLayout from "@templates/PageLayout";
 import Button from "@components/Button";
+import { Heading } from "@components/Typo";
 import { Text } from "@components/Typo";
 
 import UnderConstruction from "@public/assets/under_construction.svg";
 import HomeIllustrations from "@public/assets/home_illustrations.svg";
 
 import { Flex } from "@styles/core/grid";
-import { Title, CallToAction } from "@styles/pageStyles/homeStyle";
+import { CallToAction } from "@styles/pageStyles/homeStyle";
 
 const Home = () => {
   const router = useRouter();
@@ -18,16 +19,16 @@ const Home = () => {
   return process.env.underConstruction ? (
     <PageLayout noHeader>
       <Head>
-        <title>Vinicius Colares - Portfólio em construção</title>
+        <title>Vinicius Colares - Desenvolvedor de sistemas</title>
       </Head>
 
       <Flex flexDirection="column" mt="8vh">
-        <Title tag="h1" textAlign="center" mt={0}>
+        <Heading tag="h1" textAlign="center" mt={0}>
           Vinícius <strong>Colares</strong>
-        </Title>
-        <Title tag="h3" textAlign="right" fontSize="1" mt={0}>
+        </Heading>
+        <Heading tag="h3" textAlign="right" fontSize={1} mt={0}>
           web developer
-        </Title>
+        </Heading>
       </Flex>
 
       <Flex flexDirection="column" alignItems="center" mt={5} px={5}>
@@ -46,9 +47,9 @@ const Home = () => {
           <strong>contar a minha história</strong> com a internet e também pra
           me divertir praticando essa atividade fantástica que é
         </Text>
-        <Title tag="h3" fontSize="4" my={0}>
+        <Heading tag="h3" fontSize="4" my={0}>
           <strong>&lt;</strong>programar<strong>/&gt;</strong>
-        </Title>
+        </Heading>
       </Flex>
 
       <Flex width={1} justifyContent="center" mt="8vh">
@@ -58,13 +59,13 @@ const Home = () => {
   ) : (
     <PageLayout pageTitle="início">
       <Head>
-        <title>Vinicius Colares - Portfólio</title>
+        <title>Vinicius Colares - Desenvolvedor de sistemas</title>
       </Head>
-      <Title tag="h1" textAlign="center">
+      <Heading tag="h1" textAlign="center">
         Revolucione seu negócio
         <br />
         <Text tag="span">com tecnologia</Text>
-      </Title>
+      </Heading>
       <Flex width={1} justifyContent="center" my="5vh">
         <HomeIllustrations width="90%" />
       </Flex>

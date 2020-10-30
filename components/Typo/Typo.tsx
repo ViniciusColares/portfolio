@@ -25,6 +25,7 @@ const CustomHeading = styled.div(
   css({
     fontFamily: "heading",
     fontWeight: "100",
+    margin: "0",
     strong: {
       fontFamily: "heading",
       color: "accent",
@@ -52,7 +53,7 @@ const CustomText = styled.div(
   css({
     fontFamily: "text",
     fontWeight: "700",
-    fontSize: "14px",
+    fontSize: 1,
     letterSpacing: "0.5px",
     lineHeight: "1.5",
     margin: "0 0 10px 0",
