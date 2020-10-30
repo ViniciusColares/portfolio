@@ -17,14 +17,27 @@ const fonts = {
   text: "'Cambay', sans-serif",
 };
 
+const fontSizes = [12, 14, 16, 20, 24, 32];
+
 const space = [0, 4, 8, 12, 20, 32, 52, 84];
-const breakpoints = [320, 600, 960, 1280, 1920];
+
+const breakpoints = {
+  xs: 40,
+  sm: 52,
+  md: 64,
+  lg: 78,
+  xl: 94,
+};
+
+export const medias = (key: keyof typeof breakpoints) =>
+  `@media (min-width: ${breakpoints[key]}em)`;
 
 declare module "styled-components" {
   export interface DefaultTheme {
-    breakpoints: number[];
+    medias: any;
     colors: { [key in keyof typeof colors]: string };
     fonts: { [key in keyof typeof fonts]: string };
+    fontSizes: number[];
     space: number[];
   }
 }
@@ -32,6 +45,7 @@ declare module "styled-components" {
 export const theme: DefaultTheme = {
   colors,
   fonts,
+  fontSizes,
   space,
-  breakpoints,
+  medias,
 };
