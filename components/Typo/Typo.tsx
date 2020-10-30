@@ -22,6 +22,7 @@ interface IHeading
   children: ReactNode | ReactNode[];
 }
 const CustomHeading = styled.div(
+  compose(flexbox, space, color, typography),
   css({
     fontFamily: "heading",
     fontWeight: "100",
@@ -29,8 +30,7 @@ const CustomHeading = styled.div(
       fontFamily: "heading",
       color: "accent",
     },
-  }),
-  compose(flexbox, space, color, typography)
+  })
 );
 export const Heading = ({ tag, children, ...rest }: IHeading) => {
   return (
@@ -49,10 +49,11 @@ interface IText extends FlexboxProps, SpaceProps, ColorProps, TypographyProps {
   children: ReactNode | ReactNode[];
 }
 const CustomText = styled.div(
+  compose(flexbox, space, color, typography),
   css({
     fontFamily: "text",
     fontWeight: "700",
-    fontSize: "14px",
+    fontSize: 1,
     letterSpacing: "0.5px",
     lineHeight: "1.5",
     margin: "0 0 10px 0",
@@ -60,8 +61,7 @@ const CustomText = styled.div(
       fontWeight: "700",
       color: "accent",
     },
-  }),
-  compose(flexbox, space, color, typography)
+  })
 );
 
 export const Text = ({ tag, children, ...rest }: IText) => {

@@ -18,7 +18,7 @@ const Home = () => {
   return process.env.underConstruction ? (
     <PageLayout noHeader>
       <Head>
-        <title>Vinicius Colares - Portfólio em construção</title>
+        <title>Vinicius Colares - Desenvolvedor de sistemas</title>
       </Head>
 
       <Flex flexDirection="column" mt="8vh">
@@ -58,7 +58,7 @@ const Home = () => {
   ) : (
     <PageLayout pageTitle="início">
       <Head>
-        <title>Vinicius Colares - Portfólio</title>
+        <title>Vinicius Colares - Desenvolvedor de sistemas</title>
       </Head>
       <Title tag="h1" textAlign="center">
         Revolucione seu negócio
