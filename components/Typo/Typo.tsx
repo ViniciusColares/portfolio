@@ -26,6 +26,7 @@ const CustomHeading = styled.div(
   css({
     fontFamily: "heading",
     fontWeight: "100",
+    margin: "0",
     strong: {
       fontFamily: "heading",
       color: "accent",
