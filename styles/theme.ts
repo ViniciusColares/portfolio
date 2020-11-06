@@ -14,7 +14,7 @@ const colors = {
 
 const fonts = {
   heading: "'Bungee', cursive",
-  text: "'Cambay', sans-serif",
+  text: "'Rubik', sans-serif",
 };
 
 const fontSizes = [12, 14, 16, 20, 24, 32];

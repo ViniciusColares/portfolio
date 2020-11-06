@@ -6,9 +6,5 @@ export const CallToAction = styled("div")(
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    "> p": {
-      marginBottom: 2,
-      fontSize: 2,
-    },
   })
 );

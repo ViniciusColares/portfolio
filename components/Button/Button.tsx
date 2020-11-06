@@ -1,18 +1,27 @@
-import React, { ReactElement } from "react";
+import React from "react";
 
 import { ButtonStyle } from "./ButtonStyle";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant: string[];
+  variant?: string | string[];
   isLoading: boolean;
   icon?: string;
+  size?: string;
+  state?: string;
+  fill?: string;
 }
 
-const Button = ({ name, variant, type, icon, ...restProps }: ButtonProps) => (
-  <ButtonStyle variant={variant} type={type} {...restProps}>
-    {icon && <img alt={name} src={icon} />}
-    {name}
+const Button = ({ name, type, icon, isLoading, ...restProps }: ButtonProps) => (
+  <ButtonStyle type={type} {...restProps}>
+    {isLoading ? (
+      "carregando"
+    ) : (
+      <>
+        {icon && <img alt={name} src={icon} />}
+        {name}
+      </>
+    )}
   </ButtonStyle>
 );
 

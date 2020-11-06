@@ -23,8 +23,10 @@ interface IHeading
 }
 const CustomHeading = styled.div(
   css({
+    letterSpacing: "0.7px",
     fontFamily: "heading",
     fontWeight: "100",
+    lineHeight: 1.4,
     margin: "0",
     strong: {
       fontFamily: "heading",
@@ -41,7 +43,7 @@ export const Heading = ({ tag, children, ...rest }: IHeading) => {
   );
 };
 
-Heading.defaulProps = {
+Heading.defaultProps = {
   tag: "h1",
 };
 
@@ -52,12 +54,11 @@ interface IText extends FlexboxProps, SpaceProps, ColorProps, TypographyProps {
 const CustomText = styled.div(
   css({
     fontFamily: "text",
-    fontWeight: "700",
     fontSize: 1,
-    letterSpacing: "0.5px",
+    fontWeight: "300",
     lineHeight: "1.5",
     margin: "0 0 10px 0",
-    strong: {
+    "strong, span": {
       fontWeight: "700",
       color: "accent",
     },
@@ -71,4 +72,8 @@ export const Text = ({ tag, children, ...rest }: IText) => {
       {children}
     </CustomText>
   );
+};
+
+Text.defaultProps = {
+  tag: "p",
 };

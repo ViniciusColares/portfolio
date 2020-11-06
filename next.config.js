@@ -3,7 +3,7 @@ const withImages = require("next-images");
 
 const settings = {
   env: {
-    underConstruction: true,
+    underConstruction: false,
   },
   devIndicators: {
     autoPrerender: false,

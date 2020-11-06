@@ -2,13 +2,13 @@ import styled from "styled-components";
 import css from "@styled-system/css";
 
 import { Flex } from "@styles/core/grid";
+import { Heading } from "@components/Typo";
 
-export const SectionTitle = styled("h1")(
+export const SectionTitle = styled(Heading)(
   css({
-    fontFamily: "text",
     display: "flex",
-    fontWeight: "600",
-    fontSize: 3,
+    fontWeight: 400,
+    fontSize: 2,
     color: "accent",
     alignItems: "center",
     "> svg": {
@@ -17,7 +17,7 @@ export const SectionTitle = styled("h1")(
   })
 );
 
-export const SectionSubTitle = styled("h2")(
+export const SectionSubTitle = styled(Heading)(
   css({
     fontFamily: "text",
     display: "flex",
@@ -31,17 +31,10 @@ export const SectionSubTitle = styled("h2")(
   })
 );
 
-export const Profile = styled("div")(
-  css({
-    display: "flex",
-    marginTop: 6,
-    marginBottom: 6,
-  })
-);
-
 export const Avatar = styled("img")(
   css({
     width: "77px",
+    height: "77px",
     borderRadius: "50%",
     padding: "2px",
     bg: "accent",
@@ -79,8 +72,6 @@ export const Intro = styled("div")(
     width: "100%",
     padding: "0 10px",
     "> p": {
-      fontSize: 2,
-      lineHeight: "20px",
       paddingLeft: 3,
       paddingRight: 2,
       "> span": {
@@ -100,16 +91,19 @@ export const Knowledge = styled("div")(
       paddingLeft: 3,
       columnCount: "3",
       columnFill: "balance",
+      mb: 0,
       "> li": {
         fontFamily: "text",
         display: "flex",
         marginTop: 0,
         marginBottom: 3,
         color: "accent",
-        fontSize: 2,
+        fontWeight: 500,
+        fontSize: 1,
         "> svg": {
-          width: "18px",
-          marginRight: 1,
+          width: "20px",
+          height: "20px",
+          marginRight: 2,
         },
       },
     },
@@ -121,18 +115,16 @@ export const Timeline = styled("div")(
     width: "100%",
     padding: "0 10px",
     marginTop: 5,
-    "h3, h4, p": {
-      fontFamily: "text",
-    },
     ul: {
       paddingLeft: 4,
+      marginTop: 2,
       listStyle: "none outside none",
       li: {
         position: "relative",
-        paddingBottom: 4,
+        pb: 4,
         "&::before": {
           left: "-15px",
-          top: "5px",
+          top: "10px",
           width: "8px",
           height: "8px",
           content: "''",
@@ -143,7 +135,7 @@ export const Timeline = styled("div")(
         },
         "&::after": {
           left: "-12px",
-          top: "5px",
+          top: "10px",
           width: "2px",
           height: "100%",
           content: "''",
@@ -152,26 +144,31 @@ export const Timeline = styled("div")(
         },
         "&:last-of-type::after": {
           left: "3px",
-          top: "18px",
+          top: "22px",
           width: "0",
           height: "0",
-          fontSize: "3em",
+          fontSize: "3.2em",
           lineHeight: 0,
           content: "'...'",
           color: "contrast",
           position: "absolute",
           transform: "rotate(90deg)",
         },
+        "h3, h4": {
+          display: "inline-flex",
+          fontSize: 1,
+        },
         h3: {
-          margin: 0,
-          fontSize: 3,
           color: "accent",
+          mr: 2,
+          pt: 1,
         },
         h4: {
-          my: 1,
-          fontSize: 2,
-          fontWeight: "bold",
           color: "primaryDark",
+        },
+        h5: {
+          mb: 2,
+          fontSize: 0,
         },
         p: {
           margin: 0,
@@ -187,9 +184,6 @@ export const AdditionalInfo = styled(Flex)(
   css({
     flexDirection: "column",
     padding: "0 10px",
-    h2: {
-      my: 2,
-    },
     p: {
       m: 0,
       mb: 3,

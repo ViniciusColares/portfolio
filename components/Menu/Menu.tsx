@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import css from "@styled-system/css";
-
+import { compose, layout, LayoutProps } from "styled-system";
 import { useRouter } from "next/router";
 
 import CloseIcon from "@public/assets/icons/close.svg";
@@ -32,8 +32,8 @@ const BgEffect = styled(LogoIcon)(
     position: "absolute",
     top: "0px",
     left: "0px",
-    height: "100%",
-    width: "198%",
+    minHeight: "100vh",
+    minWidth: "100vw",
     zIndex: 0,
     opacity: "0.3",
     path: {
@@ -45,20 +45,28 @@ const BgEffect = styled(LogoIcon)(
   })
 );
 
-const CloseMenu = styled("div")(
+const CloseMenu = styled("div")<LayoutProps>(
   css({
     position: "absolute",
-    right: 6,
-    top: 6,
+    right: 4,
+    top: 4,
     zIndex: 1,
-  })
+  }),
+  compose(layout)
 );
 
 const Nav = styled("nav")(
   css({
     display: "flex",
+    zIndex: 1,
+  })
+);
+
+const MenuList = styled("ul")(
+  css({
+    display: "flex",
     flexDirection: "column",
-    paddingLeft: 7,
+    paddingLeft: "5vw",
     zIndex: 1,
     path: {
       fill: "primaryDark",
@@ -69,7 +77,7 @@ const Nav = styled("nav")(
   })
 );
 
-const NavItem = styled.div<{ active: boolean }>(
+const MenuListItem = styled("li")<{ active: boolean }>(
   css({
     display: "flex",
     alignItems: "center",
@@ -79,6 +87,9 @@ const NavItem = styled.div<{ active: boolean }>(
       fontFamily: "heading",
       marginLeft: 4,
       fontSize: 2,
+    },
+    "&:hover": {
+      cursor: "pointer",
     },
     ":not(:last-of-type)": {
       marginBottom: 4,
@@ -108,35 +119,45 @@ const Menu = ({ handleCloseMenu }: { handleCloseMenu: any }) => {
     contact: "/contato",
   };
 
+  const navigateTo = (endRoute) => endRoute !== route && router.push(endRoute);
+
   return (
     <Container>
       <BgEffect />
-      <CloseMenu onClick={handleCloseMenu}>
+      <CloseMenu display={["flex", , "none"]} onClick={handleCloseMenu}>
         <CloseIcon height="19px" />
       </CloseMenu>
       <Nav>
-        <NavItem active={route === home} onClick={() => router.push(home)}>
-          <LogoIcon height="33px" />
-          <span>Início</span>
-        </NavItem>
-        <NavItem
-          active={route === profile}
-          onClick={() => router.push(profile)}
-        >
-          <ProfileIcon height="33px" />
-          <span>Perfil</span>
-        </NavItem>
-        <NavItem active={route === apps} onClick={() => router.push(apps)}>
-          <CodeIcon height="30px" />
-          <span>Apps</span>
-        </NavItem>
-        <NavItem
-          active={route === contact}
-          onClick={() => router.push(contact)}
-        >
-          <ContactIcon height="30px" />
-          <span>Contato</span>
-        </NavItem>
+        <MenuList>
+          <MenuListItem
+            active={route === home}
+            onClick={() => navigateTo(home)}
+          >
+            <LogoIcon height="33px" />
+            <span>Início</span>
+          </MenuListItem>
+          <MenuListItem
+            active={route === profile}
+            onClick={() => navigateTo(profile)}
+          >
+            <ProfileIcon height="33px" />
+            <span>Perfil</span>
+          </MenuListItem>
+          <MenuListItem
+            active={route === apps}
+            onClick={() => navigateTo(apps)}
+          >
+            <CodeIcon height="30px" />
+            <span>Apps</span>
+          </MenuListItem>
+          <MenuListItem
+            active={route === contact}
+            onClick={() => navigateTo(contact)}
+          >
+            <ContactIcon height="30px" />
+            <span>Contato</span>
+          </MenuListItem>
+        </MenuList>
       </Nav>
     </Container>
   );

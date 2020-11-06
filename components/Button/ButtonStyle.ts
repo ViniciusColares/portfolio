@@ -1,10 +1,8 @@
 import styled from "styled-components";
 import css from "@styled-system/css";
-import { compose, variant, space } from "styled-system";
+import { compose, variant, space, VariantArgs } from "styled-system";
 
-import { ButtonProps } from "./Button";
-
-export const ButtonStyle = styled.button<ButtonProps>(
+export const ButtonStyle = styled.button<VariantArgs>(
   css({
     display: "flex",
     alignItems: "center",
@@ -15,7 +13,7 @@ export const ButtonStyle = styled.button<ButtonProps>(
     bg: "accent",
     padding: "8px 25px",
     fontSize: 1,
-    fontWeight: 600,
+    fontWeight: 500,
     color: "primaryDark",
     textAlign: "center",
     borderRadius: "40px",
@@ -31,6 +29,7 @@ export const ButtonStyle = styled.button<ButtonProps>(
     },
   }),
   variant({
+    prop: "size",
     variants: {
       small: {
         minWidth: "auto",
@@ -40,8 +39,13 @@ export const ButtonStyle = styled.button<ButtonProps>(
       big: {
         minWidth: "180px",
         padding: "20px 40px",
-        fontSize: 3,
+        fontSize: 2,
       },
+    },
+  }),
+  variant({
+    prop: "state",
+    variants: {
       disabled: {
         border: "none",
         background: "none",
@@ -55,7 +59,12 @@ export const ButtonStyle = styled.button<ButtonProps>(
           bg: "grayDefaultColor",
         },
       },
-      transparent: {
+    },
+  }),
+  variant({
+    prop: "fill",
+    variants: {
+      border: {
         background: "none",
         backgroundColor: "transparent",
         color: "defaultColor",
