@@ -10,7 +10,7 @@ import ProfileIcon from "@public/assets/icons/profile.svg";
 import CodeIcon from "@public/assets/icons/code.svg";
 import ContactIcon from "@public/assets/icons/contact.svg";
 
-const Container = styled("div")(
+const Container = styled("section")(
   css({
     display: "flex",
     flexDirection: "column",
@@ -48,6 +48,7 @@ const BgEffect = styled(LogoIcon)(
 const CloseMenu = styled("div")<LayoutProps>(
   css({
     position: "absolute",
+    cursor: "pointer",
     right: 4,
     top: 4,
     zIndex: 1,

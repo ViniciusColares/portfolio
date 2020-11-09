@@ -1,5 +1,4 @@
 import React, { useState, ReactNode } from "react";
-import { useSpring, animated } from "react-spring";
 import { linearGradient } from "polished";
 import styled from "styled-components";
 import css from "@styled-system/css";
@@ -11,7 +10,7 @@ import { theme, medias } from "@styles/theme";
 
 import MenuIcon from "@public/assets/icons/menu.svg";
 
-export const Template = styled("section")(
+export const Template = styled("div")(
   css({
     display: "flex",
     bg: "gray",
@@ -31,7 +30,7 @@ export const Template = styled("section")(
   })
 );
 
-export const Page = styled(animated.section)(
+export const Page = styled("section")(
   css({
     position: "relative",
     display: "flex",
@@ -63,11 +62,11 @@ export const Page = styled(animated.section)(
     [medias("sm")]: {
       width: "470px",
       height: "80vh",
-      borderWidth: "4px",
-      borderStyle: "solid",
-      borderColor: "white",
+      borderWidth: "4px !important",
+      borderStyle: "solid !important",
+      borderColor: "white !important",
       borderRadius: "16px !important",
-      boxShadow: "20px 20px 20px rgba(0,0,0,0.3)",
+      boxShadow: "20px 20px 20px rgba(0,0,0,0.3) !important",
     },
   })
 );
@@ -88,7 +87,10 @@ export const Header = styled("header")(
   })
 );
 
-export const MenuTrigger = styled(MenuIcon)(compose(layout));
+export const MenuTrigger = styled(MenuIcon)(
+  css({ cursor: "pointer" }),
+  compose(layout)
+);
 
 export const PageTitle = styled(Heading)(
   css({
@@ -111,60 +113,11 @@ const PageLayout = ({
   children: ReactNode[];
 }) => {
   const [openMenu, setOpenMenu] = useState(null);
-  const animation = useSpring<{
-    from: {
-      borderRadius: string;
-      transform: string;
-    };
-    to: unknown;
-    config: any;
-  }>({
-    from: {
-      border: "0px solid white",
-      borderRadius: "0px",
-      transform: "scale(1) translateX(0%)",
-      boxShadow: "0px 0px 0px rgba(0, 0, 0, 0.3)",
-    },
-    to: async (next) => {
-      if (openMenu === true) {
-        await next({
-          border: "5px solid white",
-          borderRadius: "16px",
-          transform: "scale(0.8) translateX(0%)",
-          boxShadow: "-20px 20px 20px rgba(0,0,0,0.3)",
-        }),
-          await next({
-            border: "5px solid white",
-            borderRadius: "16px",
-            transform: "scale(0.8) translateX(55%)",
-            boxShadow: "-20px 20px 20px rgba(0,0,0,0.3)",
-          });
-      } else if (openMenu === false) {
-        await next({
-          border: "0px solid white",
-          borderRadius: "16px",
-          transform: "scale(0.8) translateX(0%)",
-          boxShadow: "0 0 0 rgba(0,0,0,0.3)",
-        }),
-          await next({
-            border: "0px solid white",
-            borderRadius: "0px",
-            transform: "scale(1) translateX(0%)",
-            boxShadow: "0 0 0 rgba(0,0,0,0.3)",
-          });
-      }
-    },
-    config: {
-      tension: 512,
-      friction: 56,
-      velocity: 56,
-    },
-  });
 
   return (
     <Template>
       {!noHeader && <Menu handleCloseMenu={() => setOpenMenu(false)} />}
-      <Page onClick={() => openMenu && setOpenMenu(false)} style={animation}>
+      <Page onClick={() => openMenu && setOpenMenu(false)}>
         {!noHeader && (
           <Header>
             <MenuTrigger

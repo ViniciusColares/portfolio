@@ -10,6 +10,8 @@
     ]
   ],
   "plugins": [
+    ["inline-react-svg"],
+    ["@babel/syntax-dynamic-import"],
     [
       "module-resolver",
       {
@@ -24,8 +26,6 @@
         }
       }
     ],
-    ["inline-react-svg"],
-    "@babel/syntax-dynamic-import",
     [
       "lodash",
       {
@@ -37,6 +37,13 @@
       {
         "libraryName": "antd",
         "style": true
+      }
+    ],
+    [
+      "styled-components",
+      {
+        "ssr": true,
+        "displayName": false
       }
     ]
   ],

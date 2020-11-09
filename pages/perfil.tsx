@@ -1,9 +1,8 @@
-import { useEffect, EffectCallback } from "react";
+import { GetStaticProps } from "next";
+import Image from "next/image";
 
 import PageLayout from "@templates/PageLayout";
 
-import avatar from "@public/assets/avatar.png";
-import ArrowRight from "@public/assets/icons/arrowRight.svg";
 import HtmlIcon from "@public/assets/icons/html.svg";
 import CssIcon from "@public/assets/icons/css.svg";
 import JavascriptIcon from "@public/assets/icons/javascript.svg";
@@ -20,12 +19,20 @@ import JestIcon from "@public/assets/icons/jest.svg";
 import LinuxIcon from "@public/assets/icons/linux.svg";
 import WindowsIcon from "@public/assets/icons/windows.svg";
 import Magnifier from "@public/assets/icons/magnifier.svg";
+import Talk from "@public/assets/icons/talk.svg";
+
+import Crowns from "@public/assets/duolingo/crowns.svg";
+import Streak from "@public/assets/duolingo/streak.svg";
+import FlagBR from "@public/assets/duolingo/flag_pt.svg";
+import FlagEN from "@public/assets/duolingo/flag_en.svg";
+import FlagFR from "@public/assets/duolingo/flag_fr.svg";
+import FlagDE from "@public/assets/duolingo/flag_de.svg";
 
 import { Heading, Text } from "@components/Typo";
 import { Flex } from "@styles/core/grid";
 
 import {
-  Avatar,
+  Profile,
   Info,
   SectionTitle,
   SectionSubTitle,
@@ -33,36 +40,76 @@ import {
   Knowledge,
   Timeline,
   AdditionalInfo,
+  DuolingoSection,
+  TotalExp,
+  LangInfo,
+  LangCol,
+  ExpCol,
+  CrownsCol,
 } from "@styles/pageStyles/profileStyle";
 
-const Perfil = () => {
-  useEffect(async (): Promise<any> => {
-    await fetch(
-      "https://www.duolingo.com/2017-06-30/users/49543102?fields=totalXp,streak,courses,lingots"
-    )
-      .then((response) => response.json())
-      .then((data) => console.log(data));
-  }, []);
+interface IPerfil {
+  duolingo: {
+    totalXp: number;
+    streak: number;
+    lingots: number;
+    courses: IDuolingoCourse[];
+  };
+}
+
+interface IDuolingoCourse {
+  xp: number;
+  crowns: number;
+  learningLanguage: string;
+}
+
+export const getStaticProps: GetStaticProps = async () => {
+  const duolingo = await fetch(
+    "https://www.duolingo.com/2017-06-30/users/49543102?fields=totalXp,streak,courses"
+  ).then((response) => response.json());
+
+  return {
+    props: {
+      duolingo,
+    },
+  };
+};
+
+const Perfil = ({ duolingo }: IPerfil) => {
+  const langExp = (lang): number => {
+    return duolingo.courses.find((course) => course.learningLanguage === lang)
+      .xp;
+  };
+
+  const langCrowns = (lang) => {
+    return duolingo.courses.find((course) => course.learningLanguage === lang)
+      .crowns;
+  };
 
   return (
     <PageLayout pageTitle="perfil">
-      <Flex my={5}>
-        <Avatar src={avatar} />
+      <Profile my={5}>
+        <Image
+          className="avatar"
+          src="/assets/avatar.png"
+          alt="A Vinicius Colares selfie"
+          layout="fixed"
+          quality={100}
+          width={80}
+          height={80}
+        />
         <Info>
           <Heading tag="h1">Vinícius Colares</Heading>
-          <Text mb={0} fontWeight="bold" color="accent">
+          <Text mb={0} color="accent">
             Desenvolvedor Web FullStack
           </Text>
           <Text>Jan de 1992, Aracaju-SE, Brasil</Text>
         </Info>
-      </Flex>
+      </Profile>
 
       <Intro>
-        <SectionTitle>
-          <ArrowRight />
-          Introdução
-        </SectionTitle>
-        <Text>
+        <SectionTitle>Introdução</SectionTitle>
+        <Text mb={0}>
           Desenvolvedor web há mais de <span>10 anos</span>, construindo
           soluções em tecnologia, interfaces e uma experiência{" "}
           <span>produtiva e divertida</span> para milhões de usuários. Acredito
@@ -73,10 +120,7 @@ const Perfil = () => {
       </Intro>
 
       <Knowledge>
-        <SectionTitle>
-          <ArrowRight />
-          Conhecimento
-        </SectionTitle>
+        <SectionTitle>Conhecimento</SectionTitle>
         <ul>
           <li>
             <HtmlIcon /> <span>HTML5</span>
@@ -124,17 +168,14 @@ const Perfil = () => {
             <WindowsIcon /> <span>Windows</span>
           </li>
         </ul>
-        <Text ml={3}>E aprendendo cada dia um pouco mais...</Text>
+        <Text>E aprendendo cada dia um pouco mais...</Text>
       </Knowledge>
 
       <Timeline>
-        <SectionTitle>
-          <ArrowRight />
-          Trajetória
-        </SectionTitle>
+        <SectionTitle>Trajetória</SectionTitle>
         <ul>
           <li>
-            <Heading tag="h3">Início </Heading>
+            <Heading tag="h3">Como tudo começou </Heading>
             <Heading tag="h4">R2 Agência Digital</Heading>
             <Heading tag="h5">04/2010 ... 06/2015</Heading>
             <Text>
@@ -198,37 +239,144 @@ const Perfil = () => {
       </Timeline>
 
       <AdditionalInfo>
-        <SectionTitle>
-          <ArrowRight />
-          Um pouco mais fundo
-        </SectionTitle>
-        <SectionSubTitle tag="h2" my={2}>
-          <Magnifier />
-          Curioso
-        </SectionSubTitle>
-        <Text>
-          Sempre fiquei intrigado com a sensação de <span>não saber</span> como
-          as coisas funcionam e/ou o porquê de{" "}
-          <span>não estarem funcionando</span>, ser curioso me abriu
-          possibilidades para entender como <span>tudo é feito</span> sem me
-          cansar. A curiosidade me ajuda a elaborar as <span>perguntas</span>{" "}
-          com as quais eu posso buscar por respostas, que me mantêm na busca
-          pelas soluções.
-        </Text>
-        <SectionSubTitle tag="h2" mt={4} mb={2}>
-          <Magnifier />
-          Comunicativo
-        </SectionSubTitle>
-        <Text>
-          Muito foi feito pela humanidade, pra não dizer tudo, graças à
-          capacidade que o ser humano tem de <span>se comunicar</span>, não
-          apenas relatar o que viveu, mas também poder <span>ouvir</span> com
-          atenção o que o outro passou... Acredito que a comunicação seja uma
-          das <span>mais importantes</span> habilidades pra qualquer ser humano,
-          e que nos permite <span>colaborar</span> e solucionar problemas. E
-          então, vamos conversar um pouco?!
-        </Text>
+        <SectionTitle>Um pouco mais fundo</SectionTitle>
+        <Flex flexDirection="column" mt={2}>
+          <SectionSubTitle tag="h2" mb={2}>
+            <Magnifier />
+            Curioso
+          </SectionSubTitle>
+          <Text mb={0}>
+            Sempre fiquei intrigado com a sensação de <span>não saber</span>{" "}
+            como as coisas funcionam e/ou o porquê de{" "}
+            <span>não estarem funcionando</span>, ser curioso me abriu
+            possibilidades para entender como <span>tudo é feito</span> sem me
+            cansar. A curiosidade me ajuda a elaborar as <span>perguntas</span>{" "}
+            com as quais eu posso buscar por respostas, que me mantêm na busca
+            pelas soluções.
+          </Text>
+        </Flex>
+        <Flex flexDirection="column" mt={2}>
+          <SectionSubTitle tag="h2" mb={2}>
+            <Talk />
+            Comunicativo
+          </SectionSubTitle>
+          <Text mb={0}>
+            Muito foi feito pela humanidade, pra não dizer tudo, graças à
+            capacidade que o ser humano tem de <span>se comunicar</span>, não
+            apenas relatar o que viveu, mas também poder <span>ouvir</span> com
+            atenção o que o outro passou... Acredito que a comunicação seja uma
+            das <span>mais importantes</span> habilidades pra qualquer ser
+            humano, e que nos permite <span>colaborar</span> e solucionar
+            problemas. E então, vamos conversar um pouco?!
+          </Text>
+        </Flex>
       </AdditionalInfo>
+
+      <DuolingoSection>
+        <header
+          onClick={() =>
+            window.open(
+              "https://www.duolingo.com/profile/ViniciusColares",
+              "_blank"
+            )
+          }
+        >
+          <Image
+            src="/assets/duolingo/duolingo_mascot.png"
+            alt="Duolingo mascot"
+            quality={100}
+            width={72}
+            height={64}
+          />
+          <Flex>
+            <Image
+              src="/assets/duolingo/duolingo_logo.png"
+              alt="Duolingo brand"
+              quality={100}
+              width={100}
+              height={24}
+            />
+          </Flex>
+        </header>
+        <Flex justifyContent="space-around">
+          <Flex flexDirection="column" alignItems="center" mt={4}>
+            <TotalExp>
+              <Text
+                tag="span"
+                fontSize={2}
+                fontWeight={500}
+                lineHeight={0.8}
+                color="black"
+              >
+                Total Exp
+              </Text>
+              <Text
+                tag="span"
+                fontSize={2}
+                fontWeight={600}
+                color="primaryDark"
+              >
+                {duolingo.totalXp}
+              </Text>
+            </TotalExp>
+
+            <Image
+              className="duolingo-avatar"
+              src="/assets/avatar.png"
+              alt="A Vinicius Colares selfie"
+              layout="fixed"
+              quality={100}
+              width={90}
+              height={90}
+            />
+
+            <Text tag="span" fontSize={2} fontWeight={600} color="black" mb={1}>
+              Vinícius Colares
+            </Text>
+
+            <Flex spaceChildren={3}>
+              <Flex flexDirection="column" alignItems="center">
+                <Crowns height={24} />
+                <Text tag="span" fontWeight={600} color="primaryDark">
+                  {duolingo.courses.reduce((ac, cv) => ac + cv.crowns, 0)}
+                </Text>
+              </Flex>
+              <Flex flexDirection="column" alignItems="center">
+                <Streak height={24} />
+                <Text tag="span" fontWeight={600} color="primaryDark">
+                  {duolingo.streak}
+                </Text>
+              </Flex>
+            </Flex>
+          </Flex>
+
+          <LangInfo spaceChildren={3}>
+            <LangCol flexDirection="column" spaceChildren={1}>
+              <Text tag="span">Idioma</Text>
+              <FlagBR width={60} height={40} />
+              <FlagEN width={60} height={40} />
+              <FlagFR width={60} height={40} />
+              <FlagDE width={60} height={40} />
+            </LangCol>
+            <ExpCol flexDirection="column" spaceChildren={1}>
+              <Text tag="span">Exp</Text>
+              <Text tag="span" color="#78C800 !important">
+                nativo
+              </Text>
+              <Text tag="span">{langExp("en")}</Text>
+              <Text tag="span">{langExp("fr")}</Text>
+              <Text tag="span">{langExp("de")}</Text>
+            </ExpCol>
+            <CrownsCol flexDirection="column" spaceChildren={1}>
+              <Crowns height={24} />
+              <Text tag="span">-</Text>
+              <Text tag="span">{langCrowns("en")}</Text>
+              <Text tag="span">{langCrowns("fr")}</Text>
+              <Text tag="span">{langCrowns("de")}</Text>
+            </CrownsCol>
+          </LangInfo>
+        </Flex>
+      </DuolingoSection>
     </PageLayout>
   );
 };

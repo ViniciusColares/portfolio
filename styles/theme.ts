@@ -10,6 +10,7 @@ const colors = {
   grayDark: "#938CA3",
   grayLight: "#E9D9FF",
   contrast: "#F2F2F2",
+  black: "#444",
 };
 
 const fonts = {

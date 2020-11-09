@@ -59,7 +59,7 @@ const CustomText = styled.div(
     lineHeight: "1.5",
     margin: "0 0 10px 0",
     "strong, span": {
-      fontWeight: "700",
+      fontWeight: "500",
       color: "accent",
     },
   }),

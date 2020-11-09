@@ -25,6 +25,7 @@ const GlobalStyles = createGlobalStyle`
 
     &::-webkit-scrollbar-thumb:hover {
       background: ${theme.colors.primaryDark};
+      cursor: "pointer";
     }
   }
   html{

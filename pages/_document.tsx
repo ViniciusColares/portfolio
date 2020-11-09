@@ -22,7 +22,7 @@ class MyDocument extends Document {
           <>
             {initialProps.head}
             <link
-              href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;500;600&display=swap"
+              href="https://fonts.googleapis.com/css2?family=Bungee&family=Rubik:wght@400;500;600;800&display=swap"
               rel="stylesheet"
             />
             <link
