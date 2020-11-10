@@ -72,6 +72,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       duolingo,
     },
+    revalidate: 30,
   };
 };
 

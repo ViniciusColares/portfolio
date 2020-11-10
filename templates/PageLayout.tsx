@@ -1,5 +1,7 @@
 import React, { useState, ReactNode } from "react";
 import { linearGradient } from "polished";
+import { useRouter } from "next/router";
+import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 import css from "@styled-system/css";
 import { compose, layout } from "styled-system";
@@ -30,7 +32,7 @@ export const Template = styled("div")(
   })
 );
 
-export const Page = styled("section")(
+export const Page = styled(motion.section)(
   css({
     position: "relative",
     display: "flex",
@@ -112,24 +114,58 @@ const PageLayout = ({
   pageTitle?: string;
   children: ReactNode[];
 }) => {
-  const [openMenu, setOpenMenu] = useState(null);
+  const router = useRouter();
+  const [isOpen, setIsOpen] = useState(null);
+
+  const variants = {
+    pageInitial: {
+      scale: 1,
+    },
+    open: {
+      scale: 0.8,
+      translateX: ["0%", "45%"],
+      borderRadius: "16px",
+      border: "5px solid white",
+      boxShadow: "-20px 20px 20px rgba(0, 0, 0, 0.3)",
+    },
+    closed: {
+      scale: [0.8, 1],
+      translateX: "0%",
+      borderRadius: "0px",
+      border: "none",
+      boxShadow: "none",
+    },
+    pageExit: {
+      scale: 0,
+    },
+  };
 
   return (
     <Template>
-      {!noHeader && <Menu handleCloseMenu={() => setOpenMenu(false)} />}
-      <Page onClick={() => openMenu && setOpenMenu(false)}>
-        {!noHeader && (
-          <Header>
-            <MenuTrigger
-              display={["flex", , "none"]}
-              onClick={() => setOpenMenu(true)}
-              className="menu-trigger"
-            />
-            <PageTitle>{pageTitle}</PageTitle>
-          </Header>
-        )}
-        {children}
-      </Page>
+      {!noHeader && <Menu handleCloseMenu={() => setIsOpen(false)} />}
+      <AnimatePresence>
+        <Page
+          onClick={() => isOpen && setIsOpen(false)}
+          key={router.pathname}
+          transition={{ type: "spring", bounce: 0.3, duration: 0.7 }}
+          initial="pageInitial"
+          animate={isOpen ? "open" : "closed"}
+          exit="pageExit"
+          variants={variants}
+        >
+          {!noHeader && (
+            <Header>
+              <MenuTrigger
+                display={["flex", , "none"]}
+                onClick={() => setIsOpen(true)}
+                className="menu-trigger"
+              />
+              <PageTitle>{pageTitle}</PageTitle>
+            </Header>
+          )}
+          {children}
+        </Page>
+      </AnimatePresence>
     </Template>
   );
 };
