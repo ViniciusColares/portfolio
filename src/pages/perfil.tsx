@@ -1,35 +1,36 @@
-import { GetStaticProps } from "next";
-import Image from "next/image";
+import { GetStaticProps } from 'next'
+import Image from 'next/image'
 
-import PageLayout from "@templates/PageLayout";
+import PageLayout from '@templates/PageLayout'
 
-import HtmlIcon from "@public/assets/icons/html.svg";
-import CssIcon from "@public/assets/icons/css.svg";
-import JavascriptIcon from "@public/assets/icons/javascript.svg";
-import ReactIcon from "@public/assets/icons/react.svg";
-import ReduxIcon from "@public/assets/icons/redux.svg";
-import PostgresqlIcon from "@public/assets/icons/postgresql.svg";
-import DockerIcon from "@public/assets/icons/docker.svg";
-import GitIcon from "@public/assets/icons/git.svg";
-import NpmIcon from "@public/assets/icons/npm.svg";
-import SassIcon from "@public/assets/icons/sass.svg";
-import NodeIcon from "@public/assets/icons/node.svg";
-import WebpackIcon from "@public/assets/icons/webpack.svg";
-import JestIcon from "@public/assets/icons/jest.svg";
-import LinuxIcon from "@public/assets/icons/linux.svg";
-import WindowsIcon from "@public/assets/icons/windows.svg";
-import Magnifier from "@public/assets/icons/magnifier.svg";
-import Talk from "@public/assets/icons/talk.svg";
+import HtmlIcon from '@public/assets/icons/html.svg'
+import CssIcon from '@public/assets/icons/css.svg'
+import JavascriptIcon from '@public/assets/icons/javascript.svg'
+import ReactIcon from '@public/assets/icons/react.svg'
+import ReduxIcon from '@public/assets/icons/redux.svg'
+import PostgresqlIcon from '@public/assets/icons/postgresql.svg'
+import DockerIcon from '@public/assets/icons/docker.svg'
+import GitIcon from '@public/assets/icons/git.svg'
+import NpmIcon from '@public/assets/icons/npm.svg'
+import SassIcon from '@public/assets/icons/sass.svg'
+import NodeIcon from '@public/assets/icons/node.svg'
+import WebpackIcon from '@public/assets/icons/webpack.svg'
+import JestIcon from '@public/assets/icons/jest.svg'
+import LinuxIcon from '@public/assets/icons/linux.svg'
+import WindowsIcon from '@public/assets/icons/windows.svg'
+import Magnifier from '@public/assets/icons/magnifier.svg'
+import Talk from '@public/assets/icons/talk.svg'
 
-import Crowns from "@public/assets/duolingo/crowns.svg";
-import Streak from "@public/assets/duolingo/streak.svg";
-import FlagBR from "@public/assets/duolingo/flag_pt.svg";
-import FlagEN from "@public/assets/duolingo/flag_en.svg";
-import FlagFR from "@public/assets/duolingo/flag_fr.svg";
-import FlagDE from "@public/assets/duolingo/flag_de.svg";
+import Crowns from '@public/assets/duolingo/crowns.svg'
+import Streak from '@public/assets/duolingo/streak.svg'
+import Trophy from '@public/assets/duolingo/trophy.svg'
+import FlagBR from '@public/assets/duolingo/flag_pt.svg'
+import FlagEN from '@public/assets/duolingo/flag_en.svg'
+import FlagFR from '@public/assets/duolingo/flag_fr.svg'
+import FlagDE from '@public/assets/duolingo/flag_de.svg'
 
-import { Heading, Text } from "@components/Typo";
-import { Flex } from "@styles/core/grid";
+import { Heading, Text } from '@components/Typo'
+import Flex from '@components/Flex'
 
 import {
   Profile,
@@ -45,47 +46,46 @@ import {
   LangInfo,
   LangCol,
   ExpCol,
-  CrownsCol,
-} from "@styles/pageStyles/profileStyle";
+  CrownsCol
+} from '@styles/pageStyles/profileStyle'
 
 interface IPerfil {
   duolingo: {
-    totalXp: number;
-    streak: number;
-    lingots: number;
-    courses: IDuolingoCourse[];
-  };
+    totalXp: number
+    streak: number
+    lingots: number
+    courses: IDuolingoCourse[]
+  }
 }
 
 interface IDuolingoCourse {
-  xp: number;
-  crowns: number;
-  learningLanguage: string;
+  xp: number
+  crowns: number
+  learningLanguage: string
 }
 
 export const getStaticProps: GetStaticProps = async () => {
   const duolingo = await fetch(
-    "https://www.duolingo.com/2017-06-30/users/49543102?fields=totalXp,streak,courses"
-  ).then((response) => response.json());
+    'https://www.duolingo.com/2017-06-30/users/49543102?fields=totalXp,streak,courses'
+  ).then((response) => response.json())
 
   return {
     props: {
-      duolingo,
+      duolingo
     },
-    revalidate: 30,
-  };
-};
+    revalidate: 30
+  }
+}
 
 const Perfil = ({ duolingo }: IPerfil) => {
-  const langExp = (lang): number => {
-    return duolingo.courses.find((course) => course.learningLanguage === lang)
-      .xp;
-  };
+  const { courses } = duolingo
 
-  const langCrowns = (lang) => {
-    return duolingo.courses.find((course) => course.learningLanguage === lang)
-      .crowns;
-  };
+  const findCourse = (lang): IDuolingoCourse | undefined =>
+    courses.find((course) => course?.learningLanguage === lang)
+
+  const getExp = (lang): number | undefined => findCourse(lang)?.xp
+  const getCrowns = (lang) => findCourse(lang)?.crowns
+  const getTotalCrowns = () => courses.reduce((ac, cv) => ac + cv.crowns, 0)
 
   return (
     <PageLayout pageTitle="perfil">
@@ -112,9 +112,9 @@ const Perfil = ({ duolingo }: IPerfil) => {
         <SectionTitle>Introdução</SectionTitle>
         <Text mb={0}>
           Desenvolvedor web há mais de <span>10 anos</span>, construindo
-          soluções em tecnologia, interfaces e uma experiência{" "}
+          soluções em tecnologia, interfaces e uma experiência{' '}
           <span>produtiva e divertida</span> para milhões de usuários. Acredito
-          na falta da certeza como melhor guia, me amarro em games, filosofia,{" "}
+          na falta da certeza como melhor guia, me amarro em games, filosofia,{' '}
           <span>bem-estar e autoconhecimento</span> ... antes uma pergunta
           besta, a uma besta que não pergunta.
         </Text>
@@ -220,7 +220,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
               convidado a integrar um time com o objetivo de desenvolver uma
               carteira digital, ótima experiência ... Aprendi sobre
               gerenciamento de estado, fluxo de dados, integração de serviços e
-              o mais importante, aprendi que nem sempre as pessoas querem o{" "}
+              o mais importante, aprendi que nem sempre as pessoas querem o{' '}
               <span>melhor para o projeto</span>, se esse melhor não vier delas.
             </Text>
           </li>
@@ -247,11 +247,11 @@ const Perfil = ({ duolingo }: IPerfil) => {
             Curioso
           </SectionSubTitle>
           <Text mb={0}>
-            Sempre fiquei intrigado com a sensação de <span>não saber</span>{" "}
-            como as coisas funcionam e/ou o porquê de{" "}
+            Sempre fiquei intrigado com a sensação de <span>não saber</span>{' '}
+            como as coisas funcionam e/ou o porquê de{' '}
             <span>não estarem funcionando</span>, ser curioso me abriu
             possibilidades para entender como <span>tudo é feito</span> sem me
-            cansar. A curiosidade me ajuda a elaborar as <span>perguntas</span>{" "}
+            cansar. A curiosidade me ajuda a elaborar as <span>perguntas</span>{' '}
             com as quais eu posso buscar por respostas, que me mantêm na busca
             pelas soluções.
           </Text>
@@ -277,8 +277,8 @@ const Perfil = ({ duolingo }: IPerfil) => {
         <header
           onClick={() =>
             window.open(
-              "https://www.duolingo.com/profile/ViniciusColares",
-              "_blank"
+              'https://www.duolingo.com/profile/ViniciusColares',
+              '_blank'
             )
           }
         >
@@ -337,13 +337,13 @@ const Perfil = ({ duolingo }: IPerfil) => {
 
             <Flex spaceChildren={3}>
               <Flex flexDirection="column" alignItems="center">
-                <Crowns height={24} />
+                <Crowns title="Habilidades conquistadas" height={24} />
                 <Text tag="span" fontWeight={600} color="primaryDark">
-                  {duolingo.courses.reduce((ac, cv) => ac + cv.crowns, 0)}
+                  {getTotalCrowns()}
                 </Text>
               </Flex>
               <Flex flexDirection="column" alignItems="center">
-                <Streak height={24} />
+                <Streak title="Dias de estudo consecutivo" height={24} />
                 <Text tag="span" fontWeight={600} color="primaryDark">
                   {duolingo.streak}
                 </Text>
@@ -354,32 +354,40 @@ const Perfil = ({ duolingo }: IPerfil) => {
           <LangInfo spaceChildren={3}>
             <LangCol flexDirection="column" spaceChildren={1}>
               <Text tag="span">Idioma</Text>
-              <FlagBR width={60} height={40} />
-              <FlagEN width={60} height={40} />
-              <FlagFR width={60} height={40} />
-              <FlagDE width={60} height={40} />
+              <FlagBR title="Português(pt-br)" width={60} height={40} />
+              <Flex>
+                <FlagEN title="Inglês(en)" width={60} height={40} />
+                <Trophy
+                  className="trophy"
+                  title="Troféu"
+                  width={35}
+                  height={35}
+                />
+              </Flex>
+              <FlagFR title="Francês(fr)" width={60} height={40} />
+              <FlagDE title="Alemão(de)" width={60} height={40} />
             </LangCol>
             <ExpCol flexDirection="column" spaceChildren={1}>
               <Text tag="span">Exp</Text>
               <Text tag="span" color="#78C800 !important">
                 nativo
               </Text>
-              <Text tag="span">{langExp("en")}</Text>
-              <Text tag="span">{langExp("fr")}</Text>
-              <Text tag="span">{langExp("de")}</Text>
+              <Text tag="span">{getExp('en') || '-'}</Text>
+              <Text tag="span">{getExp('fr') || '-'}</Text>
+              <Text tag="span">{getExp('de') || '-'}</Text>
             </ExpCol>
             <CrownsCol flexDirection="column" spaceChildren={1}>
               <Crowns height={24} />
               <Text tag="span">-</Text>
-              <Text tag="span">{langCrowns("en")}</Text>
-              <Text tag="span">{langCrowns("fr")}</Text>
-              <Text tag="span">{langCrowns("de")}</Text>
+              <Text tag="span">{getCrowns('en') || '-'}</Text>
+              <Text tag="span">{getCrowns('fr') || '-'}</Text>
+              <Text tag="span">{getCrowns('de') || '-'}</Text>
             </CrownsCol>
           </LangInfo>
         </Flex>
       </DuolingoSection>
     </PageLayout>
-  );
-};
+  )
+}
 
-export default Perfil;
+export default Perfil

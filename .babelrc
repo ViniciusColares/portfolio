@@ -7,7 +7,8 @@
           "useBuiltIns": "usage"
         }
       }
-    ]
+    ],
+    ["@babel/preset-typescript"]
   ],
   "plugins": [
     ["inline-react-svg"],
@@ -18,32 +19,26 @@
         "root": ["./"],
         "alias": {
           "@modules": "./node_modules",
-          "@components": "./components",
-          "@templates": "./templates",
-          "@styles": "./styles",
           "@public": "./public",
-          "@pages": "./pages"
+          "@components": "./src/components",
+          "@templates": "./src/templates",
+          "@styles": "./src/styles",
+          "@pages": "./src/pages"
         }
-      }
-    ],
-    [
-      "lodash",
-      {
-        "id": ["lodash"]
-      }
-    ],
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "style": true
       }
     ],
     [
       "styled-components",
       {
         "ssr": true,
-        "displayName": false
+        "displayName": true,
+        "preprocess": false
+      }
+    ],
+    [
+      "@babel/plugin-transform-react-jsx",
+      {
+        "pragmaFrag": "React.Fragment"
       }
     ]
   ],

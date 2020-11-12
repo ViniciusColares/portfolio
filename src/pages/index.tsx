@@ -1,20 +1,20 @@
-import React from "react";
-import Head from "next/head";
-import { useRouter } from "next/router";
+import React from 'react'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
 
-import UnderConstruction from "@templates/UnderConstruction";
-import PageLayout from "@templates/PageLayout";
-import Button from "@components/Button";
-import { Heading } from "@components/Typo";
-import { Text } from "@components/Typo";
+import UnderConstruction from '@templates/UnderConstruction'
+import PageLayout from '@templates/PageLayout'
+import Button from '@components/Button'
+import { Heading } from '@components/Typo'
+import { Text } from '@components/Typo'
 
-import HomeIllustrationsSVG from "@public/assets/home_illustrations.svg";
+import HomeIllustrationsSVG from '@public/assets/home_illustrations.svg'
 
-import { Flex } from "@styles/core/grid";
-import { CallToAction } from "@styles/pageStyles/homeStyle";
+import Flex from '@components/Flex'
+import { CallToAction } from '@styles/pageStyles/homeStyle'
 
 const Home = () => {
-  const router = useRouter();
+  const router = useRouter()
 
   return process.env.underConstruction ? (
     <UnderConstruction />
@@ -35,13 +35,13 @@ const Home = () => {
       <CallToAction>
         <Text mb={2}>Como fazer isso?</Text>
         <Button
-          onClick={() => router.push("/contato")}
+          onClick={() => router.push('/contato')}
           name="Vamos conversar"
           size="big"
         />
       </CallToAction>
     </PageLayout>
-  );
-};
+  )
+}
 
-export default Home;
+export default Home
