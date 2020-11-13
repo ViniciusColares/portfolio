@@ -60,7 +60,7 @@ export const Info = styled('div')(
     marginLeft: 2,
     '> h1': {
       margin: 0,
-      fontSize: 4
+      fontSize: 3
     },
     '> h2': {
       margin: '3px 0',

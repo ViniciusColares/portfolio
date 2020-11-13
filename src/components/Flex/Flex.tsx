@@ -4,29 +4,17 @@ import css from '@styled-system/css'
 import {
   compose,
   flexbox,
-  space,
-  layout,
-  border,
-  color,
   FlexboxProps,
-  SpaceProps,
+  layout,
   LayoutProps,
-  BorderProps,
-  ColorProps
+  space,
+  SpaceProps
 } from 'styled-system'
 
-interface IGrid
-  extends FlexboxProps,
-    SpaceProps,
-    LayoutProps,
-    BorderProps,
-    ColorProps {
-  tag?: 'div' | 'section'
-  spaceChildren?: number
-  children: ReactNode
-}
+type GridProps = { spaceChildren?: number; flexDirection?: string }
 
-const Grid = styled('div')<HTMLDivElement>(
+type GridFC = React.FC<HTMLDivElement> & GridProps
+const CustomGrid = styled('div')<GridFC>(
   css({
     display: 'flex',
     position: 'relative'
@@ -59,14 +47,21 @@ const Grid = styled('div')<HTMLDivElement>(
         })
     }
   },
-  compose(layout, flexbox, space, border, color)
+  compose(space, layout, flexbox)
 )
-
-const Flex = ({ tag = 'div', children, ...rest }: IGrid) => {
+interface Grid extends GridProps {
+  tag?: 'div' | 'section' | 'form'
+  children?: ReactNode
+}
+const Flex = ({
+  tag = 'div',
+  children,
+  ...rest
+}: Grid & FlexboxProps & SpaceProps & LayoutProps) => {
   return (
-    <Grid as={tag} {...rest}>
+    <CustomGrid as={tag} {...rest}>
       {children}
-    </Grid>
+    </CustomGrid>
   )
 }
 

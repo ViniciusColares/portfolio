@@ -1,6 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-import { normalize } from "polished";
-import { theme } from "@styles/theme";
+import { createGlobalStyle } from 'styled-components'
+import { normalize } from 'polished'
+import { theme } from '@styles/theme'
 
 const GlobalStyles = createGlobalStyle`
   ${normalize()}
@@ -33,18 +33,24 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     position: relative;
-    width: 100vw;
-    height: 100vh;
     margin: 0;
     padding: 0;
     outline: none;
-    font-size: 1em;
+    font-size: 62.5%;
     font-weight: 400;
-    color: #F2F2F2;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     color: ${({ theme }) => theme.colors.contrast};
   }
-`;
+  html, body,#__next{
+    width: 100%;
+    height: 100%;
+  }
+  main{
+    display: flex;
+    justify-content: center;
+    align-items: center
+  }
+`
 
-export default GlobalStyles;
+export default GlobalStyles

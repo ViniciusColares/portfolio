@@ -1,17 +1,15 @@
 import React from 'react'
 import Head from 'next/head'
+import Image from 'next/image'
 import { useRouter } from 'next/router'
 
 import UnderConstruction from '@templates/UnderConstruction'
 import PageLayout from '@templates/PageLayout'
-import Button from '@components/Button'
-import { Heading } from '@components/Typo'
-import { Text } from '@components/Typo'
-
-import HomeIllustrationsSVG from '@public/assets/home_illustrations.svg'
-
 import Flex from '@components/Flex'
-import { CallToAction } from '@styles/pageStyles/homeStyle'
+import Button from '@components/Button'
+import { Text, Heading } from '@components/Typo'
+
+import * as SC from '@styles/pageStyles/homeStyle'
 
 const Home = () => {
   const router = useRouter()
@@ -23,23 +21,30 @@ const Home = () => {
       <Head>
         <title>Vinicius Colares - Desenvolvedor de sistemas</title>
       </Head>
-      <Heading tag="h1" fontSize={3} mt="10%">
-        Revolucione seu negócio
-      </Heading>
-      <Heading tag="h1" color="accent">
-        com tecnologia
-      </Heading>
-      <Flex width={1} maxWidth="500px" justifyContent="center" my="5vh">
-        <HomeIllustrationsSVG width="80%" />
+      <SC.MainHeading>
+        <Heading fontSize={1}>Revolucione seu negócio</Heading>
+        <Heading fontSize={4} color="accent">
+          com tecnologia
+        </Heading>
+      </SC.MainHeading>
+
+      <Flex my="3.5vh" mx="3vw">
+        <Image
+          src="/assets/home_illustrations.svg"
+          alt="Picture of the author"
+          width={450}
+          height={450}
+        />
       </Flex>
-      <CallToAction>
-        <Text mb={2}>Como fazer isso?</Text>
+
+      <SC.CallToAction>
+        <Text tag="span">Como fazer isso?</Text>
         <Button
           onClick={() => router.push('/contato')}
           name="Vamos conversar"
           size="big"
         />
-      </CallToAction>
+      </SC.CallToAction>
     </PageLayout>
   )
 }

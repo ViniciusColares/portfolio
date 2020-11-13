@@ -2,27 +2,17 @@ import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 import css from '@styled-system/css'
 import {
-  compose,
-  flexbox,
-  space,
   color,
-  typography,
-  FlexboxProps,
-  SpaceProps,
   ColorProps,
+  compose,
+  space,
+  SpaceProps,
+  typography,
   TypographyProps
 } from 'styled-system'
 
-interface IHeading
-  extends FlexboxProps,
-    SpaceProps,
-    ColorProps,
-    TypographyProps {
-  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
-  children: ReactNode
-}
-
-const CustomHeading = styled.h1<HTMLHeadingElement>(
+type H = React.FC<HTMLHeadingElement>
+const CustomHeading = styled.h1<H>(
   css({
     letterSpacing: '0.7px',
     fontFamily: 'heading',
@@ -34,10 +24,14 @@ const CustomHeading = styled.h1<HTMLHeadingElement>(
       color: 'accent'
     }
   }),
-  compose(flexbox, space, color, typography)
+  compose(space, color, typography)
 )
-
-export const Heading = ({ tag = 'h1', children, ...rest }: IHeading) => {
+interface Heading extends SpaceProps, TypographyProps, ColorProps {
+  tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'
+  color?: string
+  children: ReactNode
+}
+const Heading = ({ tag = 'h1', children, ...rest }: Heading) => {
   return (
     <CustomHeading as={tag} {...rest}>
       {children}
@@ -45,29 +39,32 @@ export const Heading = ({ tag = 'h1', children, ...rest }: IHeading) => {
   )
 }
 
-interface IText extends FlexboxProps, SpaceProps, ColorProps, TypographyProps {
-  tag?: 'p' | 'span'
-  children: ReactNode
-}
-const CustomText = styled.p<HTMLParagraphElement>(
+type T = React.FC<HTMLParagraphElement>
+const CustomText = styled.p<T>(
   css({
     fontFamily: 'text',
     fontSize: 1,
-    fontWeight: '300',
+    fontWeight: '400',
     lineHeight: '1.5',
-    margin: '0 0 10px 0',
+    margin: '0 0 12px 0',
     'strong, span': {
       fontWeight: '500',
       color: 'accent'
     }
   }),
-  compose(flexbox, space, color, typography)
+  compose(space, typography)
 )
-
-export const Text = ({ tag = 'p', children, ...rest }: IText) => {
+interface Text extends SpaceProps, TypographyProps, ColorProps {
+  tag?: 'p' | 'span'
+  color?: string
+  children: ReactNode
+}
+const Text = ({ tag = 'p', children, ...rest }: Text) => {
   return (
     <CustomText as={tag} {...rest}>
       {children}
     </CustomText>
   )
 }
+
+export { Heading, Text }

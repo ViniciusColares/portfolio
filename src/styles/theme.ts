@@ -18,7 +18,15 @@ const fonts = {
   text: "'Rubik', sans-serif"
 }
 
-const fontSizes = [12, 14, 16, 20, 24, 32]
+const fontSizes = [
+  '0.8rem',
+  '1rem',
+  '1.2rem',
+  '1.5rem',
+  '2rem',
+  '2.5rem',
+  '3rem'
+]
 
 const space = [0, 4, 8, 12, 20, 32, 52, 84]
 
@@ -30,19 +38,20 @@ const breakpoints = {
   xl: 94
 }
 
-export const medias = (key: keyof typeof breakpoints) =>
-  `@media (min-width: ${breakpoints[key]}em)`
+export const medias = (key) => `@media (min-width: ${breakpoints[key]}em)`
 
 declare module 'styled-components' {
   export interface DefaultTheme {
+    medias: (key: keyof typeof breakpoints) => string
     colors: { [key in keyof typeof colors]: string }
     fonts: { [key in keyof typeof fonts]: string }
-    fontSizes: number[]
+    fontSizes: string[]
     space: number[]
   }
 }
 
 export const theme: DefaultTheme = {
+  medias,
   colors,
   fonts,
   fontSizes,

@@ -1,14 +1,15 @@
 import Head from 'next/head'
+import { useRouter } from 'next/router'
 import { AppProps } from 'next/app'
 import { linearGradient } from 'polished'
-import { AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence } from 'framer-motion'
 import styled, { ThemeProvider } from 'styled-components'
 import css from '@styled-system/css'
 
 import Menu from '@components/Menu'
 
 import GlobalStyles from '@styles/global'
-import { theme } from '@styles/theme'
+import { theme, medias } from '@styles/theme'
 
 const Template = styled('div')(
   css({
@@ -30,7 +31,61 @@ const Template = styled('div')(
   })
 )
 
+const Main = styled(motion.main)(
+  css({
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    width: '100%',
+    height: '100%',
+    overflow: 'auto',
+    zIndex: 1,
+    background: `url('/assets/bg.png') center top no-repeat scroll, linear-gradient(to bottom,${theme.colors.primary1} 20%,${theme.colors.primary2} 90%)`,
+    backgroundSize: '100%',
+    [medias('sm')]: {
+      height: '80vh',
+      width: 'clamp(470px, 30vw, 600px)',
+      borderWidth: '4px !important',
+      borderStyle: 'solid !important',
+      borderColor: 'white !important',
+      borderRadius: '16px !important',
+      boxShadow: '20px 20px 20px rgba(0,0,0,0.3) !important'
+    }
+  })
+)
+
 const App = ({ Component, pageProps }: AppProps) => {
+  const router = useRouter()
+  const isOpen = false
+  console.log(Component, pageProps)
+
+  const variants = {
+    pageInitial: {
+      scale: 1,
+      translateX: '0%',
+      borderRadius: '16px',
+      border: '0px solid white',
+      boxShadow: '0 0 0 rgba(0, 0, 0, 0.3)'
+    },
+    open: {
+      scale: 0.8,
+      translateX: ['0%', '40%'],
+      borderRadius: '16px',
+      border: '5px solid white',
+      boxShadow: '-20px 20px 20px rgba(0, 0, 0, 0.3)'
+    },
+    closed: {
+      scale: [0.8, 1],
+      translateX: '0%',
+      borderRadius: '0px',
+      border: '0px solid white',
+      boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.3)'
+    },
+    pageExit: {
+      scale: 0
+    }
+  }
   return (
     <ThemeProvider theme={theme}>
       <Head>
@@ -72,9 +127,18 @@ const App = ({ Component, pageProps }: AppProps) => {
       <GlobalStyles />
       <Template>
         <Menu />
-        <AnimatePresence>
-          <Component {...pageProps} />
-        </AnimatePresence>
+        <Main
+          key={router.pathname}
+          transition={{ type: 'spring', bounce: 0.3, duration: 0.7 }}
+          initial="pageInitial"
+          animate={isOpen ? 'open' : 'closed'}
+          exit="pageExit"
+          variants={variants}
+        >
+          <AnimatePresence>
+            <Component {...pageProps} />
+          </AnimatePresence>
+        </Main>
       </Template>
     </ThemeProvider>
   )
