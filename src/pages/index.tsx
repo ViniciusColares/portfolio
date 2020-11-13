@@ -23,12 +23,12 @@ const Home = () => {
       </Head>
       <SC.MainHeading>
         <Heading fontSize={1}>Revolucione seu negócio</Heading>
-        <Heading fontSize={4} color="accent">
+        <Heading fontSize={5} color="accent">
           com tecnologia
         </Heading>
       </SC.MainHeading>
 
-      <Flex my="3.5vh" mx="3vw">
+      <Flex my="3vh" mx="3vw">
         <Image
           src="/assets/home_illustrations.svg"
           alt="Picture of the author"

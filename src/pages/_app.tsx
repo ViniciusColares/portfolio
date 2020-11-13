@@ -45,7 +45,7 @@ const Main = styled(motion.main)(
     backgroundSize: '100%',
     [medias('sm')]: {
       height: '80vh',
-      width: 'clamp(470px, 30vw, 600px)',
+      width: '480px',
       borderWidth: '4px !important',
       borderStyle: 'solid !important',
       borderColor: 'white !important',

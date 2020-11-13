@@ -21,7 +21,8 @@ const fonts = {
 const fontSizes = [
   '0.8rem',
   '1rem',
-  '1.2rem',
+  '1.1rem',
+  '1.3rem',
   '1.5rem',
   '2rem',
   '2.5rem',
