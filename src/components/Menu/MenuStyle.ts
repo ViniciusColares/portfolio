@@ -1,105 +1,117 @@
-import styled from "styled-components";
-import css from "@styled-system/css";
-import { compose, layout, LayoutProps } from "styled-system";
+import styled from 'styled-components'
+import css from '@styled-system/css'
+import { compose, layout, LayoutProps } from 'styled-system'
 
-import LogoIcon from "@public/assets/icons/logo.svg";
+import LogoIcon from '@public/assets/icons/logo.svg'
 
-export const Container = styled("section")(
+export const Wrapper = styled('section')(
   css({
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "flex-start",
-    position: "absolute",
-    bg: "accent",
-    top: "0px",
-    left: "0px",
-    width: "100vw",
-    height: "100vh",
-    overflow: "hidden",
-    zIndex: 0,
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'relative',
+    bg: 'accent',
+    width: '100vw',
+    height: '100vh',
+    overflow: 'hidden',
+    zIndex: 0
   })
-);
+)
+
+export const Container = styled('div')(
+  css({
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    position: 'relative',
+    bg: 'accent',
+    width: '100vw',
+    maxWidth: '1280px',
+    height: '100vh',
+    overflow: 'hidden',
+    zIndex: 0
+  })
+)
 
 export const BgEffect = styled(LogoIcon)(
   css({
-    position: "absolute",
-    top: "0px",
-    left: "0px",
-    minHeight: "100vh",
-    minWidth: "100vw",
+    position: 'absolute',
+    top: '0px',
+    left: '0px',
+    minHeight: '100vh',
+    minWidth: '100vw',
     zIndex: 0,
-    opacity: "0.3",
+    opacity: '0.3',
     path: {
-      fill: "accentDark",
-      "&:nth-of-type(3)": {
-        opacity: 0.75,
-      },
-    },
+      fill: 'accentDark',
+      '&:nth-of-type(3)': {
+        opacity: 0.75
+      }
+    }
   })
-);
+)
 
-export const CloseMenu = styled("div")<LayoutProps>(
+export const CloseMenu = styled('div')<LayoutProps>(
   css({
-    position: "absolute",
-    cursor: "pointer",
+    position: 'absolute',
+    cursor: 'pointer',
     right: 4,
     top: 4,
-    zIndex: 1,
+    zIndex: 1
   }),
   compose(layout)
-);
+)
 
-export const Nav = styled("nav")(
+export const MenuList = styled('section')(
   css({
-    display: "flex",
-    zIndex: 1,
+    display: 'flex',
+    zIndex: 1
   })
-);
+)
 
-export const MenuList = styled("ul")(
+export const Nav = styled('nav')(
   css({
-    display: "flex",
-    flexDirection: "column",
-    paddingLeft: "5vw",
+    display: 'flex',
+    flexDirection: 'column',
+    paddingLeft: '3vw',
     zIndex: 1,
     path: {
-      fill: "primaryDark",
+      fill: 'primaryDark'
     },
-    "svg:first-of-type path:nth-of-type(3)": {
-      opacity: 0.75,
-    },
+    'svg:first-of-type path:nth-of-type(3)': {
+      opacity: 0.75
+    }
   })
-);
+)
 
-export const MenuListItem = styled("li")<{ active: boolean }>(
+export const MenuListItem = styled('a')<{ active: boolean }>(
   css({
-    display: "flex",
-    alignItems: "center",
-    height: "52px",
-    "> span": {
-      color: "primaryDark",
-      fontFamily: "heading",
+    display: 'flex',
+    alignItems: 'center',
+    height: '52px',
+    '> span': {
+      color: 'primaryDark',
+      fontFamily: 'heading',
       marginLeft: 4,
-      fontSize: 2,
+      fontSize: 2
     },
-    "&:hover": {
-      cursor: "pointer",
+    '&:hover': {
+      cursor: 'pointer'
     },
-    ":not(:last-of-type)": {
-      marginBottom: 4,
-    },
+    ':not(:last-of-type)': {
+      marginBottom: 4
+    }
   }),
   ({ active }) =>
     active &&
     css({
-      "::before": {
+      '::before': {
         content: "''",
-        position: "absolute",
-        borderLeft: "10px solid transparent",
-        borderRight: "10px solid transparent",
-        borderTop: "10px solid #FFB800",
-        top: "0px",
-      },
+        position: 'absolute',
+        borderLeft: '10px solid transparent',
+        borderRight: '10px solid transparent',
+        borderTop: '10px solid #FFB800',
+        top: '0px'
+      }
     })
-);
+)

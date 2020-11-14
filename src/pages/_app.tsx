@@ -33,7 +33,7 @@ const Template = styled('div')(
 
 const Main = styled(motion.main)(
   css({
-    position: 'relative',
+    position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
@@ -58,11 +58,12 @@ const Main = styled(motion.main)(
 const App = ({ Component, pageProps }: AppProps) => {
   const router = useRouter()
   const isOpen = false
-  console.log(Component, pageProps)
+  // console.log(pageProps)
 
   const variants = {
     pageInitial: {
       scale: 1,
+      translateY: '120%',
       translateX: '0%',
       borderRadius: '16px',
       border: '0px solid white',
@@ -76,14 +77,16 @@ const App = ({ Component, pageProps }: AppProps) => {
       boxShadow: '-20px 20px 20px rgba(0, 0, 0, 0.3)'
     },
     closed: {
-      scale: [0.8, 1],
+      scale: 1,
+      translateY: '0%',
       translateX: '0%',
       borderRadius: '0px',
       border: '0px solid white',
       boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.3)'
     },
     pageExit: {
-      scale: 0
+      translateY: '-120%',
+      transition: { type: 'spring', stiffness: 123 }
     }
   }
   return (
@@ -127,18 +130,18 @@ const App = ({ Component, pageProps }: AppProps) => {
       <GlobalStyles />
       <Template>
         <Menu />
-        <Main
-          key={router.pathname}
-          transition={{ type: 'spring', bounce: 0.3, duration: 0.7 }}
-          initial="pageInitial"
-          animate={isOpen ? 'open' : 'closed'}
-          exit="pageExit"
-          variants={variants}
-        >
-          <AnimatePresence>
+        <AnimatePresence>
+          <Main
+            key={router.pathname}
+            transition={{ type: 'spring', stiffness: 69 }}
+            initial="pageInitial"
+            animate={isOpen ? 'open' : 'closed'}
+            exit="pageExit"
+            variants={variants}
+          >
             <Component {...pageProps} />
-          </AnimatePresence>
-        </Main>
+          </Main>
+        </AnimatePresence>
       </Template>
     </ThemeProvider>
   )

@@ -1,77 +1,65 @@
-import React from "react";
-import { useRouter } from "next/router";
+import React from 'react'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
 
-import CloseIcon from "@public/assets/icons/close.svg";
-import LogoIcon from "@public/assets/icons/logo.svg";
-import ProfileIcon from "@public/assets/icons/profile.svg";
-import CodeIcon from "@public/assets/icons/code.svg";
-import ContactIcon from "@public/assets/icons/contact.svg";
+import CloseIcon from '@public/assets/icons/close.svg'
+import LogoIcon from '@public/assets/icons/logo.svg'
+import ProfileIcon from '@public/assets/icons/profile.svg'
+import CodeIcon from '@public/assets/icons/code.svg'
+import ContactIcon from '@public/assets/icons/contact.svg'
 
-import {
-  Container,
-  BgEffect,
-  CloseMenu,
-  Nav,
-  MenuList,
-  MenuListItem,
-} from "./MenuStyle";
+import * as SC from './MenuStyle'
 
 const Menu = () => {
-  const router = useRouter();
-  const { asPath } = router;
+  const router = useRouter()
+  const { asPath } = router
   const { home, profile, apps, contact } = {
-    home: "/",
-    profile: "/perfil",
-    apps: "/apps",
-    contact: "/contato",
-  };
-
-  const navigateTo = (endRoute) => endRoute !== asPath && router.push(endRoute);
-  console.log(asPath);
-
+    home: '/',
+    profile: '/perfil',
+    apps: '/apps',
+    contact: '/contato'
+  }
   return (
-    <Container>
-      <BgEffect />
-      <CloseMenu
-        display={["flex", "flex", "none"]}
-        onClick={() => alert("dispatch close menu")}
+    <SC.Wrapper>
+      <SC.BgEffect />
+      <SC.CloseMenu
+        display={['flex', 'flex', 'none']}
+        onClick={() => alert('dispatch close menu')}
       >
         <CloseIcon height="19px" />
-      </CloseMenu>
-      <Nav>
-        <MenuList>
-          <MenuListItem
-            active={asPath === home}
-            onClick={() => navigateTo(home)}
-          >
-            <LogoIcon height="33px" />
-            <span>Início</span>
-          </MenuListItem>
-          <MenuListItem
-            active={asPath === profile}
-            onClick={() => navigateTo(profile)}
-          >
-            <ProfileIcon height="33px" />
-            <span>Perfil</span>
-          </MenuListItem>
-          <MenuListItem
-            active={asPath === apps}
-            onClick={() => navigateTo(apps)}
-          >
-            <CodeIcon height="30px" />
-            <span>Apps</span>
-          </MenuListItem>
-          <MenuListItem
-            active={asPath === contact}
-            onClick={() => navigateTo(contact)}
-          >
-            <ContactIcon height="30px" />
-            <span>Contato</span>
-          </MenuListItem>
-        </MenuList>
-      </Nav>
-    </Container>
-  );
-};
+      </SC.CloseMenu>
+      <SC.Container>
+        <SC.MenuList>
+          <SC.Nav>
+            <Link href={home}>
+              <SC.MenuListItem active={asPath === home}>
+                <LogoIcon height="33px" />
+                <span>Início</span>
+              </SC.MenuListItem>
+            </Link>
+            <Link href={profile}>
+              <SC.MenuListItem active={asPath === profile}>
+                <ProfileIcon height="33px" />
+                <span>Perfil</span>
+              </SC.MenuListItem>
+            </Link>
+            <Link href={apps}>
+              <SC.MenuListItem active={asPath === apps}>
+                <CodeIcon height="30px" />
+                <span>Apps</span>
+              </SC.MenuListItem>
+            </Link>
+            <Link href={contact}>
+              <SC.MenuListItem active={asPath === contact}>
+                <ContactIcon height="30px" />
+                <span>Contato</span>
+              </SC.MenuListItem>
+            </Link>
+          </SC.Nav>
+        </SC.MenuList>
+      </SC.Container>
+    </SC.Wrapper>
+  )
+}
 
-export default Menu;
+export default Menu
