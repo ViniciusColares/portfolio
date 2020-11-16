@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
@@ -18,9 +17,6 @@ const Home = () => {
     <UnderConstruction />
   ) : (
     <PageLayout pageTitle="início">
-      <Head>
-        <title>Vinicius Colares - Desenvolvedor de sistemas</title>
-      </Head>
       <SC.MainHeading>
         <Heading fontSize={1}>Revolucione seu negócio</Heading>
         <Heading fontSize={5} color="accent">

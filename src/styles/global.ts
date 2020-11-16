@@ -40,11 +40,12 @@ const GlobalStyles = createGlobalStyle`
     font-weight: 400;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
-    color: ${({ theme }) => theme.colors.contrast};
+    color: ${theme.colors.contrast};
   }
   html, body,#__next{
     width: 100%;
     height: 100%;
+    overflow: hidden;
   }
   main{
     display: flex;

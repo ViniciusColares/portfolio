@@ -23,7 +23,8 @@
           "@components": "./src/components",
           "@templates": "./src/templates",
           "@styles": "./src/styles",
-          "@pages": "./src/pages"
+          "@pages": "./src/pages",
+          "@store": "./src/store"
         }
       }
     ],

@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import css from '@styled-system/css'
 import Flex from '@components/Flex'
 import { Heading } from '@components/Typo'
-import { theme } from '@styles/theme'
+import { colors } from '@styles/theme'
 
 export const SectionTitle = styled(Heading)(
   css({
@@ -35,7 +35,7 @@ export const Profile = styled(Flex)(
   css({
     '.avatar': {
       borderRadius: '50%',
-      border: `3px solid ${theme.colors.accent} !important`
+      border: `3px solid ${colors.accent} !important`
     }
   })
 )

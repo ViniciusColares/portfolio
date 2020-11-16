@@ -5,9 +5,9 @@ import { linearGradient } from 'polished'
 import styled from 'styled-components'
 import css from '@styled-system/css'
 
-import { Heading } from 'src/components/Typo'
-import { Text } from 'src/components/Typo'
-import { theme, medias } from 'src/styles/theme'
+import { Heading } from '@components/Typo'
+import { Text } from '@components/Typo'
+import { colors, medias } from '@styles/theme'
 
 import UnderConstructionSVG from '@public/assets/under_construction.svg'
 
@@ -22,12 +22,9 @@ export const Template = styled('section')(
     alignItems: 'center',
     height: '100vh',
     ...linearGradient({
-      colorStops: [
-        `${theme.colors.primary1} 20%`,
-        `${theme.colors.primary2} 80%`
-      ],
+      colorStops: [`${colors.primary1} 20%`, `${colors.primary2} 80%`],
       toDirection: 'to bottom left',
-      fallback: theme.colors.primary1
+      fallback: colors.primary1
     }),
     [medias('sm')]: {
       '&::before, &::after': {
@@ -67,12 +64,9 @@ export const Page = styled('section')(
     overflow: 'auto',
     zIndex: 1,
     ...linearGradient({
-      colorStops: [
-        `${theme.colors.primary1} 20%`,
-        `${theme.colors.primary2} 90%`
-      ],
+      colorStops: [`${colors.primary1} 20%`, `${colors.primary2} 90%`],
       toDirection: 'to bottom',
-      fallback: theme.colors.primary1
+      fallback: colors.primary1
     }),
     '&::before': {
       content: "''",
