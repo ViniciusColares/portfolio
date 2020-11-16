@@ -12,6 +12,7 @@ import MenuIcon from '@public/assets/icons/menu.svg'
 import CloseIcon from '@public/assets/icons/close.svg'
 
 import { Heading } from '@components/Typo'
+import Context from '@components/Menu'
 import { colors, medias } from '@styles/theme'
 import { toggleMenu } from '@store/context'
 
@@ -20,6 +21,7 @@ const Main = styled(motion.main)(
     position: 'absolute',
     display: 'flex',
     flexDirection: 'column',
+    justifyContent: 'flex-start',
     alignItems: 'center',
     width: '100%',
     height: '100%',
@@ -36,17 +38,6 @@ const Main = styled(motion.main)(
       borderRadius: '16px !important',
       boxShadow: '20px 20px 20px rgba(0,0,0,0.3) !important'
     }
-  })
-)
-
-const Page = styled('section')(
-  css({
-    position: 'relative',
-    display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    width: '100%',
-    height: '100%'
   })
 )
 
@@ -150,6 +141,7 @@ const PageLayout = ({
 
   return (
     <AnimatePresence>
+      <Context />
       <Main
         key={asPath}
         variants={variants}
@@ -158,32 +150,30 @@ const PageLayout = ({
         exit="exit"
         transition={{ type: 'spring', damping: 15 }}
       >
-        <Page>
-          <Head>
-            <title>Vinícius Colares</title>
-          </Head>
-          {!noHeader && (
-            <Header>
-              {!isMediumUp && (
-                <MenuTrigger
-                  className="menu-trigger"
-                  onClick={() => setToggleMenu(!isOpen)}
-                >
-                  {isOpen ? (
-                    <Close width={26} height={26} />
-                  ) : (
-                    <Menu width={26} height={26} />
-                  )}
-                  <Heading fontSize="0.5rem" mt="3px">
-                    menu
-                  </Heading>
-                </MenuTrigger>
-              )}
-              <PageTitle>{pageTitle}</PageTitle>
-            </Header>
-          )}
-          {children}
-        </Page>
+        <Head>
+          <title>Vinícius Colares</title>
+        </Head>
+        {!noHeader && (
+          <Header>
+            {!isMediumUp && (
+              <MenuTrigger
+                className="menu-trigger"
+                onClick={() => setToggleMenu(!isOpen)}
+              >
+                {isOpen ? (
+                  <Close width={26} height={26} />
+                ) : (
+                  <Menu width={26} height={26} />
+                )}
+                <Heading fontSize="0.5rem" mt="3px">
+                  menu
+                </Heading>
+              </MenuTrigger>
+            )}
+            <PageTitle>{pageTitle}</PageTitle>
+          </Header>
+        )}
+        {children}
       </Main>
     </AnimatePresence>
   )

@@ -43,9 +43,13 @@ const GlobalStyles = createGlobalStyle`
     color: ${theme.colors.contrast};
   }
   html, body,#__next{
-    width: 100%;
-    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
     overflow: hidden;
+    height: 100%;
+    width: 100%;
   }
   main{
     display: flex;

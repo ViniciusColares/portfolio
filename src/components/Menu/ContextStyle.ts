@@ -6,10 +6,10 @@ import LogoIcon from '@public/assets/icons/logo.svg'
 
 export const Wrapper = styled('section')(
   css({
+    position: 'absolute',
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'relative',
     bg: 'accent',
     width: '100vw',
     height: '100vh',

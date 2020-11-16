@@ -10,9 +10,9 @@ import ContactIcon from '@public/assets/icons/contact.svg'
 
 import { toggleMenu } from '@store/context'
 
-import * as SC from './MenuStyle'
+import * as SC from './ContextStyle'
 
-const Menu = () => {
+const Context = () => {
   const [, setToggleMenu] = useRecoilState(toggleMenu)
   const { asPath } = useRouter()
   const { home, profile, apps, contact } = {
@@ -70,4 +70,4 @@ const Menu = () => {
   )
 }
 
-export default Menu
+export default Context
