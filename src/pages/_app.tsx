@@ -5,8 +5,9 @@ import { ThemeProvider } from 'styled-components'
 
 import GlobalStyles from '@styles/global'
 import { theme } from '@styles/theme'
+import { AnimatePresence } from 'framer-motion'
 
-const App = ({ Component, pageProps }: AppProps) => {
+const App = ({ Component, pageProps, router }: AppProps) => {
   return (
     <RecoilRoot>
       <ThemeProvider theme={theme}>
@@ -47,7 +48,9 @@ const App = ({ Component, pageProps }: AppProps) => {
           <meta name="theme-color" content="#290759" />
         </Head>
         <GlobalStyles />
-        <Component {...pageProps} />
+        <AnimatePresence>
+          <Component key={router.route} {...pageProps} />
+        </AnimatePresence>
       </ThemeProvider>
     </RecoilRoot>
   )

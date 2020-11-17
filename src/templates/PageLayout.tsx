@@ -1,12 +1,11 @@
 import React, { ReactNode } from 'react'
 import Head from 'next/head'
-import { useRouter } from 'next/router'
 import styled from 'styled-components'
 import { useRecoilState } from 'recoil'
 import { compose, layout } from 'styled-system'
 import css from '@styled-system/css'
 import { useMediaQuery } from 'react-responsive'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion } from 'framer-motion'
 
 import MenuIcon from '@public/assets/icons/menu.svg'
 import CloseIcon from '@public/assets/icons/close.svg'
@@ -105,14 +104,13 @@ const PageLayout = ({
   children: ReactNode[]
 }) => {
   const [isOpen, setToggleMenu] = useRecoilState(toggleMenu)
-  const { asPath } = useRouter()
   const isMediumUp = useMediaQuery({
     query: medias('sm').replace('@media ', '')
   })
   const variants = {
     initial: {
       scale: 0,
-      translateX: '0%',
+      translateX: isMediumUp ? '0' : '100%',
       translateY: isMediumUp ? '120%' : '0%',
       borderRadius: '16px',
       border: '0px solid white'
@@ -134,21 +132,21 @@ const PageLayout = ({
       boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.3)'
     },
     exit: {
-      translateX: '0%',
+      scale: 0,
+      translateX: isMediumUp ? '0' : '100%',
       translateY: isMediumUp ? '-120%' : '0%'
     }
   }
 
   return (
-    <AnimatePresence>
+    <>
       <Context />
       <Main
-        key={asPath}
         variants={variants}
         initial="initial"
         animate={isOpen ? 'open' : 'closed'}
         exit="exit"
-        transition={{ type: 'spring', damping: 15 }}
+        transition={{ type: 'spring', damping: 13 }}
       >
         <Head>
           <title>Vinícius Colares</title>
@@ -175,7 +173,7 @@ const PageLayout = ({
         )}
         {children}
       </Main>
-    </AnimatePresence>
+    </>
   )
 }
 

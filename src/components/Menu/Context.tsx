@@ -29,7 +29,7 @@ const Context = () => {
           <SC.Nav>
             <Link href={home}>
               <SC.MenuListItem
-                onClick={() => setToggleMenu(!toggleMenu)}
+                onClick={() => setToggleMenu(false)}
                 active={asPath === home}
               >
                 <LogoIcon height="33px" />
@@ -38,7 +38,7 @@ const Context = () => {
             </Link>
             <Link href={profile}>
               <SC.MenuListItem
-                onClick={() => setToggleMenu(!toggleMenu)}
+                onClick={() => setToggleMenu(false)}
                 active={asPath === profile}
               >
                 <ProfileIcon height="33px" />
@@ -47,7 +47,7 @@ const Context = () => {
             </Link>
             <Link href={apps}>
               <SC.MenuListItem
-                onClick={() => setToggleMenu(!toggleMenu)}
+                onClick={() => setToggleMenu(false)}
                 active={asPath === apps}
               >
                 <CodeIcon height="30px" />
@@ -56,7 +56,7 @@ const Context = () => {
             </Link>
             <Link href={contact}>
               <SC.MenuListItem
-                onClick={() => setToggleMenu(!toggleMenu)}
+                onClick={() => setToggleMenu(false)}
                 active={asPath === contact}
               >
                 <ContactIcon height="30px" />
