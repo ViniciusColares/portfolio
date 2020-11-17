@@ -34,8 +34,7 @@ const Main = styled(motion.main)(
       borderWidth: '4px !important',
       borderStyle: 'solid !important',
       borderColor: 'white !important',
-      borderRadius: '16px !important',
-      boxShadow: '20px 20px 20px rgba(0,0,0,0.3) !important'
+      borderRadius: '16px !important'
     }
   })
 )
@@ -129,7 +128,9 @@ const PageLayout = ({
       translateX: '0%',
       borderRadius: '0px',
       border: '0px solid white',
-      boxShadow: '0px 0px 0px rgba(0, 0, 0, 0.3)'
+      boxShadow: isMediumUp
+        ? '20px 20px 20px rgba(0,0,0,0.3)'
+        : '0px 0px 0px rgba(0, 0, 0, 0.3)'
     },
     exit: {
       scale: 0,
@@ -146,7 +147,7 @@ const PageLayout = ({
         initial="initial"
         animate={isOpen ? 'open' : 'closed'}
         exit="exit"
-        transition={{ type: 'spring', damping: 13 }}
+        transition={{ type: 'spring', damping: 16 }}
       >
         <Head>
           <title>Vinícius Colares</title>
