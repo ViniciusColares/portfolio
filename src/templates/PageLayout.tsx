@@ -100,7 +100,7 @@ const PageLayout = ({
 }: {
   noHeader?: boolean
   pageTitle?: string
-  children: ReactNode[]
+  children: ReactNode | ReactNode[]
 }) => {
   const [isOpen, setToggleMenu] = useRecoilState(toggleMenu)
   const isMediumUp = useMediaQuery({
