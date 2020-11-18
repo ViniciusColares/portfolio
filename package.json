@@ -40,7 +40,7 @@
     "react-icons": "^3.11.0",
     "react-responsive": "^8.1.1",
     "recoil": "^0.1.2",
-    "styled-components": "^5.1.0",
+    "styled-components": "^5.2.1",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {

@@ -28,7 +28,7 @@
       }
     ],
     [
-      "styled-components",
+      "babel-plugin-styled-components",
       {
         "ssr": true,
         "displayName": true,
@@ -44,7 +44,13 @@
   ],
   "env": {
     "test": {
-      "presets": [["@babel/preset-env"], "next/babel"]
+      "presets": [["@babel/preset-env"], "next/babel"],
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          { "ssr": false, "displayname": false }
+        ]
+      ]
     }
   }
 }
