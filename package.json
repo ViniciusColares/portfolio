@@ -6,12 +6,12 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint './src/**/*.{js,ts,tsx}' --max-warnings=0",
     "test": "jest",
     "test:watch": "yarn test --watch",
+    "lint": "eslint './src/**/*.{js,ts,tsx}' --max-warnings=0",
     "storybook": "start-storybook -s ./public -p 6006 --no-dll",
     "build-storybook": "build-storybook -s ./public --no-dll",
-    "commit": ""
+    "generate": "yarn plop --plopfile generators/plopfile.js"
   },
   "husky": {
     "hooks": {
