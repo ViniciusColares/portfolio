@@ -11,7 +11,7 @@ import MenuIcon from '@public/assets/icons/menu.svg'
 import CloseIcon from '@public/assets/icons/close.svg'
 
 import { Heading } from '@components/Typo'
-import Context from '@components/Menu'
+import Context from '@components/Context'
 import { colors, medias } from '@styles/theme'
 import { toggleMenu } from '@store/context'
 

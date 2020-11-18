@@ -3,9 +3,8 @@
     [
       "next/babel",
       {
-        "preset-env": {
-          "useBuiltIns": "usage"
-        }
+        "useBuiltIns": true,
+        "corejs": "3"
       }
     ],
     ["@babel/preset-typescript"]
@@ -45,7 +44,7 @@
   ],
   "env": {
     "test": {
-      "presets": [["@babel/preset-env", { "modules": false }], "next/babel"]
+      "presets": [["@babel/preset-env"], "next/babel"]
     }
   }
 }

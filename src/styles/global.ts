@@ -5,8 +5,9 @@ import { theme } from '@styles/theme'
 const GlobalStyles = createGlobalStyle`
   ${normalize()}
   *{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
-
     scrollbar-color: ${theme.colors.accent} transparent;
     scrollbar-width: thin;
     &::-webkit-scrollbar {
@@ -33,8 +34,6 @@ const GlobalStyles = createGlobalStyle`
   }
   body {
     position: relative;
-    margin: 0;
-    padding: 0;
     outline: none;
     font-size: 62.5%;
     font-weight: 400;
