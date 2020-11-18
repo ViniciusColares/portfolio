@@ -1,19 +1,19 @@
-const withPWA = require("next-pwa");
-const withImages = require("next-images");
+const withPWA = require('next-pwa')
+// const withImages = require('next-images')
+
+const isProd = process.env.NODE_ENV === 'production'
 
 const settings = {
   env: {
-    underConstruction: false,
+    underConstruction: false
   },
   devIndicators: {
-    autoPrerender: false,
+    autoPrerender: false
   },
   pwa: {
-    dest: "public",
-  },
-};
+    dest: 'public',
+    disable: !isProd
+  }
+}
 
-module.exports =
-  process.env.NODE_ENV === "development"
-    ? withImages(settings)
-    : withImages(withPWA(settings));
+module.exports = withPWA(settings)
