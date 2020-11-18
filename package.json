@@ -12,7 +12,7 @@
     "next": "^10.0.0",
     "next-images": "^1.4.0",
     "next-pwa": "^2.3.3",
-    "polished": "^3.5.1",
+    "polished": "^4.0.3",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-spring": "^8.0.27",
