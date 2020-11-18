@@ -10,11 +10,13 @@
     "test": "jest",
     "test:watch": "yarn test --watch",
     "storybook": "start-storybook -s ./public -p 6006 --no-dll",
-    "build-storybook": "build-storybook -s ./public --no-dll"
+    "build-storybook": "build-storybook -s ./public --no-dll",
+    "commit": "git-cz"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
   },
   "lint-staged": {
@@ -43,6 +45,8 @@
   "devDependencies": {
     "@babel/core": "^7.12.3",
     "@babel/preset-typescript": "^7.12.1",
+    "@commitlint/cli": "^11.0.0",
+    "@commitlint/config-conventional": "^11.0.0",
     "@storybook/addon-actions": "^6.0.28",
     "@storybook/addon-centered": "^5.3.21",
     "@storybook/addon-essentials": "^6.0.28",
@@ -66,6 +70,8 @@
     "babel-plugin-module-resolver": "^4.0.0",
     "babel-plugin-root-import": "^6.5.0",
     "babel-plugin-styled-components": "^1.11.1",
+    "commitizen": "^4.2.2",
+    "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
     "eslint-plugin-prettier": "^3.1.4",
@@ -78,5 +84,10 @@
     "react-is": "^17.0.1",
     "typescript": "^4.0.5",
     "typescript-plugin-styled-components": "^1.4.4"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
   }
 }
