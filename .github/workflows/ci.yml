@@ -1,10 +1,11 @@
 name: ci
-on: [pull_request]
+on:
+  pull_request:
+    branches:
+      - develop
 
 jobs:
   build:
-    branches:
-      - develop
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
