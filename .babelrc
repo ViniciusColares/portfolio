@@ -1,14 +1,5 @@
 {
-  "presets": [
-    [
-      "next/babel",
-      {
-        "useBuiltIns": true,
-        "corejs": "3"
-      }
-    ],
-    ["@babel/preset-typescript"]
-  ],
+  "presets": ["next/babel", "@babel/preset-typescript"],
   "plugins": [
     ["inline-react-svg"],
     ["@babel/syntax-dynamic-import"],
@@ -34,17 +25,10 @@
         "displayName": true,
         "preprocess": false
       }
-    ],
-    [
-      "@babel/plugin-transform-react-jsx",
-      {
-        "pragmaFrag": "React.Fragment"
-      }
     ]
   ],
   "env": {
     "test": {
-      "presets": [["@babel/preset-env"], "next/babel"],
       "plugins": [
         [
           "babel-plugin-styled-components",
