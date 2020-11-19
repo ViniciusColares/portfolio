@@ -29,10 +29,8 @@
   "dependencies": {
     "@storybook/addon-a11y": "^6.0.28",
     "@types/react-responsive": "^8.0.2",
-    "core-js": "^3.7.0",
     "framer-motion": "^2.9.4",
     "next": "^10.0.2",
-    "next-images": "^1.4.0",
     "next-pwa": "^3.1.5",
     "polished": "^3.5.1",
     "react": "^16.14.0",
@@ -40,7 +38,7 @@
     "react-icons": "^3.11.0",
     "react-responsive": "^8.1.1",
     "recoil": "^0.1.2",
-    "styled-components": "^5.1.0",
+    "styled-components": "^5.2.1",
     "styled-system": "^5.1.5"
   },
   "devDependencies": {
@@ -72,6 +70,7 @@
     "babel-plugin-root-import": "^6.5.0",
     "babel-plugin-styled-components": "^1.11.1",
     "commitizen": "^4.2.2",
+    "core-js": "^3.7.0",
     "cz-conventional-changelog": "3.3.0",
     "eslint": "^7.13.0",
     "eslint-config-prettier": "^6.15.0",
