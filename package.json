@@ -46,7 +46,7 @@
     "@babel/preset-typescript": "^7.12.1",
     "@commitlint/cli": "^11.0.0",
     "@commitlint/config-conventional": "^11.0.0",
-    "@storybook/addon-actions": "^6.0.28",
+    "@storybook/addon-actions": "^6.1.0",
     "@storybook/addon-centered": "^5.3.21",
     "@storybook/addon-essentials": "^6.0.28",
     "@storybook/addon-links": "^6.0.28",
