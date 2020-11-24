@@ -27,7 +27,7 @@
     ]
   },
   "dependencies": {
-    "@storybook/addon-a11y": "^6.1.0",
+    "@storybook/addon-a11y": "^6.1.4",
     "@types/react-responsive": "^8.0.2",
     "framer-motion": "^2.9.4",
     "next": "^10.0.2",
