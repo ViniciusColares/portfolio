@@ -50,7 +50,7 @@ const CustomGrid = styled('div')<GridFC>(
   compose(space, layout, flexbox)
 )
 interface Grid extends GridProps {
-  tag?: 'div' | 'section' | 'form'
+  tag?: 'div' | 'section' | 'form' | 'aside'
   children?: ReactNode
 }
 const Flex = ({

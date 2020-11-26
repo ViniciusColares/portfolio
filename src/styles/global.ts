@@ -50,11 +50,6 @@ const GlobalStyles = createGlobalStyle`
     height: 100%;
     width: 100%;
   }
-  main{
-    display: flex;
-    justify-content: center;
-    align-items: center
-  }
 `
 
 export default GlobalStyles
