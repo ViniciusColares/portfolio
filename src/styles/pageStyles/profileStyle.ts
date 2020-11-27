@@ -13,6 +13,7 @@ export const SectionTitle = styled(Heading)(
     color: 'accent',
     alignItems: 'center',
     width: 'fit-content',
+    padding: '3px 0',
     marginBottom: 2,
     '> svg': {
       marginRight: 1
@@ -21,11 +22,11 @@ export const SectionTitle = styled(Heading)(
       content: "''",
       position: 'absolute',
       width: 'calc(100% + 40px)',
-      height: '30px',
+      height: '100%',
       borderRadius: '10px',
       bg: 'primaryDark',
       left: '-30px',
-      bottom: '-3px',
+      bottom: '0',
       zIndex: '-1'
     }
   })
@@ -33,6 +34,7 @@ export const SectionTitle = styled(Heading)(
 
 export const Profile = styled(Flex)(
   css({
+    justifyContent: 'center',
     '.avatar': {
       borderRadius: '50%',
       border: `3px solid ${colors.accent} !important`
@@ -52,9 +54,8 @@ export const SectionSubTitle = styled(Heading)(
   })
 )
 
-export const Info = styled('div')(
+export const Info = styled(Flex)(
   css({
-    display: 'flex',
     flexDirection: 'column',
     justifyContent: 'center',
     marginLeft: 2,
@@ -78,9 +79,10 @@ export const Info = styled('div')(
   })
 )
 
-export const Intro = styled('div')(
+export const Intro = styled(Flex)(
   css({
-    width: '100%',
+    flexDirection: 'column',
+    flex: '1 auto',
     padding: '0 15px',
     '> p': {
       paddingRight: 2,
@@ -91,11 +93,11 @@ export const Intro = styled('div')(
   })
 )
 
-export const Knowledge = styled('div')(
+export const Knowledge = styled(Flex)(
   css({
-    width: '100%',
+    flexDirection: 'column',
+    flex: '1 auto',
     padding: '0 15px',
-    marginTop: 5,
     '> ul': {
       listStyle: 'none outside none',
       paddingLeft: 0,
@@ -121,18 +123,17 @@ export const Knowledge = styled('div')(
   })
 )
 
-export const Timeline = styled('div')(
+export const Timeline = styled(Flex)(
   css({
-    width: '100%',
+    flexDirection: 'column',
+    flex: '1 auto',
     padding: '0 15px',
-    marginTop: 5,
     ul: {
       paddingLeft: 3,
-      marginTop: 2,
       listStyle: 'none outside none',
       li: {
         position: 'relative',
-        pb: 5,
+        '&:not(:last-of-type)': { pb: 5 },
         '&::before': {
           left: '-15px',
           top: '10px',
@@ -200,23 +201,22 @@ export const AdditionalInfo = styled(Flex)(
     padding: '0 15px',
     p: {
       m: 0,
-      mb: 3,
       fontSize: 1,
       lineHeight: 1.5
     }
   })
 )
 
-export const DuolingoSection = styled('aside')(
+export const DuolingoSection = styled(Flex)(
   css({
-    display: 'flex',
     flexDirection: 'column',
+    alignSelf: 'center',
     width: 'calc(100% - 30px)',
     background: '#F1F1F1',
     boxShadow: '0px 6px 6px rgba(0, 0, 0, 0.35)',
     borderRadius: '6px',
     p: 3,
-    my: 6,
+    my: 5,
     header: {
       display: 'flex',
       width: 'fit-content',

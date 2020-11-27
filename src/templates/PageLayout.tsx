@@ -21,7 +21,6 @@ const Main = styled(motion.main)(
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    alignItems: 'center',
     width: '100%',
     height: '100%',
     overflow: 'auto',
