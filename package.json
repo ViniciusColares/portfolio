@@ -49,7 +49,7 @@
     "@storybook/addon-actions": "^6.0.28",
     "@storybook/addon-centered": "^5.3.21",
     "@storybook/addon-essentials": "^6.1.1",
-    "@storybook/addon-links": "^6.0.28",
+    "@storybook/addon-links": "^6.1.9",
     "@storybook/react": "^6.1.1",
     "@testing-library/jest-dom": "^5.11.5",
     "@testing-library/react": "^11.2.0",
