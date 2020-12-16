@@ -6,11 +6,11 @@ export const colors = {
   primaryDark: '#290759',
   accent: '#FFB800',
   accentDark: '#BB8B0E',
-  gray: '#C1BDCB',
-  grayDark: '#938CA3',
-  grayLight: '#E9D9FF',
-  contrast: '#FFFFFF',
-  black: '#444'
+  gray25: '#D3D3D3',
+  gray50: '#938CA3',
+  gray75: '#47454B',
+  gray100: '#311B38',
+  contrast: '#FFFFFF'
 }
 
 export const fonts = {

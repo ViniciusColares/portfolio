@@ -35,6 +35,7 @@ export const SectionTitle = styled(Heading)(
 export const Profile = styled(Flex)(
   css({
     justifyContent: 'center',
+    height: '300px',
     '.avatar': {
       borderRadius: '50%',
       border: `3px solid ${colors.accent} !important`
@@ -155,11 +156,11 @@ export const Timeline = styled(Flex)(
           position: 'absolute'
         },
         '&:last-of-type::after': {
-          left: '3px',
-          top: '22px',
+          left: '4px',
+          top: '24px',
           width: '0',
           height: '0',
-          fontSize: '3.2em',
+          fontSize: '53px',
           lineHeight: 0,
           content: "'...'",
           color: 'contrast',
@@ -240,7 +241,7 @@ export const DuolingoSection = styled(Flex)(
       border: '4px solid #78C800 !important'
     },
     span: {
-      color: 'black'
+      color: 'gray75'
     }
   })
 )

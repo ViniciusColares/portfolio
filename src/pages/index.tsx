@@ -24,12 +24,12 @@ const Home = () => {
         </Heading>
       </SC.MainHeading>
 
-      <Flex my="3vh" mx="3vw">
+      <Flex my="3vh" mx="3vw" justifyContent="center">
         <Image
           src="/assets/home_illustrations.svg"
-          alt="Picture of the author"
-          width={450}
-          height={450}
+          alt="Dummy building a web page"
+          width={350}
+          height={350}
         />
       </Flex>
 
