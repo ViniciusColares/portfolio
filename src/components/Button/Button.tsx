@@ -49,9 +49,10 @@ const Button = ({
 }
 
 export interface ButtonProps {
-  type: 'button' | 'submit' | 'reset'
   name: string
+  onClick: () => Promise<boolean>
   isLoading?: boolean
+  type?: 'button' | 'submit' | 'reset'
   size?: 'small' | 'big'
   icon?: React.ComponentType<IconBaseProps>
 }
