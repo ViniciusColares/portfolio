@@ -52,10 +52,11 @@ const CustomText = styled.p<T>(
       color: 'accent'
     }
   }),
+  ({ color }) => color && css({ color }),
   compose(space, color, typography)
 )
 interface Text extends SpaceProps, TypographyProps, ColorProps {
-  tag?: 'p' | 'span'
+  tag?: 'p' | 'span' | 'a'
   color?: string
   children: ReactNode
 }

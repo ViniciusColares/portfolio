@@ -17,3 +17,9 @@ Basic.args = {
   name: 'Basic button'
 }
 Basic.argTypes = { onClick: { action: 'clicked' } }
+
+export const Loading = Template.bind({})
+Loading.args = {
+  name: 'Loading button',
+  isLoading: true
+}

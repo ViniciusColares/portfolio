@@ -1,17 +1,14 @@
 import React from 'react'
 import { IconBaseProps } from 'react-icons'
+import { VscLoading } from 'react-icons/vsc'
+import { Rotate } from '@styles/animations'
 
 import { ButtonStyle } from './ButtonStyle'
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: string | string[]
-  isLoading?: boolean
-  icon?: React.ComponentType<IconBaseProps>
-  size?: string
-  state?: string
-  fill?: string
-  name: string
+const animations = {
+  initial: {
+    width: 'auto'
+  }
 }
 
 const Button = ({
@@ -20,17 +17,44 @@ const Button = ({
   icon: Icon,
   isLoading = false,
   ...restProps
-}: ButtonProps) => (
-  <ButtonStyle type={type} {...restProps}>
-    {isLoading ? (
-      'carregando'
-    ) : (
-      <>
-        {Icon && <Icon size="24px" color="#fff" />}
-        {name}
-      </>
-    )}
-  </ButtonStyle>
-)
+}: ButtonProps) => {
+  return (
+    <ButtonStyle
+      animate={'initial'}
+      variants={animations}
+      transition={{ type: 'spring' }}
+      type={type}
+      disabled={isLoading}
+      {...restProps}
+    >
+      {isLoading ? (
+        <Rotate
+          animate={{ rotate: 360 }}
+          transition={{
+            loop: Infinity,
+            ease: 'linear',
+            duration: 1
+          }}
+        >
+          <VscLoading size="23px" color="#938CA3" />
+        </Rotate>
+      ) : (
+        <>
+          {Icon && <Icon size="24px" color="#fff" />}
+          {name}
+        </>
+      )}
+    </ButtonStyle>
+  )
+}
+
+export interface ButtonProps {
+  name: string
+  onClick: () => Promise<boolean>
+  isLoading?: boolean
+  type?: 'button' | 'submit' | 'reset'
+  size?: 'small' | 'big'
+  icon?: React.ComponentType<IconBaseProps>
+}
 
 export default Button

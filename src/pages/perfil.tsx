@@ -287,20 +287,14 @@ const Perfil = ({ duolingo }: IPerfil) => {
         <Flex justifyContent="space-around">
           <Flex flexDirection="column" alignItems="center" mt={4}>
             <SC.TotalExp>
-              <Text
-                tag="span"
-                fontSize={2}
-                fontWeight={500}
-                lineHeight={0.8}
-                color="black"
-              >
+              <Text tag="span" fontSize={2} fontWeight={500} lineHeight={0.8}>
                 Total Exp
               </Text>
               <Text
                 tag="span"
                 fontSize={2}
                 fontWeight={600}
-                color="primaryDark"
+                color="#78C800 !important"
               >
                 {duolingo.totalXp}
               </Text>
@@ -316,7 +310,13 @@ const Perfil = ({ duolingo }: IPerfil) => {
               height={90}
             />
 
-            <Text tag="span" fontSize={2} fontWeight={600} color="black" mb={1}>
+            <Text
+              tag="span"
+              fontSize={2}
+              fontWeight={600}
+              color="gray100"
+              mb={1}
+            >
               Vinícius Colares
             </Text>
 
@@ -371,6 +371,13 @@ const Perfil = ({ duolingo }: IPerfil) => {
           </SC.LangInfo>
         </Flex>
       </SC.DuolingoSection>
+      <a
+        href="https://invite.duolingo.com/BDHTZTB5CWWKTSJQSN5RY2L3EU"
+        target="_blank"
+        rel="noreferrer"
+      >
+        Aprenda idiomas com Duolingo você também
+      </a>
     </PageLayout>
   )
 }

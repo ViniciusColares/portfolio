@@ -13,7 +13,7 @@ import * as SC from '@styles/pageStyles/homeStyle'
 const Home = () => {
   const router = useRouter()
 
-  return process.env.underConstruction ? (
+  return process.env.UNDER_CONSTRUCTION ? (
     <UnderConstruction />
   ) : (
     <PageLayout pageTitle="início">
@@ -24,12 +24,12 @@ const Home = () => {
         </Heading>
       </SC.MainHeading>
 
-      <Flex my="3vh" mx="3vw">
+      <Flex my="3vh" mx="3vw" justifyContent="center">
         <Image
           src="/assets/home_illustrations.svg"
-          alt="Picture of the author"
-          width={450}
-          height={450}
+          alt="Dummy building a web page"
+          width={350}
+          height={350}
         />
       </Flex>
 
