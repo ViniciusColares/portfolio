@@ -48,8 +48,8 @@ const Button = ({
   )
 }
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps {
+  type: 'button' | 'submit' | 'reset'
   name: string
   isLoading?: boolean
   size?: 'small' | 'big'

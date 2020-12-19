@@ -13,7 +13,7 @@ import * as SC from '@styles/pageStyles/homeStyle'
 const Home = () => {
   const router = useRouter()
 
-  return process.env.underConstruction ? (
+  return process.env.UNDER_CONSTRUCTION ? (
     <UnderConstruction />
   ) : (
     <PageLayout pageTitle="início">
