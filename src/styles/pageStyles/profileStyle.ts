@@ -3,39 +3,11 @@ import css from '@styled-system/css'
 import Flex from '@components/Flex'
 import { Heading } from '@components/Typo'
 import { colors } from '@styles/theme'
-
-export const SectionTitle = styled(Heading)(
-  css({
-    position: 'relative',
-    display: 'flex',
-    fontWeight: 400,
-    fontSize: 2,
-    color: 'accent',
-    alignItems: 'center',
-    width: 'fit-content',
-    padding: '3px 0',
-    marginBottom: 2,
-    '> svg': {
-      marginRight: 1
-    },
-    '&::after': {
-      content: "''",
-      position: 'absolute',
-      width: 'calc(100% + 40px)',
-      height: '100%',
-      borderRadius: '10px',
-      bg: 'primaryDark',
-      left: '-30px',
-      bottom: '0',
-      zIndex: '-1'
-    }
-  })
-)
+import { rgba } from 'polished'
 
 export const Profile = styled(Flex)(
   css({
     justifyContent: 'center',
-    height: '300px',
     '.avatar': {
       borderRadius: '50%',
       border: `3px solid ${colors.accent} !important`
@@ -84,7 +56,11 @@ export const Intro = styled(Flex)(
   css({
     flexDirection: 'column',
     flex: '1 auto',
-    padding: '0 15px',
+    mx: 3,
+    p: 3,
+    borderRadius: '8px',
+    bg: rgba(colors.primaryDark, 0.25),
+    backdropFilter: 'blur(3px)',
     '> p': {
       paddingRight: 2,
       '> span': {
@@ -96,30 +72,16 @@ export const Intro = styled(Flex)(
 
 export const Knowledge = styled(Flex)(
   css({
-    flexDirection: 'column',
+    flexDirection: 'row',
+    flexWrap: 'wrap',
     flex: '1 auto',
-    padding: '0 15px',
-    '> ul': {
-      listStyle: 'none outside none',
-      paddingLeft: 0,
-      columnCount: '3',
-      columnFill: 'balance',
-      mb: 0,
-      '> li': {
-        fontFamily: 'text',
-        display: 'flex',
-        alignItems: 'center',
-        marginTop: 0,
-        marginBottom: 3,
-        color: 'accent',
-        fontWeight: 500,
-        fontSize: 0,
-        '> svg': {
-          width: '20px',
-          height: '20px',
-          marginRight: 2
-        }
-      }
+    bg: rgba(colors.primaryDark, 0.25),
+    backdropFilter: 'blur(3px)',
+    svg: {
+      my: 2,
+      mr: 3,
+      width: '24px',
+      height: '24px'
     }
   })
 )

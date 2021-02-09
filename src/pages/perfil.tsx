@@ -3,23 +3,32 @@ import Image from 'next/image'
 
 import PageLayout from '@templates/PageLayout'
 
-import HtmlIcon from '@public/assets/icons/html.svg'
-import CssIcon from '@public/assets/icons/css.svg'
-import JavascriptIcon from '@public/assets/icons/javascript.svg'
-import ReactIcon from '@public/assets/icons/react.svg'
-import ReduxIcon from '@public/assets/icons/redux.svg'
-import PostgresqlIcon from '@public/assets/icons/postgresql.svg'
-import DockerIcon from '@public/assets/icons/docker.svg'
-import GitIcon from '@public/assets/icons/git.svg'
-import NpmIcon from '@public/assets/icons/npm.svg'
-import SassIcon from '@public/assets/icons/sass.svg'
-import NodeIcon from '@public/assets/icons/node.svg'
-import WebpackIcon from '@public/assets/icons/webpack.svg'
-import JestIcon from '@public/assets/icons/jest.svg'
-import LinuxIcon from '@public/assets/icons/linux.svg'
-import WindowsIcon from '@public/assets/icons/windows.svg'
-import Magnifier from '@public/assets/icons/magnifier.svg'
-import Talk from '@public/assets/icons/talk.svg'
+import {
+  SiHtml5,
+  SiCss3,
+  SiJavascript,
+  SiReact,
+  SiRedux,
+  SiPostgresql,
+  SiDocker,
+  SiNpm,
+  SiSass,
+  SiNodeDotJs,
+  SiWebpack,
+  SiJest,
+  SiLinux,
+  SiWindows,
+  SiGit,
+  SiGithub,
+  SiRuby,
+  SiGulp,
+  SiStrapi,
+  SiTravisci,
+  SiMysql,
+  SiMongodb,
+  SiNextDotJs
+} from 'react-icons/si'
+import { RiFindReplaceLine, RiKakaoTalkFill } from 'react-icons/ri'
 
 import Crowns from '@public/assets/duolingo/crowns.svg'
 import Streak from '@public/assets/duolingo/streak.svg'
@@ -94,7 +103,6 @@ const Perfil = ({ duolingo }: IPerfil) => {
       </SC.Profile>
 
       <SC.Intro tag="section" mb={5}>
-        <SC.SectionTitle>O que eu faço?</SC.SectionTitle>
         <Text mb={0}>
           Desenvolvedor web há mais de <span>10 anos</span>, construindo
           soluções em tecnologia, interfaces e uma experiência{' '}
@@ -105,60 +113,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
         </Text>
       </SC.Intro>
 
-      <SC.Knowledge tag="section" mb={5}>
-        <SC.SectionTitle>Conhecimento</SC.SectionTitle>
-        <ul>
-          <li>
-            <HtmlIcon /> <span>HTML5</span>
-          </li>
-          <li>
-            <CssIcon /> <span>CSS3</span>
-          </li>
-          <li>
-            <JavascriptIcon /> <span>JavaScript</span>
-          </li>
-          <li>
-            <ReactIcon /> <span>React/Native</span>
-          </li>
-          <li>
-            <ReduxIcon /> <span>Redux</span>
-          </li>
-          <li>
-            <PostgresqlIcon /> <span>Postgresql</span>
-          </li>
-          <li>
-            <DockerIcon /> <span>Docker</span>
-          </li>
-          <li>
-            <GitIcon /> <span>Git</span>
-          </li>
-          <li>
-            <NpmIcon /> <span>Npm/Yarn</span>
-          </li>
-          <li>
-            <SassIcon /> <span>SASS</span>
-          </li>
-          <li>
-            <NodeIcon /> <span>Node.js</span>
-          </li>
-          <li>
-            <WebpackIcon /> <span>Webpack</span>
-          </li>
-          <li>
-            <JestIcon /> <span>Jest</span>
-          </li>
-          <li>
-            <LinuxIcon /> <span>Linux</span>
-          </li>
-          <li>
-            <WindowsIcon /> <span>Windows</span>
-          </li>
-        </ul>
-        <Text mb={0}>E aprendendo cada dia um pouco mais...</Text>
-      </SC.Knowledge>
-
       <SC.Timeline tag="section" mb={5}>
-        <SC.SectionTitle>Trajetória</SC.SectionTitle>
         <ul>
           <li>
             <Heading tag="h3">O início </Heading>
@@ -224,11 +179,36 @@ const Perfil = ({ duolingo }: IPerfil) => {
         </ul>
       </SC.Timeline>
 
+      <SC.Knowledge tag="section" mb={5}>
+        <SiHtml5 />
+        <SiCss3 />
+        <SiJavascript />
+        <SiReact />
+        <SiRedux />
+        <SiPostgresql />
+        <SiDocker />
+        <SiGit />
+        <SiNpm />
+        <SiSass />
+        <SiNodeDotJs />
+        <SiWebpack />
+        <SiJest />
+        <SiLinux />
+        <SiWindows />
+        <SiGithub />
+        <SiRuby />
+        <SiGulp />
+        <SiStrapi />
+        <SiTravisci />
+        <SiMysql />
+        <SiMongodb />
+        <SiNextDotJs />
+      </SC.Knowledge>
+
       <SC.AdditionalInfo tag="section" mb={5}>
-        <SC.SectionTitle>Um pouco mais fundo</SC.SectionTitle>
         <Flex flexDirection="column" mb={2}>
           <SC.SectionSubTitle tag="h2" mb={2}>
-            <Magnifier />
+            <RiFindReplaceLine />
             Curioso
           </SC.SectionSubTitle>
           <Text mb={0}>
@@ -243,7 +223,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
         </Flex>
         <Flex flexDirection="column" mb={2}>
           <SC.SectionSubTitle tag="h2" mb={2}>
-            <Talk />
+            <RiKakaoTalkFill />
             Comunicativo
           </SC.SectionSubTitle>
           <Text mb={0}>

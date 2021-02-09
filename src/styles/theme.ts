@@ -10,7 +10,8 @@ export const colors = {
   gray50: '#938CA3',
   gray75: '#47454B',
   gray100: '#311B38',
-  contrast: '#FFFFFF'
+  contrast: '#FFFFFF',
+  shadow: '#290759'
 }
 
 export const fonts = {
@@ -21,9 +22,9 @@ export const fonts = {
 export const fontSizes = [
   '0.8rem',
   '1rem',
-  '1.1rem',
-  '1.3rem',
-  '1.5rem',
+  '1.2rem',
+  '1.4rem',
+  '1.7rem',
   '2rem',
   '2.5rem',
   '3rem'

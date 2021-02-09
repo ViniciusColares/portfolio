@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Button it should render a loading button 1`] = `
-.c1 {
+.c2 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -17,134 +17,260 @@ exports[`Button it should render a loading button 1`] = `
 }
 
 .c0 {
+  position: relative;
+}
+
+.c1 {
+  font-size: 14px;
+  background-color: accent;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: text;
+  border-width: 1px;
+  padding: 8px 20px;
+  text-align: center;
+  border-radius: 8px;
+  color: primaryDark;
+  position: relative;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  white-space: nowrap;
+  border-style: solid;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  white-space: nowrap;
-  font-family: text;
-  background-color: accent;
-  font-size: 14px;
-  font-weight: 600;
-  color: primaryDark;
-  text-align: center;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  -webkit-transition: all .3s ease-out;
-  transition: all .3s ease-out;
+  -webkit-transition: all .15s ease;
+  transition: all .15s ease;
+  border-color: accentDark;
 }
 
-.c0:focus {
-  box-shadow: inset 0 0 0px 4px #BB8B0E;
+.c1:focus {
+  box-shadow: inset 0px 0px 0px 3px #BB8B0E;
 }
 
-.c0:hover {
-  background-color: #d69b00;
-  box-shadow: 0px 0px 6px rgba(170,140,210,0.9);
+.c1:focus:hover {
+  -webkit-transform: translateX(2px) translateY(2px);
+  -ms-transform: translateX(2px) translateY(2px);
+  transform: translateX(2px) translateY(2px);
 }
 
-.c0:disabled {
+.c1:hover {
+  -webkit-transform: translateX(2px) translateY(2px);
+  -ms-transform: translateX(2px) translateY(2px);
+  transform: translateX(2px) translateY(2px);
+}
+
+.c1:hover:active {
+  -webkit-transform: translateX(4px) translateY(4px);
+  -ms-transform: translateX(4px) translateY(4px);
+  transform: translateX(4px) translateY(4px);
+}
+
+.c1:active {
+  -webkit-transform: translateX(4px) translateY(4px);
+  -ms-transform: translateX(4px) translateY(4px);
+  transform: translateX(4px) translateY(4px);
+}
+
+.c1:disabled {
+  border-color: gray50;
   background-color: gray25;
   color: gray50;
   cursor: not-allowed;
 }
 
-.c0 > img {
+.c1:disabled:hover {
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+}
+
+.c1:disabled+div {
+  visibility: hidden;
+}
+
+.c1 > img {
   margin-right: 8px;
 }
 
-<button
+.c3 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: shadow;
+  border-radius: 8px;
+  border: 1px solid #290759;
+  -webkit-transform: translateY(4px) translateX(4px);
+  -ms-transform: translateY(4px) translateX(4px);
+  transform: translateY(4px) translateX(4px);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+<div
   class="c0"
-  data-testid="svgButton"
-  disabled=""
-  style="width: 0px;"
-  type="button"
 >
-  <div
+  <button
     class="c1"
+    data-testid="svgButton"
+    disabled=""
+    type="button"
   >
-    <svg
-      color="#938CA3"
-      fill="currentColor"
-      height="23px"
-      stroke="currentColor"
-      stroke-width="0"
-      style="color: rgb(147, 140, 163);"
-      viewBox="0 0 16 16"
-      width="23px"
-      xmlns="http://www.w3.org/2000/svg"
+    <div
+      class="c2"
     >
-      <path
-        d="M8 .75c.172 0 .333.034.484.102a1.214 1.214 0 0 1 .664.664c.068.15.102.312.102.484s-.034.333-.102.484a1.214 1.214 0 0 1-.265.399 1.324 1.324 0 0 1-.399.273A1.254 1.254 0 0 1 8 3.25c-.172 0-.333-.031-.484-.094a1.324 1.324 0 0 1-.672-.672A1.254 1.254 0 0 1 6.75 2c0-.172.031-.333.094-.484.067-.151.159-.284.273-.399.115-.114.248-.203.399-.265A1.17 1.17 0 0 1 8 .75zM2.633 3.758a1.111 1.111 0 0 1 .68-1.031 1.084 1.084 0 0 1 .882 0c.136.057.253.138.352.242.104.099.185.216.242.351a1.084 1.084 0 0 1 0 .883 1.122 1.122 0 0 1-.594.594 1.169 1.169 0 0 1-.883 0 1.19 1.19 0 0 1-.359-.234 1.19 1.19 0 0 1-.234-.36 1.169 1.169 0 0 1-.086-.445zM2 7a.941.941 0 0 1 .703.297A.941.941 0 0 1 3 8a.97.97 0 0 1-.078.39 1.03 1.03 0 0 1-.531.532A.97.97 0 0 1 2 9a.97.97 0 0 1-.39-.078 1.104 1.104 0 0 1-.32-.211 1.104 1.104 0 0 1-.212-.32A.97.97 0 0 1 1 8a.97.97 0 0 1 .29-.703A.97.97 0 0 1 2 7zm.883 5.242a.887.887 0 0 1 .531-.805.863.863 0 0 1 .68 0c.11.047.203.11.281.188a.887.887 0 0 1 .188.96.887.887 0 0 1-1.148.461.913.913 0 0 1-.462-.46.863.863 0 0 1-.07-.344zM8 13.25c.208 0 .385.073.531.219A.723.723 0 0 1 8.75 14a.723.723 0 0 1-.219.531.723.723 0 0 1-.531.219.723.723 0 0 1-.531-.219A.723.723 0 0 1 7.25 14c0-.208.073-.385.219-.531A.723.723 0 0 1 8 13.25zm3.617-1.008c0-.177.06-.325.18-.445s.268-.18.445-.18.326.06.445.18c.12.12.18.268.18.445s-.06.326-.18.445a.605.605 0 0 1-.445.18.605.605 0 0 1-.445-.18.605.605 0 0 1-.18-.445zM14 7.5a.48.48 0 0 1 .352.148A.48.48 0 0 1 14.5 8a.48.48 0 0 1-.148.352A.48.48 0 0 1 14 8.5a.48.48 0 0 1-.352-.148A.48.48 0 0 1 13.5 8a.48.48 0 0 1 .148-.352A.48.48 0 0 1 14 7.5zm-1.758-5.117c.188 0 .365.036.531.11a1.413 1.413 0 0 1 .735.734c.073.166.11.343.11.53 0 .188-.037.365-.11.532a1.413 1.413 0 0 1-.735.734 1.31 1.31 0 0 1-.53.11c-.188 0-.365-.037-.532-.11a1.415 1.415 0 0 1-.734-.734 1.31 1.31 0 0 1-.11-.531c0-.188.037-.365.11-.531a1.413 1.413 0 0 1 .734-.735c.167-.073.344-.11.531-.11z"
-      />
-    </svg>
-  </div>
-</button>
+      <svg
+        color="#938CA3"
+        fill="currentColor"
+        height="23px"
+        stroke="currentColor"
+        stroke-width="0"
+        style="color: rgb(147, 140, 163);"
+        viewBox="0 0 16 16"
+        width="23px"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8 .75c.172 0 .333.034.484.102a1.214 1.214 0 0 1 .664.664c.068.15.102.312.102.484s-.034.333-.102.484a1.214 1.214 0 0 1-.265.399 1.324 1.324 0 0 1-.399.273A1.254 1.254 0 0 1 8 3.25c-.172 0-.333-.031-.484-.094a1.324 1.324 0 0 1-.672-.672A1.254 1.254 0 0 1 6.75 2c0-.172.031-.333.094-.484.067-.151.159-.284.273-.399.115-.114.248-.203.399-.265A1.17 1.17 0 0 1 8 .75zM2.633 3.758a1.111 1.111 0 0 1 .68-1.031 1.084 1.084 0 0 1 .882 0c.136.057.253.138.352.242.104.099.185.216.242.351a1.084 1.084 0 0 1 0 .883 1.122 1.122 0 0 1-.594.594 1.169 1.169 0 0 1-.883 0 1.19 1.19 0 0 1-.359-.234 1.19 1.19 0 0 1-.234-.36 1.169 1.169 0 0 1-.086-.445zM2 7a.941.941 0 0 1 .703.297A.941.941 0 0 1 3 8a.97.97 0 0 1-.078.39 1.03 1.03 0 0 1-.531.532A.97.97 0 0 1 2 9a.97.97 0 0 1-.39-.078 1.104 1.104 0 0 1-.32-.211 1.104 1.104 0 0 1-.212-.32A.97.97 0 0 1 1 8a.97.97 0 0 1 .29-.703A.97.97 0 0 1 2 7zm.883 5.242a.887.887 0 0 1 .531-.805.863.863 0 0 1 .68 0c.11.047.203.11.281.188a.887.887 0 0 1 .188.96.887.887 0 0 1-1.148.461.913.913 0 0 1-.462-.46.863.863 0 0 1-.07-.344zM8 13.25c.208 0 .385.073.531.219A.723.723 0 0 1 8.75 14a.723.723 0 0 1-.219.531.723.723 0 0 1-.531.219.723.723 0 0 1-.531-.219A.723.723 0 0 1 7.25 14c0-.208.073-.385.219-.531A.723.723 0 0 1 8 13.25zm3.617-1.008c0-.177.06-.325.18-.445s.268-.18.445-.18.326.06.445.18c.12.12.18.268.18.445s-.06.326-.18.445a.605.605 0 0 1-.445.18.605.605 0 0 1-.445-.18.605.605 0 0 1-.18-.445zM14 7.5a.48.48 0 0 1 .352.148A.48.48 0 0 1 14.5 8a.48.48 0 0 1-.148.352A.48.48 0 0 1 14 8.5a.48.48 0 0 1-.352-.148A.48.48 0 0 1 13.5 8a.48.48 0 0 1 .148-.352A.48.48 0 0 1 14 7.5zm-1.758-5.117c.188 0 .365.036.531.11a1.413 1.413 0 0 1 .735.734c.073.166.11.343.11.53 0 .188-.037.365-.11.532a1.413 1.413 0 0 1-.735.734 1.31 1.31 0 0 1-.53.11c-.188 0-.365-.037-.532-.11a1.415 1.415 0 0 1-.734-.734 1.31 1.31 0 0 1-.11-.531c0-.188.037-.365.11-.531a1.413 1.413 0 0 1 .734-.735c.167-.073.344-.11.531-.11z"
+        />
+      </svg>
+    </div>
+  </button>
+  <div
+    class="c3"
+  />
+</div>
 `;
 
 exports[`Button it should render text inside button 1`] = `
 .c0 {
+  position: relative;
+}
+
+.c1 {
+  font-size: 14px;
+  background-color: accent;
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
+  outline: none;
+  font-weight: 600;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: text;
+  border-width: 1px;
+  padding: 8px 20px;
+  text-align: center;
+  border-radius: 8px;
+  color: primaryDark;
+  position: relative;
   -webkit-align-items: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  white-space: nowrap;
+  border-style: solid;
   -webkit-box-pack: center;
   -webkit-justify-content: center;
   -ms-flex-pack: center;
   justify-content: center;
-  white-space: nowrap;
-  font-family: text;
-  background-color: accent;
-  font-size: 14px;
-  font-weight: 600;
-  color: primaryDark;
-  text-align: center;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  outline: none;
-  -webkit-transition: all .3s ease-out;
-  transition: all .3s ease-out;
+  -webkit-transition: all .15s ease;
+  transition: all .15s ease;
+  border-color: accentDark;
 }
 
-.c0:focus {
-  box-shadow: inset 0 0 0px 4px #BB8B0E;
+.c1:focus {
+  box-shadow: inset 0px 0px 0px 3px #BB8B0E;
 }
 
-.c0:hover {
-  background-color: #d69b00;
-  box-shadow: 0px 0px 6px rgba(170,140,210,0.9);
+.c1:focus:hover {
+  -webkit-transform: translateX(2px) translateY(2px);
+  -ms-transform: translateX(2px) translateY(2px);
+  transform: translateX(2px) translateY(2px);
 }
 
-.c0:disabled {
+.c1:hover {
+  -webkit-transform: translateX(2px) translateY(2px);
+  -ms-transform: translateX(2px) translateY(2px);
+  transform: translateX(2px) translateY(2px);
+}
+
+.c1:hover:active {
+  -webkit-transform: translateX(4px) translateY(4px);
+  -ms-transform: translateX(4px) translateY(4px);
+  transform: translateX(4px) translateY(4px);
+}
+
+.c1:active {
+  -webkit-transform: translateX(4px) translateY(4px);
+  -ms-transform: translateX(4px) translateY(4px);
+  transform: translateX(4px) translateY(4px);
+}
+
+.c1:disabled {
+  border-color: gray50;
   background-color: gray25;
   color: gray50;
   cursor: not-allowed;
 }
 
-.c0 > img {
+.c1:disabled:hover {
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+}
+
+.c1:disabled+div {
+  visibility: hidden;
+}
+
+.c1 > img {
   margin-right: 8px;
 }
 
-<button
+.c2 {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: shadow;
+  border-radius: 8px;
+  border: 1px solid #290759;
+  -webkit-transform: translateY(4px) translateX(4px);
+  -ms-transform: translateY(4px) translateX(4px);
+  transform: translateY(4px) translateX(4px);
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
+
+<div
   class="c0"
-  style="width: 0px;"
-  type="button"
 >
-  botão
-</button>
+  <button
+    class="c1"
+    type="button"
+  >
+    botão
+  </button>
+  <div
+    class="c2"
+  />
+</div>
 `;

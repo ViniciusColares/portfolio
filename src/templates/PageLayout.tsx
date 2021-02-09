@@ -1,19 +1,37 @@
 import React, { ReactNode } from 'react'
 import Head from 'next/head'
 import styled from 'styled-components'
-import { useRecoilState } from 'recoil'
-import { compose, layout } from 'styled-system'
 import css from '@styled-system/css'
-import { useMediaQuery } from 'react-responsive'
 import { motion } from 'framer-motion'
 
-import MenuIcon from '@public/assets/icons/menu.svg'
-import CloseIcon from '@public/assets/icons/close.svg'
-
+import { IoIosArrowUp } from 'react-icons/io'
 import { Heading } from '@components/Typo'
-import Context from '@components/Context'
+
 import { colors, medias } from '@styles/theme'
-import { toggleMenu } from '@store/context'
+
+export const Wrapper = styled('section')(
+  css({
+    position: 'relative',
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    background:
+      'url(/assets/bg.png) left top repeat-x scroll,linear-gradient(to bottom,#7C31D2 20%,#5614E2 90%)',
+    backgroundAttachment: 'fixed',
+    backgroundSize: '540px',
+    width: '100vw',
+    height: '100vh',
+    overflow: 'hidden',
+    zIndex: 0,
+    '::before': {
+      content: '""',
+      position: 'absolute',
+      bg: 'rgba(0, 0, 0, 0.35)',
+      width: '100vw',
+      height: '100vh'
+    }
+  })
+)
 
 const Main = styled(motion.main)(
   css({
@@ -23,18 +41,33 @@ const Main = styled(motion.main)(
     justifyContent: 'flex-start',
     width: '100%',
     height: '100%',
-    overflow: 'auto',
+    overflow: 'hidden',
     zIndex: 1,
+    transformStyle: 'preserve-3d',
+    transform: 'perspective(0.5cm)',
     background: `url('/assets/bg.png') center top no-repeat scroll, linear-gradient(to bottom,${colors.primary1} 20%,${colors.primary2} 90%)`,
     backgroundSize: '100%',
     [medias('sm')]: {
       height: '80vh',
       width: '480px',
-      borderWidth: '4px !important',
-      borderStyle: 'solid !important',
-      borderColor: 'white !important',
-      borderRadius: '16px !important'
+      borderWidth: '4px',
+      borderStyle: 'solid',
+      borderColor: 'white',
+      borderRadius: '32px'
     }
+  })
+)
+
+const MainContent = styled(motion.section)(
+  css({
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'flex-start',
+    width: '100%',
+    height: '100%',
+    overflow: 'auto',
+    borderRadius: '16px',
+    zIndex: 1
   })
 )
 
@@ -56,28 +89,54 @@ const Header = styled('header')(
   })
 )
 
-export const MenuTrigger = styled('div')(
+export const Menu = styled(motion.section)(
+  css({
+    display: 'grid',
+    position: 'absolute',
+    width: '100%',
+    gridTemplateColumns: 'repeat(2, 1fr)',
+    gridTemplateRows: 'repeat(3, 82px)',
+    gridGap: '16px',
+    padding: '16px',
+    bottom: '-37%',
+    zIndex: 99,
+    transition: 'bottom 0.2 ease-out',
+    '::before': {
+      content: '""',
+      position: 'absolute',
+      bg: 'rgba(255, 255, 255, 0.20)',
+      width: '100%',
+      height: '100%',
+      borderRadius: '16px 16px 0 0',
+      backdropFilter: 'blur(8px)',
+      boxShadow: '0 -3px 20px 0px rgba(0 0 0 / 30%)'
+    },
+    ':hover': {
+      bottom: '0%'
+    }
+  })
+)
+
+export const MenuTrigger = styled(motion.div)(
   css({
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     alignSelf: 'flex-start',
-    cursor: 'pointer'
-  }),
-  compose(layout)
-)
-
-export const Close = styled(CloseIcon)(
-  css({
-    path: {
-      fill: colors.contrast
+    position: 'absolute',
+    width: '32px',
+    height: '32px',
+    left: 'calc(50% - 15px)',
+    cursor: 'pointer',
+    borderRadius: '50%',
+    boxShadow: '0px 0px 2px 1px rgb(0 0 0 / 25%)',
+    svg: {
+      boxShadow: '0px 0px 2px 1px rgb(255 255 255 / 25%)',
+      backdropFilter: 'blur(3px)',
+      borderRadius: '50%',
+      bg: 'rgb(255 255 255 / 5%)',
+      p: 1
     }
-  })
-)
-
-export const Menu = styled(MenuIcon)(
-  css({
-    path: colors.contrast
   })
 )
 
@@ -93,87 +152,61 @@ export const PageTitle = styled(Heading)(
 )
 
 const PageLayout = ({
-  noHeader,
   pageTitle,
   children
 }: {
-  noHeader?: boolean
   pageTitle?: string
   children: ReactNode | ReactNode[]
 }) => {
-  const [isOpen, setToggleMenu] = useRecoilState(toggleMenu)
-  const isMediumUp = useMediaQuery({
-    query: medias('sm').replace('@media ', '')
-  })
-  const variants = {
-    initial: {
-      scale: 0,
-      translateX: isMediumUp ? '0' : '100%',
-      translateY: isMediumUp ? '120%' : '0%',
-      borderRadius: '16px',
-      border: '0px solid white'
-    },
-    open: {
-      scale: isMediumUp ? 1 : 0.8,
-      translateX: ['0%', '40%'],
-      translateY: '0%',
-      borderRadius: '16px',
-      border: '5px solid white',
-      boxShadow: '-20px 20px 20px rgba(0, 0, 0, 0.3)'
-    },
-    closed: {
-      scale: isMediumUp ? 1 : [0.8, 1],
-      translateY: '0%',
-      translateX: '0%',
-      borderRadius: '0px',
-      border: '0px solid white',
-      boxShadow: isMediumUp
-        ? '20px 20px 20px rgba(0,0,0,0.3)'
-        : '0px 0px 0px rgba(0, 0, 0, 0.3)'
-    },
-    exit: {
-      scale: 0,
-      translateX: isMediumUp ? '0' : '100%',
-      translateY: isMediumUp ? '-120%' : '0%'
-    }
+  const menuAnimations = {
+    hidden: { bottom: '-50%' },
+    standard: { bottom: '-37%' },
+    open: { bottom: '0%' }
   }
 
   return (
-    <>
-      <Context />
-      <Main
-        variants={variants}
-        initial="initial"
-        animate={isOpen ? 'open' : 'closed'}
-        exit="exit"
-        transition={{ type: 'spring', damping: 16 }}
-      >
+    <Wrapper>
+      <Main>
         <Head>
           <title>Vinícius Colares</title>
         </Head>
-        {!noHeader && (
-          <Header>
-            {!isMediumUp && (
-              <MenuTrigger
-                className="menu-trigger"
-                onClick={() => setToggleMenu(!isOpen)}
-              >
-                {isOpen ? (
-                  <Close width={26} height={26} />
-                ) : (
-                  <Menu width={26} height={26} />
-                )}
-                <Heading fontSize="0.5rem" mt="3px">
-                  menu
-                </Heading>
-              </MenuTrigger>
-            )}
-            <PageTitle>{pageTitle}</PageTitle>
-          </Header>
-        )}
-        {children}
+        <MainContent>
+          {pageTitle && (
+            <Header>
+              <PageTitle>{pageTitle}</PageTitle>
+            </Header>
+          )}
+          {children}
+        </MainContent>
+        <Menu
+          initial="hidden"
+          animate="standard"
+          variants={menuAnimations}
+          whileHover="open"
+          transition={{
+            type: 'keyframes'
+          }}
+        >
+          <MenuTrigger
+            initial={{ top: '-12px' }}
+            animate={{ top: '-20px' }}
+            transition={{
+              type: 'tween',
+              duration: 1,
+              repeat: Infinity,
+              repeatType: 'mirror'
+            }}
+          >
+            <IoIosArrowUp size={30} />
+          </MenuTrigger>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </Menu>
       </Main>
-    </>
+    </Wrapper>
   )
 }
 

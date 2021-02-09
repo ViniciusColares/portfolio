@@ -2,7 +2,6 @@ import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
-import UnderConstruction from '@templates/UnderConstruction'
 import PageLayout from '@templates/PageLayout'
 import Flex from '@components/Flex'
 import Button from '@components/Button'
@@ -13,9 +12,7 @@ import * as SC from '@styles/pageStyles/homeStyle'
 const Home = () => {
   const router = useRouter()
 
-  return process.env.UNDER_CONSTRUCTION ? (
-    <UnderConstruction />
-  ) : (
+  return (
     <PageLayout pageTitle="início">
       <SC.MainHeading>
         <Heading fontSize={1}>Revolucione seu negócio</Heading>
