@@ -1613,7 +1613,7 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
-"@mailchimp/mailchimp_marketing@^3.0.25":
+"@mailchimp/mailchimp_marketing@^3.0.28":
   version "3.0.28"
   resolved "https://registry.yarnpkg.com/@mailchimp/mailchimp_marketing/-/mailchimp_marketing-3.0.28.tgz#0cb2b6ab16289e2a4d4fb935f820095f303f74c9"
   integrity sha512-HuQ3tVwVJ6vVME4KRyrZlczwQYOn+cQVrgYjoSXUM6nOQvaZzOFB964HcPKKyVlyZh0dyDJb5Zq0UC3iznUAGA==
