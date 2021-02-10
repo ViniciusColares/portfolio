@@ -159,9 +159,9 @@ const PageLayout = ({
   children: ReactNode | ReactNode[]
 }) => {
   const menuAnimations = {
-    hidden: { bottom: '-50%' },
-    standard: { bottom: '-37%' },
-    open: { bottom: '0%' }
+    hidden: { bottom: '-350px' },
+    standard: { bottom: '-285px' },
+    open: { bottom: '0px' }
   }
 
   return (
