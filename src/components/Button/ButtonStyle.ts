@@ -12,7 +12,7 @@ export const Container = styled.div(
   })
 )
 
-export const ButtonStyle = styled(motion.button)(
+export const ButtonStyle = styled(motion.button)<{ size: string }>(
   css({
     fontSize: 1,
     bg: 'accent',
@@ -121,7 +121,7 @@ export const ButtonStyle = styled(motion.button)(
   })
 )
 
-export const Shadow = styled.div(
+export const Shadow = styled.div<{ size: string }>(
   css({
     position: 'absolute',
     width: '100%',
