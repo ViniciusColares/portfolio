@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <PageLayout pageTitle="início">
       <SC.MainHeading>
-        <Heading fontSize={1}>Revolucione seu negócio</Heading>
+        <Heading fontSize={1}>Revolucione seu mundo</Heading>
         <Heading fontSize={5} color="accent">
           com tecnologia
         </Heading>
