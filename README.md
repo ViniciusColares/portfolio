@@ -15,7 +15,7 @@
 
   </div>
 
- <img src="https://media.giphy.com/media/Ll22OhMLAlVDb8UQWe/source.gif" width="260" style="padding: 0 80px" >
+ <img src="https://media.giphy.com/media/Ll22OhMLAlVDb8UQWe/source.gif" width="260" align="right" >
 </div>
 
 ### <img align="center" src="https://media.giphy.com/media/dYyRWrXb9OpfYbhNY4/source.gif" width="60"> A 'bit' more about me
@@ -54,8 +54,8 @@ const itIsMe = {
 <h1 align='center'>Devfolio</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=status&message=work_in_progress&color=yellow&style=for-the-badge"/>
-  <img src="https://img.shields.io/github/package-json/v/viniciuscolares/viniciuscolares/develop?label=develop&logo=git&logoColor=white&style=for-the-badge"/>
+  <img src="https://img.shields.io/static/v1?label=status&message=development&color=yellow&style=for-the-badge"/>
+  <img src="https://img.shields.io/github/package-json/v/viniciuscolares/viniciuscolares/develop?label=develop&color=yellow&logo=git&logoColor=white&style=for-the-badge"/>
 </p>
 
 <p align="center">
