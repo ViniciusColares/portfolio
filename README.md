@@ -44,7 +44,7 @@ const itIsMe = {
 
 <hr />
 
-<h1 align='center'>Devfolio</h1>
+<h1 align='center' border="none">Devfolio</h1>
 
 <p align="center">
   <img src="https://img.shields.io/static/v1?label=status&message=development&color=yellow&style=for-the-badge"/>
