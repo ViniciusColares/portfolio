@@ -78,7 +78,6 @@ const itIsMe = {
 [A bit about me](#a-bit-more-about-me)
 [Motivation](#motivation)
 [Features](#features)
-[Deploy](#deploy)
 [Requirements](#requirements)
 [Running](#running)
 
@@ -96,15 +95,24 @@ const itIsMe = {
   That's my way to translate my own and my goals for the web.
 </p>
 
+## Requirements
+
+[Node](https://nodejs.org/en/download/)
+
+## Dependencies :books:
+
+- [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
+- [Next](https://nextjs.org/)
+
 ## Features
 
 :heavy_check_mark: Storybook
 
 :heavy_check_mark: Design System
 
-## Requirements
+## Database
 
-[Node](https://nodejs.org/en/download/)
+Se for necessário configurar algo antes de iniciar o banco de dados insira os comandos a serem executados
 
 ## Running :arrow_forward:
 
@@ -127,15 +135,6 @@ $ npm test, rspec, etc
 Explique com mais detalhes como a sua aplicação poderia ser utilizada. O uso de **gifs** aqui seria bem interessante.
 
 Exemplo: Caso a sua aplicação tenha alguma funcionalidade de login apresente neste tópico os dados necessários para acessá-la.
-
-## Database
-
-Se for necessário configurar algo antes de iniciar o banco de dados insira os comandos a serem executados
-
-## Dependencies :books:
-
-- [React](https://pt-br.reactjs.org/docs/create-a-new-react-app.html)
-- [Next](https://nextjs.org/)
 
 ## Reporting :exclamation:
 

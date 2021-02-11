@@ -29,6 +29,7 @@
   },
   "dependencies": {
     "@mailchimp/mailchimp_marketing": "^3.0.28",
+    "@storybook/addon-a11y": "^6.1.9",
     "framer-motion": "^2.9.4",
     "next": "^10.0.6",
     "next-pwa": "^5.0.5",
