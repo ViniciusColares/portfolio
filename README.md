@@ -61,12 +61,17 @@ const itIsMe = {
 
 ### :triangular_flag_on_post: Go to
 
-[Greeting](#greeting)
-[A bit about me](#a-bit-more-about-me)
 [Motivation](#motivation)
-[Features](#features)
 [Requirements](#requirements)
-[Running](#running)
+[Dependencies](#dependencies-books)
+[Features](#features)
+[Database](#database)
+[Running](#running-arrow_forward)
+[Testing](#testing)
+[Use Cases](#use-cases)
+[Reporting](#reporting-exclamation)
+[Contributors](#contributors-octocat)
+[License](#license)
 
 </div>
 
@@ -109,7 +114,7 @@ No terminal, clone o projeto:
 git clone https://github.com/ViniciusColares/viniciuscolares.git
 ```
 
-## Tests
+## Testing
 
 Coloque um passo a passo para executar os testes
 
