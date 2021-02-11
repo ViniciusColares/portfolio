@@ -61,16 +61,16 @@ const itIsMe = {
 
 ### :triangular_flag_on_post: Go to
 
-[Motivation](#motivation)
-[Requirements](#requirements)
-[Dependencies](#dependencies-books)
-[Features](#features)
-[Database](#database)
-[Running](#running-arrow_forward)
-[Testing](#testing)
-[Use Cases](#use-cases)
-[Reporting](#reporting-exclamation)
-[Contributors](#contributors-octocat)
+[Motivation](#motivation) <br />
+[Requirements](#requirements) <br />
+[Dependencies](#dependencies-books) <br />
+[Features](#features) <br />
+[Database](#database) <br />
+[Running](#running-arrow_forward) <br />
+[Testing](#testing) <br />
+[Use Cases](#use-cases) <br />
+[Reporting](#reporting-exclamation) <br />
+[Contributors](#contributors-octocat) <br />
 [License](#license)
 
 </div>
