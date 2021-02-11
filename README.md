@@ -1,27 +1,21 @@
----
-title: Vinicius Colares
-spoiler: Ideia for dev portfolio
-categories: ['web dev', 'portfolio']
-githubUsername: 'viniciuscolares'
----
-
 <div align="center">
   <img src="https://media.giphy.com/media/cJ53VLbM1eEo4s1toi/source.gif" width="80" align="center">
+  <img src="https://media.giphy.com/media/U6dm9uny3PcSG83jOn/source.gif"  width="80" align="center" >
 
 ## नमस्ते (Namaste) <br /> Vinícius Colares!!
 
 </div>
 
-<div style="margin-bottom: 0px">
-  <img align="right" src="https://media.giphy.com/media/WUJDU0Ay2ebxC4apFa/source.gif" style="margin: 0 50px" width="140" >
-
-  <div>
+<div style="display: flex; align-items: center">
+  <div align="left">
   <p>Hello there, I don't know how did you came, but I'm glad you here.</p>
   <p>Although I don’t have much open source contribution so far, I've been working as a <strong>Full Stack Web Developer</strong> nowadays, and developing for the web since 2010, when it was built by <strong>Web Designers</strong> and <strong>Web Masters</strong>.</p>
 
 ![GitHub followers](https://img.shields.io/github/followers/viniciuscolares?label=Follow%20Me&logo=github&style=for-the-badge) [![Linkedin: viniciuscolares](https://img.shields.io/badge/viniciuscolares-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/viniciuscolares/)](https://www.linkedin.com/in/viniciuscolares/) [![Instagram: viniciuscolares.dev](https://img.shields.io/badge/viniciuscolares.dev-red?style=for-the-badge&logo=Instagram&logoColor=white&link=https://www.instagram.com/viniciuscolares.dev/)](https://www.instagram.com/viniciuscolares.dev/)
 
   </div>
+
+ <img src="https://media.giphy.com/media/Ll22OhMLAlVDb8UQWe/source.gif" width="260" style="padding: 0 80px" >
 </div>
 
 ### <img align="center" src="https://media.giphy.com/media/dYyRWrXb9OpfYbhNY4/source.gif" width="60"> A 'bit' more about me
@@ -60,7 +54,7 @@ const itIsMe = {
 <h1 align='center'>Devfolio</h1>
 
 <p align="center">
-  <img src="https://img.shields.io/static/v1?label=status&message=work in progress&color=yellow&style=for-the-badge"/>
+  <img src="https://img.shields.io/static/v1?label=status&message=work_in_progress&color=yellow&style=for-the-badge"/>
   <img src="https://img.shields.io/github/package-json/v/viniciuscolares/viniciuscolares/develop?label=develop&logo=git&logoColor=white&style=for-the-badge"/>
 </p>
 
