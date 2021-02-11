@@ -20,15 +20,16 @@ const itIsMe = {
   askMeAbout: ['Web Dev', 'Tech', 'Digital Marketing', 'MMORPG', 'Meditation'],
   technologies: {
     frontEnd: {
-      js: ['React.js', ''],
-      css: ['Styled Components', 'bootstrap'],
-      ruby: ['Sass', 'Jekyll']
+      js: ['React.js', 'Next.js', 'Framer Motion'],
+      css: ['Styled Components', 'Styled System', 'CSS Modules'],
+      ruby: ['Sass', 'Jekyll'],
+      misc: ['Web APIs', 'Debugger', 'Browser Dev Tools']
     },
-    backEnd: ['node', 'express', 'stripe', 'nest'],
-    mobileApp: ['React Native', 'expo', 'ignite'],
+    backEnd: ['Node.js', 'Express.js', 'Stripe', 'Nest.js'],
+    mobileApp: ['React Native', 'Expo', 'Ignite'],
     devOps: ['Docker', 'Nginx'],
-    databases: ['mongo', 'MySql', 'PostgreSql'],
-    misc: ['Firebase', 'Socket.IO', 'selenium', 'open-cv', 'php', 'SuiteApp']
+    databases: ['Mongo', 'MySql', 'PostgreSql'],
+    misc: ['Firebase', 'Socket.io', 'CyPress']
   },
   architecture: [
     'Serverless Architecture',

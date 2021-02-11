@@ -1,13 +1,15 @@
-import React, { ReactNode } from 'react'
+import React, { ReactNode, useState } from 'react'
+import Image from 'next/image'
 import Head from 'next/head'
 import styled from 'styled-components'
 import css from '@styled-system/css'
 import { motion } from 'framer-motion'
-
 import { IoIosArrowUp } from 'react-icons/io'
+
 import { Heading } from '@components/Typo'
 
 import { colors, medias } from '@styles/theme'
+import { useRouter } from 'next/router'
 
 export const Wrapper = styled('section')(
   css({
@@ -89,30 +91,39 @@ const Header = styled('header')(
   })
 )
 
-export const Menu = styled(motion.section)(
+export const PageTitle = styled(Heading)(
+  css({
+    fontFamily: 'heading',
+    justifySelf: 'center',
+    margin: 0,
+    fontSize: 1,
+    lineHeight: '18px',
+    fontWeight: 100
+  })
+)
+
+export const Menu = styled(motion.nav)(
   css({
     display: 'grid',
     position: 'absolute',
     width: '100%',
     gridTemplateColumns: 'repeat(2, 1fr)',
-    gridTemplateRows: 'repeat(3, 82px)',
+    gridTemplateRows: 'repeat(3, auto)',
     gridGap: '16px',
     padding: '16px',
-    bottom: '-37%',
     zIndex: 99,
+    cursor: 'pointer',
     transition: 'bottom 0.2 ease-out',
     '::before': {
       content: '""',
       position: 'absolute',
-      bg: 'rgba(255, 255, 255, 0.20)',
+      bg: 'rgba(255, 255, 255, 0.30)',
       width: '100%',
       height: '100%',
       borderRadius: '16px 16px 0 0',
-      backdropFilter: 'blur(8px)',
+      backdropFilter: 'blur(5px)',
+      zIndex: -1,
       boxShadow: '0 -3px 20px 0px rgba(0 0 0 / 30%)'
-    },
-    ':hover': {
-      bottom: '0%'
     }
   })
 )
@@ -127,9 +138,9 @@ export const MenuTrigger = styled(motion.div)(
     width: '32px',
     height: '32px',
     left: 'calc(50% - 15px)',
-    cursor: 'pointer',
     borderRadius: '50%',
     boxShadow: '0px 0px 2px 1px rgb(0 0 0 / 25%)',
+    zIndex: 1,
     svg: {
       boxShadow: '0px 0px 2px 1px rgb(255 255 255 / 25%)',
       backdropFilter: 'blur(3px)',
@@ -140,14 +151,58 @@ export const MenuTrigger = styled(motion.div)(
   })
 )
 
-export const PageTitle = styled(Heading)(
+export const MenuItem = styled(motion.div)(
   css({
-    fontFamily: 'heading',
-    justifySelf: 'center',
-    margin: 0,
-    fontSize: 1,
-    lineHeight: '18px',
-    fontWeight: 100
+    p: 2,
+    bg: 'primary1',
+    display: 'flex',
+    position: 'relative',
+    borderRadius: '8px',
+    border: '2px solid transparent',
+    height: '85px',
+    pl: '32%',
+    '> div:first-child': {
+      position: 'absolute !important',
+      left: '4%',
+      top: -3
+    },
+    ':hover': {
+      borderColor: 'accent',
+      boxShadow: '2px 2px 4px 0px rgb(0 0 0 / 25%)'
+    },
+    ':nth-of-type(2)': {
+      gridColumn: '1/3',
+      bg: 'primaryDark',
+      pl: '15%'
+    }
+  })
+)
+
+export const MenuIllustration = styled(Image)(
+  css({
+    boxShadow: '0px 0px 0px 0px rgba(0 0 0 / 20%)'
+  })
+)
+
+export const MenuInfo = styled(motion.div)(
+  css({
+    ml: 4,
+    display: 'flex',
+    flexDirection: 'column',
+    width: 'fit-content',
+    alignSelf: 'flex-start',
+    h2: {
+      fontFamily: 'heading',
+      fontWeight: 100,
+      fontSize: 1,
+      mb: 1
+    },
+    p: {
+      fontFamily: 'text',
+      fontWeight: 400,
+      fontSize: 1,
+      color: 'rgb(255 255 255 / 50%)'
+    }
   })
 )
 
@@ -158,10 +213,18 @@ const PageLayout = ({
   pageTitle?: string
   children: ReactNode | ReactNode[]
 }) => {
-  const menuAnimations = {
+  const router = useRouter()
+  const [menuOpen, setMenuOpen] = useState(false)
+  const menuAnim = {
     hidden: { bottom: '-350px' },
-    standard: { bottom: '-285px' },
+    standard: { bottom: '-295px' },
     open: { bottom: '0px' }
+  }
+  const triggerAnim = {
+    standard: { rotate: 0, top: '-12px' },
+    wave: { top: '-24px' },
+    down: { rotate: 180 },
+    up: { rotate: 0 }
   }
 
   return (
@@ -179,31 +242,89 @@ const PageLayout = ({
           {children}
         </MainContent>
         <Menu
+          onClick={() => setMenuOpen((bool) => !bool)}
           initial="hidden"
-          animate="standard"
-          variants={menuAnimations}
-          whileHover="open"
-          transition={{
-            type: 'keyframes'
-          }}
+          animate={menuOpen ? 'open' : 'standard'}
+          variants={menuAnim}
         >
           <MenuTrigger
-            initial={{ top: '-12px' }}
-            animate={{ top: '-20px' }}
+            initial="standard"
+            animate={['wave', menuOpen ? 'down' : 'up']}
+            variants={triggerAnim}
             transition={{
-              type: 'tween',
-              duration: 1,
-              repeat: Infinity,
-              repeatType: 'mirror'
+              top: {
+                type: 'tween',
+                duration: 1,
+                repeat: Infinity,
+                repeatType: 'mirror'
+              },
+              rotate: { type: 'spring' }
             }}
           >
             <IoIosArrowUp size={30} />
           </MenuTrigger>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
+          <MenuItem onClick={() => router.push('/')}>
+            <MenuIllustration
+              src="/assets/menu/home.png"
+              alt="A rocket been launched in front a cellphone"
+              width={47}
+              height={84}
+            />
+            <MenuInfo>
+              <h2>Início</h2>
+              <p>
+                Quer iniciar, ou melhorar algo?! <br />A tecnologia pode ajudar.
+              </p>
+            </MenuInfo>
+          </MenuItem>
+          <MenuItem onClick={() => router.push('/perfil')}>
+            <MenuIllustration
+              src="/assets/menu/profile.png"
+              alt="A man sitting in front of a projector screen"
+              width={65}
+              height={80}
+            />
+            <MenuInfo>
+              <h2>Perfil</h2>
+              <p>Um pouco de mim.</p>
+            </MenuInfo>
+          </MenuItem>
+          <MenuItem onClick={() => router.push('/apps')}>
+            <MenuIllustration
+              src="/assets/menu/apps.png"
+              alt=""
+              width={64}
+              height={80}
+            />
+            <MenuInfo>
+              <h2>Apps</h2>
+              <p>Faço pra me divertir.</p>
+            </MenuInfo>
+          </MenuItem>
+          <MenuItem>
+            <MenuIllustration
+              src="/assets/menu/blog.png"
+              alt=""
+              width={56}
+              height={80}
+            />
+            <MenuInfo>
+              <h2>Blog</h2>
+              <p>Escrevo o que penso.</p>
+            </MenuInfo>
+          </MenuItem>
+          <MenuItem onClick={() => router.push('/contato')}>
+            <MenuIllustration
+              src="/assets/menu/contact.png"
+              alt=""
+              width={58}
+              height={80}
+            />
+            <MenuInfo>
+              <h2>Contato</h2>
+              <p>Precisa falar comigo?</p>
+            </MenuInfo>
+          </MenuItem>
         </Menu>
       </Main>
     </Wrapper>
