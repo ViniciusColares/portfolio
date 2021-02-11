@@ -6,17 +6,10 @@
 
 </div>
 
-<div style="display: flex; align-items: center">
-  <div align="left">
-  <p>Hello there, I don't know how did you came, but I'm glad you here.</p>
-  <p>Although I don’t have much open source contribution so far, I've been working as a <strong>Full Stack Web Developer</strong> nowadays, and developing for the web since 2010, when it was built by <strong>Web Designers</strong> and <strong>Web Masters</strong>.</p>
+<p>Hello there, I don't know how did you came, but I'm glad you here.</p>
+<p>Although I don’t have much open source contribution so far, I've been working as a <strong>Full Stack Web Developer</strong> nowadays, and developing for the web since 2010, when it was built by <strong>Web Designers</strong> and <strong>Web Masters</strong>.</p>
 
 ![GitHub followers](https://img.shields.io/github/followers/viniciuscolares?label=Follow%20Me&logo=github&style=for-the-badge) [![Linkedin: viniciuscolares](https://img.shields.io/badge/viniciuscolares-blue?style=for-the-badge&logo=Linkedin&logoColor=white&link=https://www.linkedin.com/in/viniciuscolares/)](https://www.linkedin.com/in/viniciuscolares/) [![Instagram: viniciuscolares.dev](https://img.shields.io/badge/viniciuscolares.dev-red?style=for-the-badge&logo=Instagram&logoColor=white&link=https://www.instagram.com/viniciuscolares.dev/)](https://www.instagram.com/viniciuscolares.dev/)
-
-  </div>
-
- <img src="https://media.giphy.com/media/Ll22OhMLAlVDb8UQWe/source.gif" width="260" align="right" >
-</div>
 
 ### <img align="center" src="https://media.giphy.com/media/dYyRWrXb9OpfYbhNY4/source.gif" width="60"> A 'bit' more about me
 
