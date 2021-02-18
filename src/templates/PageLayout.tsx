@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Head from 'next/head'
 import styled from 'styled-components'
 import css from '@styled-system/css'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue } from 'framer-motion'
 import { IoIosArrowUp } from 'react-icons/io'
 
 import { Heading } from '@components/Typo'
@@ -117,13 +117,16 @@ export const Menu = styled(motion.nav)(
     '::before': {
       content: '""',
       position: 'absolute',
-      bg: 'rgba(255, 255, 255, 0.30)',
+      bg: 'rgba(255, 255, 255, 0.70)',
       width: '100%',
       height: '100%',
       borderRadius: '16px 16px 0 0',
-      backdropFilter: 'blur(5px)',
       zIndex: -1,
-      boxShadow: '0 -3px 20px 0px rgba(0 0 0 / 30%)'
+      boxShadow: '0 -3px 20px 0px rgba(0 0 0 / 30%)',
+      '@supports (-webkit-backdrop-filter: blur(5px)) or (backdrop-filter: blur(5px))': {
+        bg: 'rgba(255, 255, 255, 0.30)',
+        backdropFilter: 'blur(5px)'
+      }
     }
   })
 )
@@ -153,14 +156,15 @@ export const MenuTrigger = styled(motion.div)(
 
 export const MenuItem = styled(motion.div)(
   css({
-    p: 2,
+    pr: 2,
+    pl: '38%',
     bg: 'primary1',
     display: 'flex',
+    alignItems: 'center',
     position: 'relative',
     borderRadius: '8px',
-    border: '2px solid transparent',
+    border: '2px solid rgb(255 255 255 / 30%)',
     height: '85px',
-    pl: '32%',
     '> div:first-child': {
       position: 'absolute !important',
       left: '4%',
@@ -173,7 +177,7 @@ export const MenuItem = styled(motion.div)(
     ':nth-of-type(2)': {
       gridColumn: '1/3',
       bg: 'primaryDark',
-      pl: '15%'
+      pl: '18.5%'
     }
   })
 )
@@ -186,11 +190,9 @@ export const MenuIllustration = styled(Image)(
 
 export const MenuInfo = styled(motion.div)(
   css({
-    ml: 4,
     display: 'flex',
     flexDirection: 'column',
     width: 'fit-content',
-    alignSelf: 'flex-start',
     h2: {
       fontFamily: 'heading',
       fontWeight: 100,
@@ -215,16 +217,22 @@ const PageLayout = ({
 }) => {
   const router = useRouter()
   const [menuOpen, setMenuOpen] = useState(false)
+  const rotate = useMotionValue(0)
+  const translateY = useMotionValue(50)
   const menuAnim = {
     hidden: { bottom: '-350px' },
     standard: { bottom: '-295px' },
     open: { bottom: '0px' }
   }
   const triggerAnim = {
-    standard: { rotate: 0, top: '-12px' },
-    wave: { top: '-24px' },
-    down: { rotate: 180 },
-    up: { rotate: 0 }
+    standard: { top: '-10px' },
+    wave: { top: '-22px' }
+  }
+
+  const toggleMenu = () => {
+    rotate.set(menuOpen ? 0 : 180)
+    translateY.set(menuOpen ? 50 : 0)
+    setMenuOpen(!menuOpen)
   }
 
   return (
@@ -242,15 +250,16 @@ const PageLayout = ({
           {children}
         </MainContent>
         <Menu
-          onClick={() => setMenuOpen((bool) => !bool)}
+          onClick={toggleMenu}
           initial="hidden"
           animate={menuOpen ? 'open' : 'standard'}
           variants={menuAnim}
         >
           <MenuTrigger
             initial="standard"
-            animate={['wave', menuOpen ? 'down' : 'up']}
+            animate={['wave']}
             variants={triggerAnim}
+            style={{ rotate }}
             transition={{
               top: {
                 type: 'tween',
@@ -263,7 +272,7 @@ const PageLayout = ({
           >
             <IoIosArrowUp size={30} />
           </MenuTrigger>
-          <MenuItem onClick={() => router.push('/')}>
+          <MenuItem style={{ translateY }} onClick={() => router.push('/')}>
             <MenuIllustration
               src="/assets/menu/home.png"
               alt="A rocket been launched in front a cellphone"
@@ -277,11 +286,14 @@ const PageLayout = ({
               </p>
             </MenuInfo>
           </MenuItem>
-          <MenuItem onClick={() => router.push('/perfil')}>
+          <MenuItem
+            style={{ translateY }}
+            onClick={() => router.push('/perfil')}
+          >
             <MenuIllustration
               src="/assets/menu/profile.png"
               alt="A man sitting in front of a projector screen"
-              width={65}
+              width={59}
               height={80}
             />
             <MenuInfo>
@@ -289,7 +301,7 @@ const PageLayout = ({
               <p>Um pouco de mim.</p>
             </MenuInfo>
           </MenuItem>
-          <MenuItem onClick={() => router.push('/apps')}>
+          <MenuItem style={{ translateY }} onClick={() => router.push('/apps')}>
             <MenuIllustration
               src="/assets/menu/apps.png"
               alt=""
@@ -301,7 +313,7 @@ const PageLayout = ({
               <p>Faço pra me divertir.</p>
             </MenuInfo>
           </MenuItem>
-          <MenuItem>
+          <MenuItem style={{ translateY }}>
             <MenuIllustration
               src="/assets/menu/blog.png"
               alt=""
@@ -313,7 +325,10 @@ const PageLayout = ({
               <p>Escrevo o que penso.</p>
             </MenuInfo>
           </MenuItem>
-          <MenuItem onClick={() => router.push('/contato')}>
+          <MenuItem
+            style={{ translateY }}
+            onClick={() => router.push('/contato')}
+          >
             <MenuIllustration
               src="/assets/menu/contact.png"
               alt=""
@@ -322,7 +337,7 @@ const PageLayout = ({
             />
             <MenuInfo>
               <h2>Contato</h2>
-              <p>Precisa falar comigo?</p>
+              <p>Quer falar comigo?</p>
             </MenuInfo>
           </MenuItem>
         </Menu>
