@@ -3,7 +3,7 @@ import Image from 'next/image'
 import Head from 'next/head'
 import styled from 'styled-components'
 import css from '@styled-system/css'
-import { motion } from 'framer-motion'
+import { motion, useMotionValue } from 'framer-motion'
 import { IoIosArrowUp } from 'react-icons/io'
 
 import { Heading } from '@components/Typo'
@@ -69,6 +69,7 @@ const MainContent = styled(motion.section)(
     height: '100%',
     overflow: 'auto',
     borderRadius: '16px',
+    pb: 4,
     zIndex: 1
   })
 )
@@ -215,16 +216,23 @@ const PageLayout = ({
 }) => {
   const router = useRouter()
   const [menuOpen, setMenuOpen] = useState(false)
+  const rotate = useMotionValue(0)
+  const translateY = useMotionValue(150)
+
   const menuAnim = {
     hidden: { bottom: '-350px' },
     standard: { bottom: '-295px' },
     open: { bottom: '0px' }
   }
   const triggerAnim = {
-    standard: { rotate: 0, top: '-12px' },
-    wave: { top: '-24px' },
-    down: { rotate: 180 },
-    up: { rotate: 0 }
+    standard: { top: '-12px' },
+    wave: { top: '-24px' }
+  }
+
+  const toggleMenu = () => {
+    rotate.set(menuOpen ? 0 : 180)
+    translateY.set(menuOpen ? 150 : 0)
+    setMenuOpen(!menuOpen)
   }
 
   return (
@@ -242,14 +250,15 @@ const PageLayout = ({
           {children}
         </MainContent>
         <Menu
-          onClick={() => setMenuOpen((bool) => !bool)}
+          onClick={toggleMenu}
           initial="hidden"
           animate={menuOpen ? 'open' : 'standard'}
           variants={menuAnim}
         >
           <MenuTrigger
             initial="standard"
-            animate={['wave', menuOpen ? 'down' : 'up']}
+            style={{ rotate }}
+            animate={['wave']}
             variants={triggerAnim}
             transition={{
               top: {
@@ -263,7 +272,7 @@ const PageLayout = ({
           >
             <IoIosArrowUp size={30} />
           </MenuTrigger>
-          <MenuItem onClick={() => router.push('/')}>
+          <MenuItem style={{ translateY }} onClick={() => router.push('/')}>
             <MenuIllustration
               src="/assets/menu/home.png"
               alt="A rocket been launched in front a cellphone"
@@ -277,7 +286,10 @@ const PageLayout = ({
               </p>
             </MenuInfo>
           </MenuItem>
-          <MenuItem onClick={() => router.push('/perfil')}>
+          <MenuItem
+            style={{ translateY }}
+            onClick={() => router.push('/perfil')}
+          >
             <MenuIllustration
               src="/assets/menu/profile.png"
               alt="A man sitting in front of a projector screen"
@@ -289,7 +301,7 @@ const PageLayout = ({
               <p>Um pouco de mim.</p>
             </MenuInfo>
           </MenuItem>
-          <MenuItem onClick={() => router.push('/apps')}>
+          <MenuItem style={{ translateY }} onClick={() => router.push('/apps')}>
             <MenuIllustration
               src="/assets/menu/apps.png"
               alt=""
@@ -301,7 +313,7 @@ const PageLayout = ({
               <p>Faço pra me divertir.</p>
             </MenuInfo>
           </MenuItem>
-          <MenuItem>
+          <MenuItem style={{ translateY }}>
             <MenuIllustration
               src="/assets/menu/blog.png"
               alt=""
@@ -313,7 +325,10 @@ const PageLayout = ({
               <p>Escrevo o que penso.</p>
             </MenuInfo>
           </MenuItem>
-          <MenuItem onClick={() => router.push('/contato')}>
+          <MenuItem
+            style={{ translateY }}
+            onClick={() => router.push('/contato')}
+          >
             <MenuIllustration
               src="/assets/menu/contact.png"
               alt=""
