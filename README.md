@@ -20,11 +20,10 @@ const itIsMe = {
   askMeAbout: ['Web Dev', 'Tech', 'Digital Marketing', 'MMORPG', 'Meditation'],
   technologies: {
     frontEnd: {
-      html: ['Web Semantic', 'Web APIs', ]
-      css: ['Styled Components', 'Styled System', 'CSS Modules'],
       js: ['React.js', 'Next.js', 'Framer Motion'],
+      css: ['Styled Components', 'Styled System', 'CSS Modules'],
       ruby: ['Sass', 'Jekyll'],
-      misc: ['Debugger', 'Browser Dev Tools']
+      misc: ['Web APIs', 'Debugger', 'Browser Dev Tools']
     },
     backEnd: ['Node.js', 'Express.js', 'Stripe', 'Nest.js'],
     mobileApp: ['React Native', 'Expo', 'Ignite'],
