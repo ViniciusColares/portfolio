@@ -1,7 +1,7 @@
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
 
-import PageLayout from '@templates/PageLayout'
+import MainPage from '@templates/MainPage'
 
 import {
   SiHtml5,
@@ -67,7 +67,7 @@ export const getStaticProps: GetStaticProps = async () => {
     props: {
       duolingo
     },
-    revalidate: 30
+    revalidate: 60
   }
 }
 
@@ -82,7 +82,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
   const getTotalCrowns = () => courses.reduce((ac, cv) => ac + cv.crowns, 0)
 
   return (
-    <PageLayout pageTitle="perfil">
+    <MainPage pageTitle="perfil">
       <SC.Profile tag="section" my={5}>
         <Image
           className="avatar"
@@ -358,7 +358,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
       >
         Aprenda idiomas com Duolingo você também
       </a>
-    </PageLayout>
+    </MainPage>
   )
 }
 
