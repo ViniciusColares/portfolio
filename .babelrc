@@ -1,48 +1,40 @@
 {
-  "presets": [
-    [
-      "next/babel",
-      {
-        "preset-env": {
-          "useBuiltIns": "usage"
-        }
-      }
-    ]
-  ],
+  "presets": ["next/babel", "@babel/preset-typescript"],
   "plugins": [
+    ["inline-react-svg"],
+    ["@babel/syntax-dynamic-import"],
     [
       "module-resolver",
       {
         "root": ["./"],
         "alias": {
           "@modules": "./node_modules",
-          "@components": "./components",
-          "@templates": "./templates",
-          "@styles": "./styles",
           "@public": "./public",
-          "@pages": "./pages"
+          "@components": "./src/components",
+          "@templates": "./src/templates",
+          "@styles": "./src/styles",
+          "@pages": "./src/pages",
+          "@store": "./src/store"
         }
       }
     ],
-    ["inline-react-svg"],
-    "@babel/syntax-dynamic-import",
     [
-      "lodash",
+      "babel-plugin-styled-components",
       {
-        "id": ["lodash"]
-      }
-    ],
-    [
-      "import",
-      {
-        "libraryName": "antd",
-        "style": true
+        "ssr": true,
+        "displayName": true,
+        "preprocess": false
       }
     ]
   ],
   "env": {
     "test": {
-      "presets": [["@babel/preset-env", { "modules": false }], "next/babel"]
+      "plugins": [
+        [
+          "babel-plugin-styled-components",
+          { "ssr": false, "displayname": false }
+        ]
+      ]
     }
   }
 }

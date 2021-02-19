@@ -1,19 +1,16 @@
-const withPWA = require("next-pwa");
-const withImages = require("next-images");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+const withPWA = require('next-pwa')
+
+const isProd = process.env.NODE_ENV === 'production'
 
 const settings = {
-  env: {
-    underConstruction: true,
-  },
   devIndicators: {
-    autoPrerender: false,
+    autoPrerender: false
   },
   pwa: {
-    dest: "public",
-  },
-};
+    dest: 'public',
+    disable: !isProd
+  }
+}
 
-module.exports =
-  process.env.NODE_ENV === "development"
-    ? withImages(settings)
-    : withImages(withPWA(settings));
+module.exports = withPWA(settings)
