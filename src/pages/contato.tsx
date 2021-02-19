@@ -1,9 +1,9 @@
 import React from 'react'
 
-import PageLayout from '@templates/PageLayout'
+import MainPage from '@templates/MainPage'
 
 const Contato = () => {
-  return <PageLayout pageTitle="Contato">{}</PageLayout>
+  return <MainPage pageTitle="Contato">{}</MainPage>
 }
 
 export default Contato

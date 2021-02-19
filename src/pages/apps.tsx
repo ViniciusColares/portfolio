@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
-import PageLayout from "@templates/PageLayout";
+import MainPage from '@templates/MainPage'
 
 const Apps = () => {
-  return <PageLayout pageTitle="Apps">{}</PageLayout>;
-};
+  return <MainPage pageTitle="Apps">{}</MainPage>
+}
 
-export default Apps;
+export default Apps

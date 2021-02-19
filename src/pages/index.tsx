@@ -2,7 +2,7 @@ import React from 'react'
 import Image from 'next/image'
 import { useRouter } from 'next/router'
 
-import PageLayout from '@templates/PageLayout'
+import MainPage from '@templates/MainPage'
 import Flex from '@components/Flex'
 import Button from '@components/Button'
 import { Text, Heading } from '@components/Typo'
@@ -13,7 +13,7 @@ const Home = () => {
   const router = useRouter()
 
   return (
-    <PageLayout pageTitle="início">
+    <MainPage pageTitle="início">
       <SC.MainHeading>
         <Heading fontSize={1}>Revolucione seu mundo</Heading>
         <Heading fontSize={5} color="accent">
@@ -38,7 +38,7 @@ const Home = () => {
           size="big"
         />
       </SC.CallToAction>
-    </PageLayout>
+    </MainPage>
   )
 }
 
