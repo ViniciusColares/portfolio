@@ -13,8 +13,7 @@ export const Wrapper = styled('section')(
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    background:
-      'url(/assets/bg.png) left top repeat-x scroll,linear-gradient(to bottom,#7C31D2 20%,#5614E2 90%)',
+    background: `url(/assets/bg.png) left top repeat-x scroll,linear-gradient(to bottom,${colors.primary1} 20%,${colors.primary2} 90%)`,
     backgroundAttachment: 'fixed',
     backgroundSize: '540px',
     width: '100vw',
@@ -43,7 +42,7 @@ export const Main = styled(motion.main)(
     zIndex: 1,
     transformStyle: 'preserve-3d',
     transform: 'perspective(0.5cm)',
-    background: `url('/assets/bg.png') center top no-repeat scroll, linear-gradient(to bottom,${colors.primary1} 20%,${colors.primary2} 90%)`,
+    background: `url('/assets/bg.png') center top no-repeat scroll, linear-gradient(to bottom left,${colors.primary1} 20%,${colors.primary2} 90%)`,
     backgroundSize: '100%',
     [medias('sm')]: {
       height: '80vh',
@@ -93,7 +92,7 @@ export const PageTitle = styled(Heading)(
     fontFamily: 'heading',
     justifySelf: 'center',
     margin: 0,
-    fontSize: 1,
+    fontSize: 2,
     lineHeight: '18px',
     fontWeight: 100
   })
@@ -129,13 +128,13 @@ export const MenuTrigger = styled(motion.div)(
     height: '32px',
     left: 'calc(50% - 15px)',
     borderRadius: '50%',
-    boxShadow: '0px 0px 2px 1px rgb(0 0 0 / 25%)',
+    boxShadow: '0px 0px 2px 1px rgb(0 0 0 / 30%)',
     zIndex: 1,
     svg: {
-      boxShadow: '0px 0px 2px 1px rgb(255 255 255 / 25%)',
+      boxShadow: '0px 0px 2px 1px rgb(255 255 255 / 30%)',
       backdropFilter: 'blur(3px)',
       borderRadius: '50%',
-      bg: 'rgb(255 255 255 / 5%)',
+      bg: 'rgb(255 255 255 / 20%)',
       p: 1
     }
   })
@@ -195,13 +194,13 @@ export const MenuInfo = styled(motion.div)(
     h2: {
       fontFamily: 'heading',
       fontWeight: 100,
-      fontSize: 1,
+      fontSize: 2,
       mb: 1
     },
     p: {
       fontFamily: 'text',
       fontWeight: 400,
-      fontSize: 1,
+      fontSize: 2,
       color: 'rgb(255 255 255 / 50%)'
     }
   })

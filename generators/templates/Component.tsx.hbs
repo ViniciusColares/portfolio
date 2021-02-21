@@ -1,9 +1,14 @@
-import * as S from './styles'
+import * as $ from './style'
 
-const {{pascalCase name}} = () => (
-  <S.Wrapper>
-    <h1>{{pascalCase name}}</h1>
-  </S.Wrapper>
-)
+const {{pascalCase name}} = ({
+  placeholder,
+  ...restProps
+}: {{pascalCase name}}Props & React.HTMLAttributes<HTML{{pascalCase name}}Element> & MotionProps) => {
+  return <$.{{pascalCase name}}Style placeholder={placeholder} {...restProps} />
+}
+
+export interface {{pascalCase name}}Props {
+  placeholder: string
+}
 
 export default {{pascalCase name}}

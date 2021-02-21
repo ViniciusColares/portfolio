@@ -1,3 +1,28 @@
 import styled from 'styled-components'
+import css from '@styled-system/css'
+import { variant } from 'styled-system'
+import { theme } from '@styles/theme'
+import { motion, MotionProps } from 'framer-motion'
 
-export const Wrapper = styled.section``
+const { colors } = theme
+
+type {{pascalCase name}}StyleProps = { prop?: string }
+
+export const {{pascalCase name}}Style = styled(motion.{{name}})<
+  MotionProps & {{pascalCase name}}StyleProps
+>(
+  css({
+    // main props
+    '&:focus': {},
+    '&:hover': {},
+    '&:active': {},
+    '&:disabled': {},
+  }),
+  variant({
+    prop: 'prop',
+    variants: {
+      variant1: {},
+      variant2: {}
+    }
+  })
+)
