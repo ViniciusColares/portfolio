@@ -15,8 +15,8 @@ const Home = () => {
   return (
     <MainPage pageTitle="início">
       <SC.MainHeading>
-        <Heading fontSize={1}>Revolucione seu mundo</Heading>
-        <Heading fontSize={5} color="accent">
+        <Heading fontSize={2}>Revolucione seu mundo</Heading>
+        <Heading fontSize={6} color="accent">
           com tecnologia
         </Heading>
       </SC.MainHeading>

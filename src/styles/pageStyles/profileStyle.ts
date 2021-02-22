@@ -7,18 +7,14 @@ import { rgba } from 'polished'
 
 export const Profile = styled(Flex)(
   css({
-    justifyContent: 'center',
-    '.avatar': {
-      borderRadius: '50%',
-      border: `3px solid ${colors.accent} !important`
-    }
+    justifyContent: 'center'
   })
 )
 
 export const SectionSubTitle = styled(Heading)(
   css({
     display: 'flex',
-    fontSize: 2,
+    fontSize: 3,
     color: 'accent',
     alignItems: 'center',
     '> svg': {
@@ -34,20 +30,7 @@ export const Info = styled(Flex)(
     marginLeft: 2,
     '> h1': {
       margin: 0,
-      fontSize: 3
-    },
-    '> h2': {
-      margin: '3px 0',
-      fontSize: 2,
-      color: 'accent',
-      '> span': {
-        fontWeight: '600',
-        color: 'primaryDark'
-      }
-    },
-    '> h3': {
-      fontSize: 1,
-      margin: 0
+      fontSize: 4
     }
   })
 )
@@ -59,29 +42,13 @@ export const Intro = styled(Flex)(
     mx: 3,
     p: 3,
     borderRadius: '8px',
-    bg: rgba(colors.primaryDark, 0.25),
+    bg: rgba(colors.primaryDark, 0.5),
     backdropFilter: 'blur(3px)',
     '> p': {
       paddingRight: 2,
       '> span': {
         color: 'accent'
       }
-    }
-  })
-)
-
-export const Knowledge = styled(Flex)(
-  css({
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    flex: '1 auto',
-    bg: rgba(colors.primaryDark, 0.25),
-    backdropFilter: 'blur(3px)',
-    svg: {
-      my: 2,
-      mr: 3,
-      width: '24px',
-      height: '24px'
     }
   })
 )
@@ -117,21 +84,9 @@ export const Timeline = styled(Flex)(
           bg: 'primaryDark',
           position: 'absolute'
         },
-        '&:last-of-type::after': {
-          left: '4px',
-          top: '24px',
-          width: '0',
-          height: '0',
-          fontSize: '53px',
-          lineHeight: 0,
-          content: "'...'",
-          color: 'contrast',
-          position: 'absolute',
-          transform: 'rotate(90deg)'
-        },
         'h3, h4': {
           display: 'inline-flex',
-          fontSize: 1
+          fontSize: 2
         },
         h3: {
           color: 'accent',
@@ -143,17 +98,33 @@ export const Timeline = styled(Flex)(
         },
         h5: {
           mb: 2,
-          fontSize: 1,
+          fontSize: 2,
           fontWeight: 'bold',
           fontFamily: 'text',
           color: 'primaryDark'
         },
         p: {
           margin: 0,
-          fontSize: 1,
+          fontSize: 2,
           lineHeight: 1.5
         }
       }
+    }
+  })
+)
+
+export const Knowledge = styled(Flex)(
+  css({
+    flexDirection: 'row',
+    flexWrap: 'wrap',
+    flex: '1 auto',
+    bg: rgba(colors.primaryDark, 0.25),
+    backdropFilter: 'blur(3px)',
+    svg: {
+      my: 2,
+      mr: 3,
+      width: '24px',
+      height: '24px'
     }
   })
 )
@@ -164,7 +135,7 @@ export const AdditionalInfo = styled(Flex)(
     padding: '0 15px',
     p: {
       m: 0,
-      fontSize: 1,
+      fontSize: 2,
       lineHeight: 1.5
     }
   })
@@ -229,7 +200,7 @@ export const LangCol = styled(Flex)(
   css({
     alignItems: 'center',
     '> span:first-of-type': {
-      fontSize: 2,
+      fontSize: 3,
       fontWeight: 500
     },
     '.trophy': {
@@ -246,7 +217,7 @@ export const ExpCol = styled(Flex)(
     span: {
       fontWeight: 500,
       '&:first-of-type': {
-        fontSize: 2
+        fontSize: 3
       },
       '&:not(:first-of-type)': {
         lineHeight: '40px'

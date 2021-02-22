@@ -7,7 +7,7 @@ const Blog = () => {
   return (
     <MainPage pageTitle="blog">
       <hgroup style={{ marginTop: '3vh' }}>
-        <Heading fontSize={4} textAlign="center" mb={1}>
+        <Heading fontSize={5} textAlign="center" mb={1}>
           Meu Blog
         </Heading>
       </hgroup>
