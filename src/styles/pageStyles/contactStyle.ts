@@ -9,8 +9,16 @@ export const Social = styled.a(
     color: 'white',
     fontSize: 2,
     textDecoration: 'none',
+    transition: 'all .3s ease-out',
     svg: {
+      transition: 'all .3s ease-out',
       mr: 2
+    },
+    ':hover': {
+      color: 'accent',
+      svg: {
+        fill: 'accent'
+      }
     }
   })
 )

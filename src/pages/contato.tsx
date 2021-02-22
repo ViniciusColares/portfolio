@@ -71,12 +71,12 @@ const Contato = () => {
         </Flex>
       </form>
 
-      <Flex flexDirection="column" alignItems="center" mt={6}>
+      <Flex flexDirection="column" alignItems="stretch" mt={6}>
         <Heading fontSize={5} color="accent" textAlign="center" mb={4}>
           Me encontre também
         </Heading>
 
-        <Flex justifyContent="center" alignItems="center" spaceChildren={4}>
+        <Flex flex={1} justifyContent="space-evenly" alignItems="center">
           <Flex flexDirection="column" spaceChildren={3}>
             <$.Social
               href="https://www.instagram.com/viniciuscolares.dev/"

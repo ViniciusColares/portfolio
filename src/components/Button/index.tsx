@@ -53,7 +53,7 @@ const Button = ({
 
 export interface ButtonProps {
   name: string
-  type: 'button' | 'submit' | 'reset'
+  type?: 'button' | 'submit' | 'reset'
   onClick?: (() => Promise<boolean>) | (() => void)
   isLoading?: boolean
   size?: 'small' | 'medium' | 'big'

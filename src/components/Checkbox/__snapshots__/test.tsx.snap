@@ -1,0 +1,94 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Checkbox it should render a Checkbox with label 1`] = `
+.c0 {
+  position: relative;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  font-family: text;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.c0 span {
+  color: white;
+  font-size: 14px;
+  display: block;
+  line-height: 1.3;
+}
+
+.c0 span:first-letter {
+  text-transform: capitalize;
+}
+
+.c1 {
+  all: unset;
+  position: relative;
+  background-color: primaryDark;
+  min-width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 4px;
+  border-color: primaryDark;
+  display: inline-block;
+  margin-right: 10px;
+  -webkit-transition: all 150ms;
+  transition: all 150ms;
+}
+
+.c1:focus,
+.c1:hover {
+  box-shadow: inset 0px 0px 0px 2px #B079FF;
+}
+
+.c1:checked {
+  box-shadow: inset 0px 0px 0px 2px #00B007;
+}
+
+.c1:checked::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 6px;
+  width: 6px;
+  height: 6px;
+  background-color: aux.success;
+  border-radius: 1px;
+}
+
+.c1:disabled {
+  box-shadow: inset 0px 0px 0px 2px #938CA3;
+  background-color: gray25;
+  cursor: not-allowed;
+}
+
+.c1:disabled:focus,
+.c1:disabled:hover {
+  box-shadow: inset 0px 0px 0px 2px #B079FF;
+}
+
+<label
+  class="c0"
+  for="checkboxundefined"
+>
+  <input
+    class="c1"
+    id="checkboxundefined"
+    type="checkbox"
+    value=""
+  />
+  <span>
+    remember me
+  </span>
+</label>
+`;

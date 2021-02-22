@@ -8,7 +8,6 @@
     "start": "next start",
     "test": "jest",
     "test:watch": "yarn test --watch",
-    "cy": "yarn run cypress open",
     "lint": "eslint './src/**/*.{js,ts,tsx}' --max-warnings=0",
     "storybook": "start-storybook -s ./public -p 6006 --no-dll",
     "build-storybook": "build-storybook -s ./public --no-dll",
@@ -28,8 +27,6 @@
     ]
   },
   "dependencies": {
-    "@mailchimp/mailchimp_marketing": "^3.0.28",
-    "@storybook/addon-a11y": "^6.1.9",
     "clsx": "^1.1.1",
     "framer-motion": "^2.9.4",
     "next": "^10.0.6",
@@ -54,9 +51,9 @@
     "@storybook/addon-links": "^6.1.9",
     "@storybook/react": "^6.1.9",
     "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.2.0",
+    "@testing-library/react": "^11.2.5",
     "@types/jest": "^26.0.20",
-    "@types/next": "^9.0.0",
+    "@types/node": "^14.14.31",
     "@types/react": "^16.9.56",
     "@types/react-dom": "^17.0.0",
     "@types/react-responsive": "^8.0.2",
