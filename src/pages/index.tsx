@@ -7,19 +7,19 @@ import Flex from '@components/Flex'
 import Button from '@components/Button'
 import { Text, Heading } from '@components/Typo'
 
-import * as SC from '@styles/pageStyles/homeStyle'
+import * as $ from '@styles/pageStyles/homeStyle'
 
 const Home = () => {
   const router = useRouter()
 
   return (
     <MainPage pageTitle="início">
-      <SC.MainHeading>
+      <$.MainHeading>
         <Heading fontSize={2}>Revolucione seu mundo</Heading>
         <Heading fontSize={6} color="accent">
           com tecnologia
         </Heading>
-      </SC.MainHeading>
+      </$.MainHeading>
 
       <Flex my="3vh" mx="3vw" justifyContent="center">
         <Image
@@ -30,14 +30,14 @@ const Home = () => {
         />
       </Flex>
 
-      <SC.CallToAction>
+      <$.CallToAction>
         <Text tag="span">Como fazer isso?</Text>
         <Button
           onClick={() => router.push('/contato')}
           name="Vamos conversar"
           size="big"
         />
-      </SC.CallToAction>
+      </$.CallToAction>
     </MainPage>
   )
 }
