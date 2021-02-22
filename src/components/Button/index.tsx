@@ -14,6 +14,7 @@ const Button = ({
   type = 'button',
   icon: Icon,
   size = 'medium',
+  disabled = false,
   isLoading = false,
   ...restProps
 }: ButtonProps &
@@ -25,7 +26,7 @@ const Button = ({
       <$.ButtonStyle
         type={type}
         size={size}
-        disabled={isLoading}
+        disabled={isLoading || disabled}
         {...restProps}
       >
         {isLoading ? (
@@ -55,6 +56,7 @@ export interface ButtonProps {
   name: string
   type?: 'button' | 'submit' | 'reset'
   onClick?: (() => Promise<boolean>) | (() => void)
+  disabled?: boolean
   isLoading?: boolean
   size?: 'small' | 'medium' | 'big'
   icon?: React.ComponentType<IconBaseProps>

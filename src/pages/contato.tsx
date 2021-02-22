@@ -1,4 +1,6 @@
 import { useState } from 'react'
+import confetti from 'canvas-confetti'
+import clsx from 'clsx'
 import { BiMailSend } from 'react-icons/bi'
 import {
   SiInstagram,
@@ -19,14 +21,57 @@ import Image from 'next/image'
 import * as $ from '@styles/pageStyles/contactStyle'
 
 const Contato = () => {
+  const [firstName, setFirstName] = useState('')
   const [email, setEmail] = useState('')
-  const [newsletterCheck, setNewsletterCheck] = useState(true)
+  const [invalidEmail, setInvalidEmail] = useState(false)
+  const [newsletterCheck, setNewsletterCheck] = useState(false)
 
-  const subscribeNewsletter = (event) => {
-    event.preventDefault()
-    alert(
-      'Por favor, tente novamente amanhã. Finalizo essa integração ainda hoje.'
-    )
+  const changeName = (evt) => setFirstName(evt.currentTarget.value)
+  const changeEmail = (evt) => setEmail(evt.currentTarget.value)
+  const filledForm = () =>
+    email.length > 0 && firstName.length > 0 && newsletterCheck
+
+  const subscribeNewsletter = async (evt) => {
+    evt.preventDefault()
+
+    const form = new FormData()
+    form.set('api_key', process.env.NEXT_PUBLIC_CONVERTKIT_API_KEY)
+    form.set('first_name', firstName)
+    form.set('email', email)
+    form.set('tags', process.env.NEXT_PUBLIC_CONVERTKIT_TAG_NEWSLETTER)
+
+    try {
+      const response = await fetch(
+        `https://api.convertkit.com/v3/forms/${process.env.NEXT_PUBLIC_CONVERTKIT_FORM_ID}/subscribe`,
+        {
+          method: 'POST',
+          mode: 'cors',
+          body: form
+        }
+      ).then((res) => res.json())
+
+      console.log(response.status)
+
+      if (response.status !== 'OK') {
+        response.message === 'Email address is invalid' && setInvalidEmail(true)
+      }
+
+      if (!response.error) {
+        setFirstName('')
+        setEmail('')
+        setNewsletterCheck(false)
+        setInvalidEmail(false)
+
+        confetti({
+          angle: 270,
+          spread: 70,
+          particleCount: 260,
+          origin: { x: 0.5, y: -0.4 }
+        })
+      }
+    } catch (e) {
+      console.log(e)
+    }
   }
 
   return (
@@ -45,14 +90,22 @@ const Contato = () => {
         Espero que meu conteúdo te ajude de alguma forma.
       </Text>
 
-      <form action="post" onSubmit={subscribeNewsletter}>
+      <form onSubmit={subscribeNewsletter}>
         <Flex flexDirection="column" mt={2} spaceChildren={2} px={4}>
           <Input
-            defaultValue={email}
-            onChange={(e) => setEmail(e.currentTarget.value)}
+            value={firstName}
+            onChange={changeName}
+            name="firstName"
+            placeholder="Primeiro nome ou apelido"
+          />
+          <Input
+            value={email}
+            onChange={changeEmail}
             name="email"
             type="email"
-            placeholder="sua.melhor.conta@email.com.br"
+            state={clsx({ error: invalidEmail })}
+            error={invalidEmail ? 'Endereço de e-mail inválido' : ''}
+            placeholder="melhor.conta@email.com.br"
           />
           <Flex
             justifyContent="space-between"
@@ -66,7 +119,12 @@ const Contato = () => {
               label="Eu aceito receber conteúdo sobre novidades e outras atividades."
             />
 
-            <Button name="Cadastrar" type="submit" icon={BiMailSend} />
+            <Button
+              disabled={!filledForm()}
+              name="Cadastrar"
+              type="submit"
+              icon={BiMailSend}
+            />
           </Flex>
         </Flex>
       </form>
@@ -101,7 +159,7 @@ const Contato = () => {
             </$.Social>
           </Flex>
 
-          <Image width={212} height={180} src="/assets/findMe.png" />
+          <Image width="212px" height="180px" src="/assets/social.png" />
         </Flex>
       </Flex>
     </MainPage>
