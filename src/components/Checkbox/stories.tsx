@@ -14,12 +14,6 @@ const Template: Story<ComponentProps<typeof Checkbox>> = (args) => (
 
 export const Basic = Template.bind({})
 Basic.args = {
-  name: 'Checkbox'
+  label: 'Remember me'
 }
 Basic.argTypes = { onClick: { action: 'clicked' } }
-
-export const Loading = Template.bind({})
-Loading.args = {
-  name: 'Loading',
-  isLoading: true
-}

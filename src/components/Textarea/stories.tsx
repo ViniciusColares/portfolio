@@ -14,12 +14,7 @@ const Template: Story<ComponentProps<typeof Textarea>> = (args) => (
 
 export const Basic = Template.bind({})
 Basic.args = {
-  name: 'Textarea'
-}
-Basic.argTypes = { onClick: { action: 'clicked' } }
-
-export const Loading = Template.bind({})
-Loading.args = {
-  name: 'Loading',
-  isLoading: true
+  name: 'bio',
+  placeholder: 'write your bio',
+  rows: 4
 }

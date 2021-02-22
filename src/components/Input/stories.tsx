@@ -6,4 +6,6 @@ export default {
   component: Input
 } as Meta
 
-export const Default: Story = () => <Input />
+export const Default: Story = () => (
+  <Input name="name" placeholder="type your name" />
+)
