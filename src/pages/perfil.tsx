@@ -41,7 +41,7 @@ import FlagDE from '@public/assets/duolingo/flag_de.svg'
 import { Heading, Text } from '@components/Typo'
 import Flex from '@components/Flex'
 
-import * as SC from '@styles/pageStyles/profileStyle'
+import * as $ from '@styles/pageStyles/profileStyle'
 
 interface IPerfil {
   duolingo: {
@@ -83,37 +83,33 @@ const Perfil = ({ duolingo }: IPerfil) => {
 
   return (
     <MainPage pageTitle="perfil">
-      <SC.Profile tag="section" my={5}>
+      <$.Profile tag="section" my={5}>
         <Image
-          className="avatar"
-          src="/assets/avatar.png"
-          alt="A Vinicius Colares selfie"
+          src="/assets/menu/profile.png"
+          alt="An illustration of Vinicius Colares' face"
           layout="fixed"
           quality={100}
-          width={80}
+          width={59}
           height={80}
         />
-        <SC.Info>
+        <$.Info>
           <Heading tag="h1">Vinícius Colares</Heading>
           <Text mb={0} color="accent">
             Desenvolvedor Web FullStack
           </Text>
           <Text mb={0}>Jan de 1992, Aracaju-SE, Brasil</Text>
-        </SC.Info>
-      </SC.Profile>
+        </$.Info>
+      </$.Profile>
 
-      <SC.Intro tag="section" mb={5}>
+      <$.Intro tag="section" mb={5}>
         <Text mb={0}>
-          Desenvolvedor web há mais de <span>10 anos</span>, construindo
-          soluções em tecnologia, interfaces e uma experiência{' '}
-          <span>produtiva e divertida</span> para milhões de usuários. Acredito
-          na falta da certeza como melhor guia, me amarro em games, filosofia,{' '}
-          <span>bem-estar e autoconhecimento</span> ... antes uma pergunta
-          besta, a uma besta que não pergunta.
+          Desenvolvedor web há mais de <span>10 anos</span>, apaixonado por {''}
+          <span>desenvolvimento de interfaces e experiências</span>, sem abrir
+          mão das boas práticas e performance.
         </Text>
-      </SC.Intro>
+      </$.Intro>
 
-      <SC.Timeline tag="section" mb={5}>
+      <$.Timeline tag="section" mb={5}>
         <ul>
           <li>
             <Heading tag="h3">O início </Heading>
@@ -177,9 +173,9 @@ const Perfil = ({ duolingo }: IPerfil) => {
             </Text>
           </li>
         </ul>
-      </SC.Timeline>
+      </$.Timeline>
 
-      <SC.Knowledge tag="section" mb={5}>
+      <$.Knowledge tag="section" mb={5}>
         <SiHtml5 />
         <SiCss3 />
         <SiJavascript />
@@ -203,14 +199,14 @@ const Perfil = ({ duolingo }: IPerfil) => {
         <SiMysql />
         <SiMongodb />
         <SiNextDotJs />
-      </SC.Knowledge>
+      </$.Knowledge>
 
-      <SC.AdditionalInfo tag="section" mb={5}>
+      <$.AdditionalInfo tag="section" mb={5}>
         <Flex flexDirection="column" mb={2}>
-          <SC.SectionSubTitle tag="h2" mb={2}>
+          <$.SectionSubTitle tag="h2" mb={2}>
             <RiFindReplaceLine />
             Curioso
-          </SC.SectionSubTitle>
+          </$.SectionSubTitle>
           <Text mb={0}>
             Sempre fiquei intrigado com a sensação de <span>não saber</span>{' '}
             como as coisas funcionam e/ou o porquê de{' '}
@@ -222,10 +218,10 @@ const Perfil = ({ duolingo }: IPerfil) => {
           </Text>
         </Flex>
         <Flex flexDirection="column" mb={2}>
-          <SC.SectionSubTitle tag="h2" mb={2}>
+          <$.SectionSubTitle tag="h2" mb={2}>
             <RiKakaoTalkFill />
             Comunicativo
-          </SC.SectionSubTitle>
+          </$.SectionSubTitle>
           <Text mb={0}>
             Muito foi feito pela humanidade, pra não dizer tudo, graças à
             capacidade que o ser humano tem de <span>se comunicar</span>, não
@@ -236,13 +232,13 @@ const Perfil = ({ duolingo }: IPerfil) => {
             problemas. E então, vamos conversar um pouco?!
           </Text>
         </Flex>
-      </SC.AdditionalInfo>
+      </$.AdditionalInfo>
 
-      <SC.DuolingoSection tag="aside">
+      <$.DuolingoSection tag="aside">
         <header
           onClick={() =>
             window.open(
-              'https://www.duolingo.com/profile/ViniciusColares',
+              'https://www.duolingo.com/profile/Viniciuscolares',
               '_blank'
             )
           }
@@ -266,19 +262,19 @@ const Perfil = ({ duolingo }: IPerfil) => {
         </header>
         <Flex justifyContent="space-around">
           <Flex flexDirection="column" alignItems="center" mt={4}>
-            <SC.TotalExp>
-              <Text tag="span" fontSize={2} fontWeight={500} lineHeight={0.8}>
+            <$.TotalExp>
+              <Text tag="span" fontSize={3} fontWeight={500} lineHeight={0.8}>
                 Total Exp
               </Text>
               <Text
                 tag="span"
-                fontSize={2}
+                fontSize={3}
                 fontWeight={600}
                 color="#78C800 !important"
               >
                 {duolingo.totalXp}
               </Text>
-            </SC.TotalExp>
+            </$.TotalExp>
 
             <Image
               className="duolingo-avatar"
@@ -292,7 +288,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
 
             <Text
               tag="span"
-              fontSize={2}
+              fontSize={3}
               fontWeight={600}
               color="gray100"
               mb={1}
@@ -316,8 +312,8 @@ const Perfil = ({ duolingo }: IPerfil) => {
             </Flex>
           </Flex>
 
-          <SC.LangInfo spaceChildren={3}>
-            <SC.LangCol flexDirection="column" spaceChildren={1}>
+          <$.LangInfo spaceChildren={3}>
+            <$.LangCol flexDirection="column" spaceChildren={1}>
               <Text tag="span">Idioma</Text>
               <FlagBR title="Português(pt-br)" width={60} height={40} />
               <Flex>
@@ -331,8 +327,8 @@ const Perfil = ({ duolingo }: IPerfil) => {
               </Flex>
               <FlagFR title="Francês(fr)" width={60} height={40} />
               <FlagDE title="Alemão(de)" width={60} height={40} />
-            </SC.LangCol>
-            <SC.ExpCol flexDirection="column" spaceChildren={1}>
+            </$.LangCol>
+            <$.ExpCol flexDirection="column" spaceChildren={1}>
               <Text tag="span">Exp</Text>
               <Text tag="span" color="#78C800 !important">
                 nativo
@@ -340,17 +336,17 @@ const Perfil = ({ duolingo }: IPerfil) => {
               <Text tag="span">{getExp('en') || '-'}</Text>
               <Text tag="span">{getExp('fr') || '-'}</Text>
               <Text tag="span">{getExp('de') || '-'}</Text>
-            </SC.ExpCol>
-            <SC.CrownsCol flexDirection="column" spaceChildren={1}>
+            </$.ExpCol>
+            <$.CrownsCol flexDirection="column" spaceChildren={1}>
               <Crowns height={24} />
               <Text tag="span">-</Text>
               <Text tag="span">{getCrowns('en') || '-'}</Text>
               <Text tag="span">{getCrowns('fr') || '-'}</Text>
               <Text tag="span">{getCrowns('de') || '-'}</Text>
-            </SC.CrownsCol>
-          </SC.LangInfo>
+            </$.CrownsCol>
+          </$.LangInfo>
         </Flex>
-      </SC.DuolingoSection>
+      </$.DuolingoSection>
       <a
         href="https://invite.duolingo.com/BDHTZTB5CWWKTSJQSN5RY2L3EU"
         target="_blank"

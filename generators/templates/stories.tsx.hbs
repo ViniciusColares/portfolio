@@ -1,9 +1,25 @@
+import React, { ComponentProps } from 'react'
 import { Story, Meta } from '@storybook/react/types-6-0'
+
 import {{pascalCase name}} from '.'
 
 export default {
-  title: '{{pascalCase name}}',
+  title: 'Core/{{pascalCase name}}',
   component: {{pascalCase name}}
 } as Meta
 
-export const Default: Story = () => <{{pascalCase name}} />
+const Template: Story<ComponentProps<typeof {{pascalCase name}}>> = (args) => (
+  <{{pascalCase name}} {...args} />
+)
+
+export const Basic = Template.bind({})
+Basic.args = {
+  name: '{{pascalCase name}}'
+}
+Basic.argTypes = { onClick: { action: 'clicked' } }
+
+export const Loading = Template.bind({})
+Loading.args = {
+  name: 'Loading',
+  isLoading: true
+}

@@ -1,11 +1,11 @@
 import { render, screen } from '@testing-library/react'
 
-import Button from './Button'
+import Button from '.'
 
 describe('Button', () => {
   it('it should render text inside button', () => {
     const { container } = render(<Button name="botão" />)
-    expect(screen.getByText('botão')).toBeInTheDocument()
+    expect(screen.getByRole('button'))
     expect(container.firstChild).toMatchSnapshot()
   })
 
@@ -13,7 +13,7 @@ describe('Button', () => {
     const { container } = render(
       <Button name="botão" isLoading data-testid="svgButton" />
     )
-    expect(screen.getByTestId('svgButton')).toBeInTheDocument()
+    expect(screen.getByTestId('svgButton'))
     expect(container.firstChild).toMatchSnapshot()
   })
 })
