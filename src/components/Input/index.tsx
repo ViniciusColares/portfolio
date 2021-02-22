@@ -29,7 +29,7 @@ const Input = ({
 }
 
 export interface InputProps {
-  value: string
+  value?: string
   name: string
   error?: string
   type?: string
