@@ -62,7 +62,7 @@ exports[`Checkbox it should render a Checkbox with label 1`] = `
   top: 6px;
   width: 6px;
   height: 6px;
-  background-color: aux.success;
+  background-color: success;
   border-radius: 1px;
 }
 

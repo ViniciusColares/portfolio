@@ -13,9 +13,7 @@ export const colors = {
   gray100: '#311B38',
   contrast: '#FFFFFF',
   shadow: '#3C0D80',
-  aux: {
-    success: '#00B007'
-  }
+  success: '#00B007'
 }
 
 export const fonts = {

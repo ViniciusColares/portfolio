@@ -42,7 +42,7 @@ export const CheckboxStyle = styled(motion.input)<MotionProps>(
       boxShadow: `inset 0px 0px 0px 2px ${colors.primaryLight}`
     },
     '&:checked': {
-      boxShadow: `inset 0px 0px 0px 2px ${colors.aux.success}`,
+      boxShadow: `inset 0px 0px 0px 2px ${colors.success}`,
       '::before': {
         content: '""',
         position: 'absolute',
@@ -50,7 +50,7 @@ export const CheckboxStyle = styled(motion.input)<MotionProps>(
         top: '6px',
         width: '6px',
         height: '6px',
-        backgroundColor: 'aux.success',
+        backgroundColor: 'success',
         borderRadius: '1px'
       }
     },
