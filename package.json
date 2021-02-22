@@ -28,7 +28,7 @@
   },
   "dependencies": {
     "clsx": "^1.1.1",
-    "framer-motion": "^2.9.4",
+    "framer-motion": "^3.6.2",
     "next": "^10.0.6",
     "next-pwa": "^5.0.5",
     "polished": "^4.0.4",
