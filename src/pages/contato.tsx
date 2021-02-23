@@ -50,10 +50,11 @@ const Contato = () => {
         }
       ).then((res) => res.json())
 
-      console.log(response.status)
-
       if (response.status !== 'OK') {
         response.message === 'Email address is invalid' && setInvalidEmail(true)
+        document
+          .querySelector('input[name="email"] ~ div')
+          ?.classList.add('visible')
       }
 
       if (!response.error) {

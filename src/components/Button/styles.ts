@@ -37,6 +37,9 @@ export const ButtonStyle = styled(motion.button)<
     transition: 'all .15s ease',
     borderColor: 'accentDark',
     transform: 'translateY(-4px) translateX(-4px)',
+    '> svg': {
+      marginRight: 2
+    },
     '&:focus': {
       boxShadow: `inset 0px 0px 0px 3px ${colors.accentDark}`,
       '&:hover': {
@@ -57,15 +60,11 @@ export const ButtonStyle = styled(motion.button)<
       bg: 'gray25',
       color: 'gray50',
       cursor: 'not-allowed',
-      '&:hover': {
-        transform: 'translateY(0px)'
-      },
-      '&+div': {
-        visibility: 'hidden'
+      transform: 'translateX(0px) translateY(0px)',
+      boxShadow: `inset 0px 0px 0px 2px ${colors.gray50}`,
+      '> svg': {
+        fill: 'gray50'
       }
-    },
-    '> svg': {
-      marginRight: 2
     }
   }),
   variant({

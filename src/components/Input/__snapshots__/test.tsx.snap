@@ -14,9 +14,10 @@ exports[`Input it should render a Input with label 1`] = `
 }
 
 .c0 svg {
-  position: absolute;
   right: 8px;
+  position: absolute;
   cursor: pointer;
+  z-index: 2;
 }
 
 .c1 {
@@ -33,6 +34,12 @@ exports[`Input it should render a Input with label 1`] = `
 
 .c1:focus {
   border-color: accent;
+}
+
+.c1:focus ~ div {
+  opacity: 0;
+  visibility: hidden;
+  right: 10px;
 }
 
 .c1::-webkit-input-placeholder {

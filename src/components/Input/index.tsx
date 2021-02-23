@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { colors } from '@styles/theme'
 import { MotionProps } from 'framer-motion'
 import { BiErrorAlt } from 'react-icons/bi'
@@ -13,6 +14,8 @@ const Input = ({
   type = 'text',
   ...restProps
 }: InputProps & React.HTMLAttributes<HTMLInputElement> & MotionProps) => {
+  const tooltipRef = useRef(null)
+
   return (
     <$.Container>
       <$.Input
@@ -20,10 +23,20 @@ const Input = ({
         name={name}
         value={value}
         placeholder={placeholder}
+        onFocus={() => tooltipRef?.current?.classList.remove('visible')}
         state={state}
         {...restProps}
       />
-      {error && <BiErrorAlt size={26} color={colors.error} />}
+      {error && (
+        <>
+          <BiErrorAlt
+            size={26}
+            color={colors.error}
+            onClick={() => tooltipRef?.current?.classList.toggle('visible')}
+          />
+          <$.Tooltip ref={tooltipRef}>{error}</$.Tooltip>
+        </>
+      )}
     </$.Container>
   )
 }
