@@ -14,7 +14,7 @@ const Input = ({
   type = 'text',
   ...restProps
 }: InputProps & React.HTMLAttributes<HTMLInputElement> & MotionProps) => {
-  const tooltipRef = useRef(null)
+  const tooltipRef = useRef<HTMLDivElement>(null)
 
   return (
     <$.Container>
