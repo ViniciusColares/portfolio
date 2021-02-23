@@ -13,7 +13,8 @@ export const colors = {
   gray100: '#311B38',
   contrast: '#FFFFFF',
   shadow: '#3C0D80',
-  success: '#00B007'
+  success: '#00B007',
+  error: '#EB5757'
 }
 
 export const fonts = {

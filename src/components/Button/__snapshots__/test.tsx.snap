@@ -59,6 +59,10 @@ exports[`Button it should render a loading button 1`] = `
   transform: translateY(-4px) translateX(-4px);
 }
 
+.c1 > svg {
+  margin-right: 8px;
+}
+
 .c1:focus {
   box-shadow: inset 0px 0px 0px 3px #BB8B0E;
 }
@@ -92,20 +96,14 @@ exports[`Button it should render a loading button 1`] = `
   background-color: gray25;
   color: gray50;
   cursor: not-allowed;
+  -webkit-transform: translateX(0px) translateY(0px);
+  -ms-transform: translateX(0px) translateY(0px);
+  transform: translateX(0px) translateY(0px);
+  box-shadow: inset 0px 0px 0px 2px #938CA3;
 }
 
-.c1:disabled:hover {
-  -webkit-transform: translateY(0px);
-  -ms-transform: translateY(0px);
-  transform: translateY(0px);
-}
-
-.c1:disabled+div {
-  visibility: hidden;
-}
-
-.c1 > svg {
-  margin-right: 8px;
+.c1:disabled > svg {
+  fill: gray50;
 }
 
 .c3 {
@@ -199,6 +197,10 @@ exports[`Button it should render text inside button 1`] = `
   transform: translateY(-4px) translateX(-4px);
 }
 
+.c1 > svg {
+  margin-right: 8px;
+}
+
 .c1:focus {
   box-shadow: inset 0px 0px 0px 3px #BB8B0E;
 }
@@ -232,20 +234,14 @@ exports[`Button it should render text inside button 1`] = `
   background-color: gray25;
   color: gray50;
   cursor: not-allowed;
+  -webkit-transform: translateX(0px) translateY(0px);
+  -ms-transform: translateX(0px) translateY(0px);
+  transform: translateX(0px) translateY(0px);
+  box-shadow: inset 0px 0px 0px 2px #938CA3;
 }
 
-.c1:disabled:hover {
-  -webkit-transform: translateY(0px);
-  -ms-transform: translateY(0px);
-  transform: translateY(0px);
-}
-
-.c1:disabled+div {
-  visibility: hidden;
-}
-
-.c1 > svg {
-  margin-right: 8px;
+.c1:disabled > svg {
+  fill: gray50;
 }
 
 .c2 {
