@@ -112,7 +112,7 @@ exports[`Button it should render a loading button 1`] = `
   height: 100%;
   background-color: shadow;
   border-radius: 8px;
-  border: 1px solid #3C0D80;
+  border: 1px solid #290759;
   top: 0;
   left: 0;
   z-index: -1;
@@ -250,7 +250,7 @@ exports[`Button it should render text inside button 1`] = `
   height: 100%;
   background-color: shadow;
   border-radius: 8px;
-  border: 1px solid #3C0D80;
+  border: 1px solid #290759;
   top: 0;
   left: 0;
   z-index: -1;
