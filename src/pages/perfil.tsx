@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react'
 import { GetStaticProps } from 'next'
 import Image from 'next/image'
 
@@ -42,6 +43,7 @@ import { Heading, Text } from '@components/Typo'
 import Flex from '@components/Flex'
 
 import * as $ from '@styles/pageStyles/profileStyle'
+import Range from '@components/Range'
 
 interface IPerfil {
   duolingo: {
@@ -73,6 +75,11 @@ export const getStaticProps: GetStaticProps = async () => {
 
 const Perfil = ({ duolingo }: IPerfil) => {
   const { courses } = duolingo
+  const [timelineStep, setTimelineStep] = useState('2010')
+
+  useEffect(() => {
+    console.log('slaidou')
+  }, [timelineStep])
 
   const findCourse = (lang): IDuolingoCourse | undefined =>
     courses.find((course) => course?.learningLanguage === lang)
@@ -109,12 +116,22 @@ const Perfil = ({ duolingo }: IPerfil) => {
         </Text>
       </$.Intro>
 
-      <$.Timeline tag="section" mb={5}>
-        <ul>
-          <li>
-            <Heading tag="h3">O início </Heading>
-            <Heading tag="h4">R2 Agência Digital</Heading>
-            <Heading tag="h5">04/2010 ... 06/2015</Heading>
+      <Range
+        from="2010"
+        to="2021"
+        value={timelineStep}
+        onSlide={setTimelineStep}
+      />
+
+      <Heading tag="h2" fontSize={5} textAlign="center" color="accent" mt={2}>
+        {timelineStep}
+      </Heading>
+
+      <$.Timeline tag="section" flexDirection="column" mb={5} px={3}>
+        <$.Carousel>
+          <$.Step visible={timelineStep === '2010'}>
+            <Heading tag="h2">O começo de tudo</Heading>
+            <Heading tag="h3">SENAC / R2 Agência Digital</Heading>
             <Text>
               Acho que comecei como a maioria dos desenvolvedores front-end...
               Desenvolvendo sites, foram muitos sites, só aqui na R2 foram mais
@@ -122,22 +139,64 @@ const Perfil = ({ duolingo }: IPerfil) => {
               na <span>semântica e acessibilidade</span> para os mais variados
               públicos e necessidades.
             </Text>
-          </li>
-          <li>
-            <Heading tag="h3">Próximo passo</Heading>
-            <Heading tag="h4">S4B</Heading>
-            <Heading tag="h5">03/2014 ... 03/2016</Heading>
+          </$.Step>
+          <$.Step visible={timelineStep === '2011'}>
+            <Heading tag="h2">O começo de tudo</Heading>
+            <Heading tag="h3">R2 Agência Digital</Heading>
+            <Text>
+              Acho que comecei como a maioria dos desenvolvedores front-end...
+              Desenvolvendo sites, foram muitos sites, só aqui na R2 foram mais
+              de 200, aprendi a resolver muitos problemas de interface, a pensar
+              na <span>semântica e acessibilidade</span> para os mais variados
+              públicos e necessidades.
+            </Text>
+          </$.Step>
+          <$.Step visible={timelineStep === '2012'}>
+            <Heading tag="h2">O começo de tudo</Heading>
+            <Heading tag="h3">R2 Agência Digital</Heading>
+            <Text>
+              Acho que comecei como a maioria dos desenvolvedores front-end...
+              Desenvolvendo sites, foram muitos sites, só aqui na R2 foram mais
+              de 200, aprendi a resolver muitos problemas de interface, a pensar
+              na <span>semântica e acessibilidade</span> para os mais variados
+              públicos e necessidades.
+            </Text>
+          </$.Step>
+          <$.Step visible={timelineStep === '2013'}>
+            <Heading tag="h2">O começo de tudo</Heading>
+            <Heading tag="h3">R2 Agência Digital</Heading>
+            <Text>
+              Acho que comecei como a maioria dos desenvolvedores front-end...
+              Desenvolvendo sites, foram muitos sites, só aqui na R2 foram mais
+              de 200, aprendi a resolver muitos problemas de interface, a pensar
+              na <span>semântica e acessibilidade</span> para os mais variados
+              públicos e necessidades.
+            </Text>
+          </$.Step>
+          <$.Step visible={timelineStep === '2014'}>
+            <Heading tag="h2">O começo de tudo</Heading>
+            <Heading tag="h3">R2 Agência Digital</Heading>
+            <Text>
+              Acho que comecei como a maioria dos desenvolvedores front-end...
+              Desenvolvendo sites, foram muitos sites, só aqui na R2 foram mais
+              de 200, aprendi a resolver muitos problemas de interface, a pensar
+              na <span>semântica e acessibilidade</span> para os mais variados
+              públicos e necessidades.
+            </Text>
+          </$.Step>
+          <$.Step visible={timelineStep === '2015'}>
+            <Heading tag="h2">Próximo passo</Heading>
+            <Heading tag="h3">S4B</Heading>
             <Text>
               Na S4B eu aprendi um pouco a coordenar um pequeno time de
               desenvolvedores, a como trabalhar em equipe num mesmo projeto com
               código versionado em git e aprendi também que seu chefe nem sempre
               está interessado no <span>seu crescimento</span>.
             </Text>
-          </li>
-          <li>
-            <Heading tag="h3">A era dos softwares</Heading>
-            <Heading tag="h4">Connectlead</Heading>
-            <Heading tag="h5">03/2016 ... 03/2018</Heading>
+          </$.Step>
+          <$.Step visible={timelineStep === '2016'}>
+            <Heading tag="h2">A era dos softwares</Heading>
+            <Heading tag="h3">Connectlead</Heading>
             <Text>
               Aqui eu finalmente comecei a fazer parte do mundo do
               desenvolvimento de softwares, metodologias ágeis, histórias de
@@ -146,11 +205,22 @@ const Perfil = ({ duolingo }: IPerfil) => {
               necessidades dos usuários. Além da experiência de trabalhar com
               outros <span>vários times</span> em conjunto.
             </Text>
-          </li>
-          <li>
-            <Heading tag="h3">Uma aventura nativa</Heading>
-            <Heading tag="h4">Vivi Tech</Heading>
-            <Heading tag="h5">01/2019 ... 04/2019</Heading>
+          </$.Step>
+          <$.Step visible={timelineStep === '2017'}>
+            <Heading tag="h2">A era dos softwares</Heading>
+            <Heading tag="h3">Connectlead</Heading>
+            <Text>
+              Aqui eu finalmente comecei a fazer parte do mundo do
+              desenvolvimento de softwares, metodologias ágeis, histórias de
+              usuário, treinamentos, gestão de produto... Foram muitas sprints e
+              muitos componentes criados e melhorados para atender às
+              necessidades dos usuários. Além da experiência de trabalhar com
+              outros <span>vários times</span> em conjunto.
+            </Text>
+          </$.Step>
+          <$.Step visible={timelineStep === '2018'}>
+            <Heading tag="h2">Meu ano sabático</Heading>
+            <Heading tag="h3">-</Heading>
             <Text>
               Depois de um bom tempo estudando e praticanto React.js, fui
               convidado a integrar um time com o objetivo de desenvolver uma
@@ -159,11 +229,10 @@ const Perfil = ({ duolingo }: IPerfil) => {
               o mais importante, aprendi que nem sempre as pessoas querem o{' '}
               <span>melhor para o projeto</span>, se esse melhor não vier delas.
             </Text>
-          </li>
-          <li>
-            <Heading tag="h3">Expansão de horizontes</Heading>
-            <Heading tag="h4">ioasys</Heading>
-            <Heading tag="h5">07/2019 ... 07/2020</Heading>
+          </$.Step>
+          <$.Step visible={timelineStep === '2019'}>
+            <Heading tag="h2">Expansão de horizontes</Heading>
+            <Heading tag="h3">ioasys</Heading>
             <Text>
               Depois de quase 10 anos de experiência, finalmente me permiti
               viver o <span>trabalho remoto</span>, a melhor fase ... Aprendi a
@@ -171,8 +240,30 @@ const Perfil = ({ duolingo }: IPerfil) => {
               prioridades, trabalhar com times distribuídos, e o mais importante
               ... ainda tem muito caminho pela frente.
             </Text>
-          </li>
-        </ul>
+          </$.Step>
+          <$.Step visible={timelineStep === '2020'}>
+            <Heading tag="h2">Expansão de horizontes</Heading>
+            <Heading tag="h3">ioasys</Heading>
+            <Text>
+              Depois de quase 10 anos de experiência, finalmente me permiti
+              viver o <span>trabalho remoto</span>, a melhor fase ... Aprendi a
+              importância de estar sozinho, me auto gerenciar, definir
+              prioridades, trabalhar com times distribuídos, e o mais importante
+              ... ainda tem muito caminho pela frente.
+            </Text>
+          </$.Step>
+          <$.Step visible={timelineStep === '2021'}>
+            <Heading tag="h2">Expansão de horizontes</Heading>
+            <Heading tag="h3">ioasys</Heading>
+            <Text>
+              Depois de quase 10 anos de experiência, finalmente me permiti
+              viver o <span>trabalho remoto</span>, a melhor fase ... Aprendi a
+              importância de estar sozinho, me auto gerenciar, definir
+              prioridades, trabalhar com times distribuídos, e o mais importante
+              ... ainda tem muito caminho pela frente.
+            </Text>
+          </$.Step>
+        </$.Carousel>
       </$.Timeline>
 
       <$.Knowledge tag="section" mb={5}>
@@ -201,10 +292,10 @@ const Perfil = ({ duolingo }: IPerfil) => {
         <SiNextDotJs />
       </$.Knowledge>
 
-      <$.AdditionalInfo tag="section" mb={5}>
-        <Flex flexDirection="column" mb={2}>
+      <$.AdditionalInfo tag="section" mb={6}>
+        <Flex flexDirection="column" mb={4}>
           <$.SectionSubTitle tag="h2" mb={2}>
-            <RiFindReplaceLine />
+            <RiFindReplaceLine size={28} />
             Curioso
           </$.SectionSubTitle>
           <Text mb={0}>
@@ -217,9 +308,9 @@ const Perfil = ({ duolingo }: IPerfil) => {
             pelas soluções.
           </Text>
         </Flex>
-        <Flex flexDirection="column" mb={2}>
+        <Flex flexDirection="column">
           <$.SectionSubTitle tag="h2" mb={2}>
-            <RiKakaoTalkFill />
+            <RiKakaoTalkFill size={28} />
             Comunicativo
           </$.SectionSubTitle>
           <Text mb={0}>
@@ -238,7 +329,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
         <header
           onClick={() =>
             window.open(
-              'https://www.duolingo.com/profile/Viniciuscolares',
+              'https://invite.duolingo.com/BDHTZTB5CWWKTSJQSN5RY2L3EU',
               '_blank'
             )
           }
@@ -261,13 +352,21 @@ const Perfil = ({ duolingo }: IPerfil) => {
           </Flex>
         </header>
         <Flex justifyContent="space-around">
-          <Flex flexDirection="column" alignItems="center" mt={4}>
-            <$.TotalExp>
-              <Text tag="span" fontSize={3} fontWeight={500} lineHeight={0.8}>
+          <Flex flexDirection="column" alignItems="center" mt={4} flex={0}>
+            <$.DuolingoUser
+              href="https://www.duolingo.com/profile/ViniciusColares"
+              target="blank"
+            >
+              Vinícius Colares
+            </$.DuolingoUser>
+
+            <$.TotalExp mt={3}>
+              <Text tag="span" fontSize={2} fontWeight={500} lineHeight={0.8}>
                 Total Exp
               </Text>
               <Text
                 tag="span"
+                textAlign="center"
                 fontSize={3}
                 fontWeight={600}
                 color="#78C800 !important"
@@ -276,27 +375,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
               </Text>
             </$.TotalExp>
 
-            <Image
-              className="duolingo-avatar"
-              src="/assets/avatar.png"
-              alt="A Vinicius Colares selfie"
-              layout="fixed"
-              quality={100}
-              width={90}
-              height={90}
-            />
-
-            <Text
-              tag="span"
-              fontSize={3}
-              fontWeight={600}
-              color="gray100"
-              mb={1}
-            >
-              Vinícius Colares
-            </Text>
-
-            <Flex spaceChildren={3}>
+            <Flex spaceChildren={3} mt={3}>
               <Flex flexDirection="column" alignItems="center">
                 <Crowns title="Habilidades conquistadas" height={24} />
                 <Text tag="span" fontWeight={600} color="primaryDark">
@@ -338,7 +417,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
               <Text tag="span">{getExp('de') || '-'}</Text>
             </$.ExpCol>
             <$.CrownsCol flexDirection="column" spaceChildren={1}>
-              <Crowns height={24} />
+              <Crowns height={28} />
               <Text tag="span">-</Text>
               <Text tag="span">{getCrowns('en') || '-'}</Text>
               <Text tag="span">{getCrowns('fr') || '-'}</Text>
@@ -347,13 +426,6 @@ const Perfil = ({ duolingo }: IPerfil) => {
           </$.LangInfo>
         </Flex>
       </$.DuolingoSection>
-      <a
-        href="https://invite.duolingo.com/BDHTZTB5CWWKTSJQSN5RY2L3EU"
-        target="_blank"
-        rel="noreferrer"
-      >
-        Aprenda idiomas com Duolingo você também
-      </a>
     </MainPage>
   )
 }

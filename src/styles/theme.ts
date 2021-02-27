@@ -4,7 +4,7 @@ export const colors = {
   primary1: '#7C31D2',
   primary2: '#5614E2',
   primaryLight: '#B079FF',
-  primaryDark: '#3C0D80',
+  primaryDark: '#290759',
   accent: '#FFB800',
   accentDark: '#BB8B0E',
   gray25: '#D3D3D3',
@@ -12,7 +12,7 @@ export const colors = {
   gray75: '#47454B',
   gray100: '#311B38',
   contrast: '#FFFFFF',
-  shadow: '#3C0D80',
+  shadow: '#290759',
   success: '#00B007',
   error: '#EB5757'
 }

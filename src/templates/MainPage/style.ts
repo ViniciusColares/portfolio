@@ -36,8 +36,8 @@ export const Main = styled(motion.main)(
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'flex-start',
-    width: '100%',
-    height: '100%',
+    width: '100vw',
+    height: '100vh',
     overflow: 'hidden',
     zIndex: 1,
     transformStyle: 'preserve-3d',
@@ -62,7 +62,7 @@ export const MainContent = styled(motion.section)(
     justifyContent: 'flex-start',
     width: '100%',
     height: '100%',
-    overflow: 'auto',
+    overflow: 'scroll',
     borderRadius: '16px',
     pb: 4,
     zIndex: 1
@@ -147,7 +147,7 @@ export const MenuItem = styled(motion.div)<{ inactive?: boolean }>(
     display: 'flex',
     position: 'relative',
     borderRadius: '8px',
-    border: '2px solid rgb(255 255 255 / 30%)',
+    border: '2px solid rgb(255 255 255 / 20%)',
     height: '85px',
     pl: '32%',
     zIndex: 0,
@@ -172,7 +172,7 @@ export const MenuItem = styled(motion.div)<{ inactive?: boolean }>(
       filter: 'grayscale(100%)',
       cursor: 'not-allowed',
       ':hover': {
-        borderColor: 'rgb(255 255 255 / 30%)',
+        borderColor: 'rgb(255 255 255 / 20%)',
         boxShadow: 'none'
       }
     })
