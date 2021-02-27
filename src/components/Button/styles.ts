@@ -1,10 +1,10 @@
 import styled from 'styled-components'
 import css from '@styled-system/css'
-import { variant } from 'styled-system'
-import { theme } from '@styles/theme'
-import { motion } from 'framer-motion'
+import { variant, compose, space } from 'styled-system'
+import { colors } from '@styles/theme'
+import { motion, MotionProps } from 'framer-motion'
 
-const { colors } = theme
+type ButtonStyleProps = { size?: string }
 
 export const Container = styled.div(
   css({
@@ -12,9 +12,11 @@ export const Container = styled.div(
   })
 )
 
-export const ButtonStyle = styled(motion.button)<{ size: string }>(
+export const ButtonStyle = styled(motion.button)<
+  MotionProps & ButtonStyleProps
+>(
   css({
-    fontSize: 1,
+    fontSize: 2,
     bg: 'accent',
     display: 'flex',
     outline: 'none',
@@ -34,35 +36,35 @@ export const ButtonStyle = styled(motion.button)<{ size: string }>(
     justifyContent: 'center',
     transition: 'all .15s ease',
     borderColor: 'accentDark',
+    transform: 'translateY(-4px) translateX(-4px)',
+    '> svg': {
+      marginRight: 2
+    },
     '&:focus': {
       boxShadow: `inset 0px 0px 0px 3px ${colors.accentDark}`,
       '&:hover': {
-        transform: 'translateX(2px) translateY(2px)'
+        transform: 'translateX-(2px) translateY(-2px)'
       }
     },
     '&:hover': {
-      transform: 'translateX(2px) translateY(2px)',
+      transform: 'translateX(-2px) translateY(-2px)',
       '&:active': {
-        transform: 'translateX(4px) translateY(4px)'
+        transform: 'translateX(0px) translateY(0px)'
       }
     },
     '&:active': {
-      transform: 'translateX(4px) translateY(4px)'
+      transform: 'translateX(0px) translateY(0px)'
     },
     '&:disabled': {
       borderColor: 'gray50',
       bg: 'gray25',
       color: 'gray50',
       cursor: 'not-allowed',
-      '&:hover': {
-        transform: 'translateY(0px)'
-      },
-      '&+div': {
-        visibility: 'hidden'
+      transform: 'translateX(0px) translateY(0px)',
+      boxShadow: `inset 0px 0px 0px 2px ${colors.gray50}`,
+      '> svg': {
+        fill: 'gray50'
       }
-    },
-    '> img': {
-      marginRight: 2
     }
   }),
   variant({
@@ -71,24 +73,25 @@ export const ButtonStyle = styled(motion.button)<{ size: string }>(
       small: {
         minWidth: 'auto',
         padding: '4px 12px',
-        fontSize: 0,
+        fontSize: 1,
         fontWeight: 600,
+        transform: 'translateY(-3px) translateX(-3px)',
         '&:focus': {
           boxShadow: `inset 0px 0px 0px 2px ${colors.accentDark}`,
           '&:hover': {
-            transform: 'translateX(2px) translateY(2px)'
+            transform: 'translateX(-2px) translateY(-2px)'
           }
         },
         '&:hover': {
-          transform: 'translateX(2px) translateY(2px)',
+          transform: 'translateX(-2px) translateY(-2px)',
           '&:active': {
-            transform: 'translateX(4px) translateY(4px)'
+            transform: 'translateX(0px) translateY(0px)'
           }
         },
         '&:active': {
-          transform: 'translateX(4px) translateY(4px)'
+          transform: 'translateX(0px) translateY(0px)'
         },
-        '> img': {
+        '> svg': {
           marginRight: 1
         }
       },
@@ -96,32 +99,34 @@ export const ButtonStyle = styled(motion.button)<{ size: string }>(
         minWidth: '150px',
         padding: '12px 32px',
         borderWidth: '2px',
-        fontSize: 2,
+        fontSize: 3,
         fontWeight: 600,
+        transform: 'translateY(-5px) translateX(-5px)',
         '&:focus': {
           boxShadow: `inset 0px 0px 0px 4px ${colors.accentDark}`,
           '&:hover': {
-            transform: 'translateX(2px) translateY(2px)'
+            transform: 'translateX(-3px) translateY(-3px)'
           }
         },
         '&:hover': {
-          transform: 'translateX(2px) translateY(2px)',
+          transform: 'translateX(-3px) translateY(-3px)',
           '&:active': {
-            transform: 'translateX(5px) translateY(5px)'
+            transform: 'translateX(0px) translateY(0px)'
           }
         },
         '&:active': {
-          transform: 'translateX(5px) translateY(5px)'
+          transform: 'translateX(0px) translateY(0px)'
         },
-        '> img': {
+        '> svg': {
           marginRight: 3
         }
       }
     }
-  })
+  }),
+  compose(space)
 )
 
-export const Shadow = styled.div<{ size: string }>(
+export const Shadow = styled.div(
   css({
     position: 'absolute',
     width: '100%',
@@ -129,20 +134,8 @@ export const Shadow = styled.div<{ size: string }>(
     bg: 'shadow',
     borderRadius: '8px',
     border: `1px solid ${colors.shadow}`,
-    transform: 'translateY(4px) translateX(4px)',
     top: 0,
     left: 0,
     zIndex: -1
-  }),
-  variant({
-    prop: 'size',
-    variants: {
-      small: {
-        transform: 'translateY(3px) translateX(3px)'
-      },
-      big: {
-        transform: 'translateY(5px) translateX(5px)'
-      }
-    }
   })
 )

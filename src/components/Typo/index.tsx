@@ -43,7 +43,7 @@ type T = React.FC<HTMLParagraphElement>
 const CustomText = styled.p<T>(
   css({
     fontFamily: 'text',
-    fontSize: 1,
+    fontSize: 2,
     fontWeight: '400',
     lineHeight: '1.5',
     margin: '0 0 12px 0',

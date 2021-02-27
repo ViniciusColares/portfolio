@@ -10,11 +10,11 @@ import {
   space,
   SpaceProps
 } from 'styled-system'
+import { motion, MotionProps } from 'framer-motion'
 
 type GridProps = { spaceChildren?: number; flexDirection?: string }
 
-type GridFC = React.FC<HTMLDivElement> & GridProps
-const CustomGrid = styled('div')<GridFC>(
+const CustomGrid = styled(motion.div)<MotionProps & GridProps>(
   css({
     display: 'flex',
     position: 'relative'
@@ -49,10 +49,7 @@ const CustomGrid = styled('div')<GridFC>(
   },
   compose(space, layout, flexbox)
 )
-interface Grid extends GridProps {
-  tag?: 'div' | 'section' | 'form' | 'aside'
-  children?: ReactNode
-}
+
 const Flex = ({
   tag = 'div',
   children,
@@ -63,6 +60,11 @@ const Flex = ({
       {children}
     </CustomGrid>
   )
+}
+
+interface Grid extends GridProps {
+  tag?: 'div' | 'section' | 'form' | 'aside' | 'header' | 'footer'
+  children?: ReactNode
 }
 
 export default Flex

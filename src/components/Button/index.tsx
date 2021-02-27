@@ -1,21 +1,34 @@
 import React from 'react'
 import { IconBaseProps } from 'react-icons'
 import { VscLoading } from 'react-icons/vsc'
-import { Rotate } from '@styles/animations'
+import { MotionProps } from 'framer-motion'
+import { SpaceProps } from 'styled-system'
 
-import { Container, Shadow, ButtonStyle } from './ButtonStyle'
+import { Rotate } from '@styles/animations'
+import { colors } from '@styles/theme'
+
+import * as $ from './styles'
 
 const Button = ({
   name,
   type = 'button',
   icon: Icon,
   size = 'medium',
+  disabled = false,
   isLoading = false,
   ...restProps
-}: ButtonProps) => {
+}: ButtonProps &
+  React.HTMLAttributes<HTMLButtonElement> &
+  MotionProps &
+  SpaceProps) => {
   return (
-    <Container>
-      <ButtonStyle type={type} size={size} disabled={isLoading} {...restProps}>
+    <$.Container>
+      <$.ButtonStyle
+        type={type}
+        size={size}
+        disabled={isLoading || disabled}
+        {...restProps}
+      >
         {isLoading ? (
           <Rotate
             animate={{ rotate: 360 }}
@@ -29,21 +42,22 @@ const Button = ({
           </Rotate>
         ) : (
           <>
-            {Icon && <Icon size="24px" color="#fff" />}
+            {Icon && <Icon size="24px" color={colors.primaryDark} />}
             {name}
           </>
         )}
-      </ButtonStyle>
-      <Shadow size={size} />
-    </Container>
+      </$.ButtonStyle>
+      <$.Shadow />
+    </$.Container>
   )
 }
 
 export interface ButtonProps {
   name: string
-  onClick: (() => Promise<boolean>) | (() => void)
-  isLoading?: boolean
   type?: 'button' | 'submit' | 'reset'
+  onClick?: (() => Promise<boolean>) | (() => void)
+  disabled?: boolean
+  isLoading?: boolean
   size?: 'small' | 'medium' | 'big'
   icon?: React.ComponentType<IconBaseProps>
 }

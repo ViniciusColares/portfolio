@@ -3,6 +3,7 @@ import { DefaultTheme } from 'styled-components'
 export const colors = {
   primary1: '#7C31D2',
   primary2: '#5614E2',
+  primaryLight: '#B079FF',
   primaryDark: '#290759',
   accent: '#FFB800',
   accentDark: '#BB8B0E',
@@ -11,7 +12,9 @@ export const colors = {
   gray75: '#47454B',
   gray100: '#311B38',
   contrast: '#FFFFFF',
-  shadow: '#290759'
+  shadow: '#290759',
+  success: '#00B007',
+  error: '#EB5757'
 }
 
 export const fonts = {
@@ -20,6 +23,7 @@ export const fonts = {
 }
 
 export const fontSizes = [
+  '0.65rem',
   '0.8rem',
   '1rem',
   '1.2rem',

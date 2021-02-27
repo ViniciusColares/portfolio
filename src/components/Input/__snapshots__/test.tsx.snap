@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Input it should render a Input with label 1`] = `
+.c0 {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  position: relative;
+}
+
+.c0 svg {
+  right: 8px;
+  position: absolute;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.c1 {
+  padding: 16px;
+  width: 100%;
+  background-color: primaryDark;
+  color: contrast;
+  border-radius: 6px;
+  font-family: text;
+  font-size: 16px;
+  border: 2px solid transparent;
+  outline: none;
+}
+
+.c1:focus {
+  border-color: accent;
+}
+
+.c1:focus ~ div {
+  opacity: 0;
+  visibility: hidden;
+  right: 10px;
+}
+
+.c1::-webkit-input-placeholder {
+  color: primaryLight;
+}
+
+.c1::-moz-placeholder {
+  color: primaryLight;
+}
+
+.c1:-ms-input-placeholder {
+  color: primaryLight;
+}
+
+.c1::placeholder {
+  color: primaryLight;
+}
+
+<div
+  class="c0"
+>
+  <input
+    class="c1"
+    data-testid="name"
+    name="name"
+    placeholder="escreva seu nome"
+    type="text"
+    value=""
+  />
+</div>
+`;
