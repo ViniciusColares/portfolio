@@ -14,12 +14,7 @@ const Template: Story<ComponentProps<typeof Range>> = (args) => (
 
 export const Basic = Template.bind({})
 Basic.args = {
-  name: 'Range'
-}
-Basic.argTypes = { onClick: { action: 'clicked' } }
-
-export const Loading = Template.bind({})
-Loading.args = {
-  name: 'Loading',
-  isLoading: true
+  from: '0',
+  to: '10',
+  value: '5'
 }
