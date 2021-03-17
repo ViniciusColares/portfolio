@@ -92,7 +92,7 @@ const Perfil = ({ duolingo }: IPerfil) => {
     <MainPage pageTitle="perfil">
       <$.Profile tag="section" my={5}>
         <Image
-          src="/assets/menu/profile.png"
+          src="/assets/avatar.png"
           alt="An illustration of Vinicius Colares' face"
           layout="fixed"
           quality={100}
