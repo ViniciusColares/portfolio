@@ -36,20 +36,20 @@ export const fontSizes = [
 
 export const space = [0, 4, 8, 12, 20, 32, 52, 84]
 
-export const breakpoints = [40, 52, 64, 78, 94]
+export const breakpoints = ['40em', '52em', '64em', '78em', '94em']
 
 export const medias = (key) => {
   switch (key) {
     case 'xs':
-      return `@media (min-width: ${breakpoints[0]}em)`
+      return `@media (min-width: ${breakpoints[0]})`
     case 'sm':
-      return `@media (min-width: ${breakpoints[1]}em)`
+      return `@media (min-width: ${breakpoints[1]})`
     case 'md':
-      return `@media (min-width: ${breakpoints[2]}em)`
+      return `@media (min-width: ${breakpoints[2]})`
     case 'lg':
-      return `@media (min-width: ${breakpoints[3]}em)`
+      return `@media (min-width: ${breakpoints[3]})`
     case 'xl':
-      return `@media (min-width: ${breakpoints[4]}em)`
+      return `@media (min-width: ${breakpoints[4]})`
     default:
       return `@media (min-width: 0em)`
   }
@@ -60,7 +60,7 @@ declare module 'styled-components' {
     medias: (key: keyof typeof breakpoints) => string
     colors: { [key in keyof typeof colors]: string }
     fonts: { [key in keyof typeof fonts]: string }
-    breakpoints: number[]
+    breakpoints: string[]
     fontSizes: string[]
     space: number[]
   }
