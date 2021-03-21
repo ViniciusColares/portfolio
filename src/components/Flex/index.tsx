@@ -8,7 +8,9 @@ import {
   layout,
   LayoutProps,
   space,
-  SpaceProps
+  SpaceProps,
+  position,
+  PositionProps
 } from 'styled-system'
 import { motion, MotionProps } from 'framer-motion'
 
@@ -19,7 +21,7 @@ const CustomGrid = styled(motion.div)<MotionProps & GridProps>(
     display: 'flex',
     position: 'relative'
   }),
-  ({ spaceChildren, flexDirection }) => {
+  ({ spaceChildren, flexDirection = 'row' }) => {
     switch (flexDirection) {
       case 'column':
         return css({
@@ -47,14 +49,14 @@ const CustomGrid = styled(motion.div)<MotionProps & GridProps>(
         })
     }
   },
-  compose(space, layout, flexbox)
+  compose(space, layout, flexbox, position)
 )
 
 const Flex = ({
   tag = 'div',
   children,
   ...rest
-}: Grid & FlexboxProps & SpaceProps & LayoutProps) => {
+}: Grid & FlexboxProps & SpaceProps & LayoutProps & PositionProps) => {
   return (
     <CustomGrid as={tag} {...rest}>
       {children}
