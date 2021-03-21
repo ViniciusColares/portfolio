@@ -16,7 +16,7 @@ const Range = ({
   const renderSteps = (from, to): ReactElement[] => {
     const steps: ReactElement[] = []
     for (let i = Number(from); i <= Number(to); i++) {
-      steps.push(<$.Step />)
+      steps.push(<$.Step key={i} />)
     }
     return steps
   }
